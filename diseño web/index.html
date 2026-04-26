@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- CONFIGURACIÓN PARA WHATSAPP Y REDES SOCIALES (OpenGraph) -->
-    <title>SAIE Educación - Master Suite LISP 2026</title>
-    <meta name="description" content="Domina la automatización arquitectónica con nuestras herramientas exclusivas LISP para AutoCAD.">
-    <meta property="og:title" content="SAIE Educación - Master Suite LISP">
-    <meta property="og:description" content="Automatización extrema para arquitectos e ingenieros.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000"> <!-- Cambiar por link de logo final -->
+    <!-- CONFIGURACIÓN PARA COMPARTIR EN WHATSAPP -->
+    <title>SAIE Educación - LISP Master Suite 2026</title>
+    <meta name="description" content="Domina la automatización arquitectónica con nuestra Suite LISP exclusiva.">
+    <meta property="og:title" content="SAIE Educación - LISP Expert Suite">
+    <meta property="og:description" content="6 Herramientas de alto poder para AutoCAD.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=1000">
     <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,14 +17,42 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; margin: 0; overflow: hidden; }
-        .slide-enter { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: white;
+            margin: 0; 
+            overflow: hidden; 
+        }
+
+        .slide-enter { animation: slideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideIn { 
+            from { opacity: 0; transform: translateY(20px); filter: blur(10px); } 
+            to { opacity: 1; transform: translateY(0); filter: blur(0); } 
+        }
+
+        .glass { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .command-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -41,67 +69,66 @@
         const App = () => {
             const [currentSlide, setCurrentSlide] = useState(0);
 
-            // --- AQUÍ PUEDES CAMBIAR LOS LINKS DE LAS IMÁGENES CUANDO LOS TENGAS ---
             const extensions = [
                 {
                     id: "wall-engine",
                     command: "GM",
                     title: "Architectural Wall Engine",
-                    subtitle: "BIM-Ready Generation",
-                    description: "Deja de dibujar líneas simples. Este motor inyecta inteligencia en tus muros con metadatos BIM (XData), permitiendo que cada elemento sepa su volumen y función antes de ser cuantificado.",
-                    features: ["Muros paramétricos inteligentes", "Inyección de datos XData", "Estandarización automática de capas"],
+                    subtitle: "ADN Arquitectónico Inteligente",
+                    description: "No dibujes líneas, crea componentes con 'consciencia'. Este motor inyecta metadatos BIM (XData) en cada muro, permitiendo que tu dibujo sepa exactamente qué es antes de ser cuantificado.",
+                    benefit: "Muros paramétricos que gestionan capas y datos automáticamente.",
                     icon: "box",
-                    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000"
                 },
                 {
                     id: "surface-matrix",
                     command: "QA",
                     title: "Surface Matrix Quantifier",
-                    subtitle: "Ingeniería de Costos al Instante",
-                    description: "La pesadilla de los presupuestos se terminó. Extrae la información del Wall Engine y genera matrices completas de acabados, pintura y repellado directamente en Excel.",
-                    features: ["Exportación masiva a CSV/Excel", "Cálculo de áreas en ambas caras", "Matriz de acabados automática"],
+                    subtitle: "Presupuestos de Alta Ingeniería",
+                    description: "El fin de los errores en cuantificación. Lee la inteligencia del Wall Engine para generar matrices de pintura, repellado y acabados con precisión absoluta, directo a Excel.",
+                    benefit: "Cálculo instantáneo de áreas en ambas caras y longitudes totales.",
                     icon: "calculator",
-                    img: "https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=2000&auto=format&fit=crop"
+                    img: "https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=2000"
                 },
                 {
-                    id: "global-inventory",
+                    id: "inventory-master",
                     command: "CQ",
                     title: "Global Inventory Master",
-                    subtitle: "Auditoría Total en un Solo Clic",
-                    description: "Control absoluto de tus suministros. Escanea el proyecto entero, identifica mobiliario y bloques dinámicos, y genera un inventario alfabético perfecto para tablas de costos.",
-                    features: ["Detección de bloques dinámicos", "Inventario alfabético ordenado", "Auditoría de suministros inmediata"],
+                    subtitle: "Auditoría Total en un Clic",
+                    description: "Escaneo profundo de tu proyecto. Identifica mobiliario y bloques dinámicos al instante, generando inventarios alfabéticos perfectos para tablas de costos y suministros.",
+                    benefit: "Inventarios automáticos que eliminan el error humano en el conteo.",
                     icon: "list-checks",
-                    img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2000&auto=format&fit=crop"
+                    img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2000"
                 },
                 {
                     id: "area-surveyor",
                     command: "AU",
                     title: "Precision Area Surveyor",
-                    subtitle: "Estética y Precisión Geométrica",
-                    description: "Eleva el estándar de tus planos. Define jerarquías visuales y ubica etiquetas de área con libertad total, garantizando una estética técnica impecable y profesional.",
-                    features: ["Jerarquía de texto configurable", "Etiquetado libre de errores", "Cálculo geométrico de alta precisión"],
+                    subtitle: "La Estética de la Precisión",
+                    description: "Lleva la limpieza de tus planos a otro nivel. Define jerarquías visuales y ubica etiquetas de área con libertad total, garantizando una presentación impecable y técnica.",
+                    benefit: "Control total sobre la ubicación y estética de los datos geométricos.",
                     icon: "layout",
-                    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+                    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000"
                 },
                 {
                     id: "stair-modeler",
                     command: "EE",
                     title: "Blondel-Standard Stair Modeler",
-                    subtitle: "Matemática de Circulación Vertical",
-                    description: "Diseña escaleras perfectas cumpliendo la Ley de Blondel automáticamente. Genera tramos, descansos, numeración y simbología técnica en segundos.",
-                    features: ["Cálculo automático de huella/peralte", "Generación de tramos en L, U y Rectos", "Numeración y simbología completa"],
+                    subtitle: "Ingeniería Vertical Automatizada",
+                    description: "Matemática aplicada al diseño. Utiliza la Ley de Blondel para proyectar escaleras perfectas, con tramos, numeración y simbología técnica generada en segundos.",
+                    benefit: "Cálculo ergonómico automático para tramos rectos, en L o en U.",
                     icon: "layers",
-                    img: "https://images.unsplash.com/photo-1518005020251-582c7897655d?q=80&w=2069&auto=format&fit=crop"
+                    img: "https://images.unsplash.com/photo-1518005020251-582c7897655d?q=80&w=2000"
                 },
                 {
                     id: "structural-designer",
                     command: "DC",
                     title: "Structural Core Designer",
-                    subtitle: "Poder Estructural bajo Normativa",
-                    description: "Ingeniería aplicada directo en el CAD. Realiza pre-dimensionamientos basados en las NTC y genera detalles de armado escalados con memoria de cálculo integrada.",
-                    features: ["Cumplimiento de Normativa NTC", "Detalles de armado automáticos", "Memoria de cálculo en consola"],
+                    subtitle: "Rigor Normativo NTC",
+                    description: "Ingeniería estructural dentro de tu CAD. Realiza pre-dimensionamientos basados en las NTC y genera detalles constructivos de armado con varillas y estribos escalados.",
+                    benefit: "Generación de memorias de cálculo y detalles constructivos al instante.",
                     icon: "shield",
-                    img: "https://images.unsplash.com/photo-1621905252507-b354bcadcabc?q=80&w=2070&auto=format&fit=crop"
+                    img: "https://images.unsplash.com/photo-1621905252507-b354bcadcabc?q=80&w=2070"
                 }
             ];
 
@@ -118,29 +145,23 @@
                 const slide = slides[currentSlide];
                 if (slide.type === "cover") {
                     return (
-                        <div className="flex flex-col items-center justify-center h-full text-white text-center p-8 slide-enter relative">
-                            <div className="absolute inset-0 overflow-hidden opacity-30">
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[120px]"></div>
+                        <div className="flex flex-col items-center justify-center h-full text-white text-center p-8 slide-enter">
+                            <div className="mb-12 p-8 glass rounded-[2.5rem] shadow-2xl border-blue-500/20">
+                                <img 
+                                    src="https://raw.githubusercontent.com/saie-arquitectura/assets/main/logo_saie.png" 
+                                    alt="Logo SAIE" 
+                                    className="w-56 md:w-72 h-auto"
+                                    onError={(e) => { e.target.src = 'https://via.placeholder.com/300x120?text=SAIE+EDUCACION'; }}
+                                />
                             </div>
-                            <div className="z-10">
-                                <div className="mb-8 inline-block px-6 py-2 glass rounded-full border border-blue-400/20 shadow-xl">
-                                    <h2 className="text-sm font-bold tracking-[0.4em] text-blue-400 uppercase">SAIE Educación • 2026</h2>
-                                </div>
-                                <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none">
-                                    MASTER SUITE <br/>
-                                    <span className="gradient-text uppercase">LISP EXPERT</span>
-                                </h1>
-                                <p className="text-xl md:text-2xl text-slate-400 font-light max-w-2xl mx-auto mb-12 italic">
-                                    "La tecnología que redefine la eficiencia en el diseño arquitectónico."
-                                </p>
-                                <div className="flex flex-wrap justify-center gap-4">
-                                    <div className="px-8 py-3 glass rounded-2xl text-blue-300 font-bold flex items-center gap-2">
-                                        <Icon name="zap" className="w-5 h-5 text-yellow-400"/> MÁXIMA VELOCIDAD
-                                    </div>
-                                    <div className="px-8 py-3 glass rounded-2xl text-cyan-300 font-bold flex items-center gap-2">
-                                        <Icon name="terminal" className="w-5 h-5"/> COMANDOS NATIVOS
-                                    </div>
-                                </div>
+                            <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none italic uppercase">
+                                LISP <span className="gradient-text">MASTER SUITE</span>
+                            </h1>
+                            <p className="text-xl md:text-3xl text-slate-400 font-light max-w-3xl mx-auto mb-16">
+                                Herramientas de automatización de alto nivel creadas por <span className="text-white font-bold">SAIE Educación</span>.
+                            </p>
+                            <div className="flex gap-4">
+                                <div className="px-8 py-3 bg-blue-600 rounded-2xl font-bold text-sm tracking-widest shadow-lg shadow-blue-500/20">EDICIÓN 2026</div>
                             </div>
                         </div>
                     );
@@ -149,50 +170,43 @@
                 if (slide.type === "extension") {
                     return (
                         <div className="flex flex-col md:flex-row h-full text-white slide-enter overflow-hidden">
-                            <div className="flex-1 p-8 md:p-20 flex flex-col justify-center bg-slate-950/90 relative z-10 border-r border-white/5">
-                                <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-16 h-16 glass rounded-2xl flex items-center justify-center shadow-2xl border-blue-500/20">
-                                        <Icon name={slide.icon} className="w-8 h-8 text-blue-400" />
+                            <div className="flex-1 p-8 md:p-20 flex flex-col justify-center bg-slate-950/90 z-10 border-r border-white/5">
+                                <div className="flex items-center gap-6 mb-10">
+                                    <div className="w-20 h-20 glass rounded-3xl flex items-center justify-center shadow-2xl border-blue-500/30">
+                                        <Icon name={slide.icon} className="w-10 h-10 text-blue-400" />
                                     </div>
                                     <div>
-                                        <div className="flex items-center gap-3 mb-1">
-                                            <span className="px-3 py-1 bg-blue-600 text-[10px] font-black rounded-md tracking-widest uppercase">Comando: {slide.command}</span>
-                                            <span className="text-slate-500 text-xs font-bold uppercase tracking-widest">{slide.subtitle}</span>
+                                        <div className="mb-2">
+                                            <span className="command-badge px-4 py-1 text-sm font-black rounded-lg">COMANDO: {slide.command}</span>
                                         </div>
-                                        <h2 className="text-4xl md:text-5xl font-black tracking-tight">{slide.title}</h2>
+                                        <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-none">{slide.title}</h2>
                                     </div>
                                 </div>
                                 
-                                <p className="text-slate-300 text-xl mb-10 leading-relaxed font-light border-l-4 border-blue-500 pl-8">
+                                <h3 className="text-blue-400 text-xl font-bold uppercase tracking-widest mb-6">{slide.subtitle}</h3>
+                                
+                                <p className="text-slate-300 text-2xl mb-12 leading-relaxed font-light border-l-4 border-blue-600 pl-10">
                                     {slide.description}
                                 </p>
 
-                                <div className="grid grid-cols-1 gap-4 mb-10">
-                                    {slide.features.map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-4 glass p-4 rounded-xl group hover:bg-white/5 transition-all cursor-default">
-                                            <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:shadow-[0_0_10px_#3b82f6] transition-all"></div>
-                                            <span className="text-slate-200 font-semibold">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="flex items-center gap-4 text-xs font-bold text-slate-500 tracking-widest uppercase">
-                                    <Icon name="check-circle" className="w-4 h-4 text-green-500" /> Tecnología Probada en Obra
+                                <div className="glass p-8 rounded-3xl border-white/5">
+                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Poder de la herramienta:</p>
+                                    <p className="text-xl font-bold text-white italic">
+                                        "{slide.benefit}"
+                                    </p>
                                 </div>
                             </div>
                             
-                            <div className="flex-1 relative bg-black flex items-center justify-center">
+                            <div className="flex-1 relative bg-black">
                                 <img 
                                     src={slide.img} 
-                                    className="w-full h-full object-cover opacity-60 scale-100 hover:scale-110 transition-transform duration-[15s]" 
+                                    className="w-full h-full object-cover opacity-40" 
                                     alt={slide.title}
-                                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop'; }}
+                                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000'; }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-transparent to-transparent"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent"></div>
-                                <div className="absolute bottom-10 right-10 glass p-6 rounded-2xl text-right max-w-xs border-white/10">
-                                    <p className="text-[10px] text-blue-400 font-bold mb-1 uppercase tracking-[0.2em]">Soporte Técnico</p>
-                                    <p className="text-lg font-bold text-white">Full Compatible 2026</p>
+                                <div className="absolute bottom-10 right-10 text-right">
+                                    <p className="text-sm font-black text-blue-500 tracking-[0.3em] uppercase">SAIE System Engine</p>
                                 </div>
                             </div>
                         </div>
@@ -200,67 +214,50 @@
                 }
 
                 return (
-                    <div className="h-full flex items-center justify-center text-center p-8 slide-enter relative">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1e293b_0%,_#020617_100%)] opacity-50"></div>
-                        <div className="max-w-4xl z-10">
-                            <div className="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-blue-500/20 rotate-12">
-                                <Icon name="rocket" className="w-10 h-10 text-white -rotate-12" />
-                            </div>
-                            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-                                NO SOLO DISEÑES,<br/> <span className="gradient-text tracking-tighter">SÉ UN EXPERTO.</span>
+                    <div className="h-full flex items-center justify-center text-center p-8 slide-enter">
+                        <div className="max-w-4xl">
+                            <Icon name="rocket" className="w-20 h-20 text-blue-500 mx-auto mb-10 animate-bounce" />
+                            <h2 className="text-5xl md:text-7xl font-black text-white mb-8">
+                                TRABAJA COMO UN <span className="gradient-text">EXPERTO.</span>
                             </h2>
-                            <p className="text-2xl text-slate-400 mb-12 font-light max-w-2xl mx-auto">
-                                Únete a <span className="text-white font-bold tracking-widest uppercase">SAIE Educación</span> y obtén acceso exclusivo a estas herramientas.
+                            <p className="text-2xl text-slate-400 mb-16 font-light">
+                                Estas extensiones son el resultado de años de experiencia técnica. Únete a <span className="text-white font-bold">SAIE Educación</span> y domina la tecnología.
                             </p>
-                            <div className="flex flex-col md:flex-row justify-center gap-6">
-                                <button className="px-12 py-6 bg-white text-black font-black text-xl rounded-2xl hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-2xl">
-                                    ACCEDER A LA BIBLIOTECA
-                                </button>
-                                <button className="px-12 py-6 glass text-white font-black text-xl rounded-2xl hover:bg-white/10 transition-all transform hover:scale-105 active:scale-95 border-white/20">
-                                    VER TUTORIALES
-                                </button>
-                            </div>
+                            <button className="px-14 py-6 bg-white text-black font-black text-xl rounded-3xl hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl active:scale-95">
+                                ACCEDER A LA BIBLIOTECA
+                            </button>
                         </div>
                     </div>
                 );
             };
 
             return (
-                <div className="w-full h-screen flex flex-col bg-slate-950 selection:bg-blue-500 selection:text-white">
+                <div className="w-full h-screen flex flex-col bg-slate-950">
                     <div className="flex-1 overflow-hidden relative">
                         {renderSlide()}
                     </div>
                     
-                    <div className="h-24 bg-slate-900/80 backdrop-blur-3xl border-t border-white/5 flex items-center justify-between px-8 md:px-20 z-50">
+                    <div className="h-24 bg-slate-900 border-t border-white/5 flex items-center justify-between px-8 md:px-24">
                         <div className="flex items-center gap-12">
                             <div className="flex flex-col">
-                                <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-1">Estatus</span>
+                                <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-1">Status</span>
                                 <span className="text-sm font-black text-white uppercase tracking-tighter">LISP Master Suite V2.0</span>
                             </div>
                             <div className="hidden lg:flex gap-2">
                                 {slides.map((_, i) => (
-                                    <button 
+                                    <div 
                                         key={i} 
                                         onClick={() => setCurrentSlide(i)}
-                                        className={`h-1.5 rounded-full transition-all duration-700 ${i === currentSlide ? 'w-16 bg-blue-500' : 'w-4 bg-slate-700 hover:bg-slate-600'}`}
-                                    ></button>
+                                        className={`h-1.5 rounded-full transition-all duration-700 cursor-pointer ${i === currentSlide ? 'w-16 bg-blue-500' : 'w-4 bg-slate-700 hover:bg-slate-600'}`}
+                                    ></div>
                                 ))}
                             </div>
                         </div>
                         
                         <div className="flex gap-4">
-                            <button 
-                                onClick={prev} 
-                                className="p-4 text-slate-400 hover:text-white glass rounded-2xl transition-all active:scale-90"
-                                aria-label="Anterior"
-                            >
-                                <Icon name="chevron-left" className="w-6 h-6" />
-                            </button>
-                            <button 
-                                onClick={next} 
-                                className="bg-white p-4 rounded-2xl text-black px-12 font-black hover:bg-blue-500 hover:text-white transition-all flex items-center gap-3 active:scale-90 shadow-xl btn-glow"
-                            >
-                                CONTINUAR <Icon name="chevron-right" className="w-6 h-6" />
+                            <button onClick={prev} className="p-4 text-slate-400 hover:text-white glass rounded-2xl"><Icon name="chevron-left" className="w-8 h-8" /></button>
+                            <button onClick={next} className="bg-white p-4 rounded-2xl text-black px-12 font-black text-lg hover:bg-blue-500 hover:text-white transition-all flex items-center gap-3">
+                                SIGUIENTE <Icon name="chevron-right" className="w-6 h-6" />
                             </button>
                         </div>
                     </div>
