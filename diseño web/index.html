@@ -1,111 +1,284 @@
-n<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAIE Educación - Master Suite LISP</title>
-    
-    <!-- Tailwind CSS para diseño profesional sin scripts pesados -->
+    <title>SAIE Educación | Cursos de Diseño Arquitectónico Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #020617; 
-            color: white;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
-        .glass { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
-<body class="min-h-screen overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900">
 
-    <!-- Header / Logo -->
-    <header class="p-6 flex justify-center">
-        <div class="glass px-8 py-4 rounded-2xl shadow-2xl">
-            <img src="https://raw.githubusercontent.com/saie-arquitectura/assets/main/logo_saie.png" 
-                 alt="SAIE Logo" 
-                 class="h-12 md:h-16 w-auto"
-                 onerror="this.src='https://via.placeholder.com/200x60?text=SAIE+EDUCACION'">
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 glass-effect bg-white/80 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-3">
+                    <!-- Placeholder para el Logo vectorizado cargado -->
+                    <div class="w-12 h-12 bg-cyan-500 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight text-slate-800">SAIE <span class="text-cyan-600">Educación</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#inicio" class="hover:text-cyan-600 transition">Inicio</a>
+                    <a href="#cursos" class="hover:text-cyan-600 transition">Cursos</a>
+                    <a href="#beneficios" class="hover:text-cyan-600 transition">Beneficios</a>
+                    <a href="#contacto" class="bg-cyan-600 text-white px-6 py-2 rounded-full hover:bg-cyan-700 transition shadow-md">Inscríbete Ya</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <main class="max-w-6xl mx-auto px-6 py-12 text-center">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 italic uppercase">
-            LISP <span class="gradient-text">MASTER SUITE</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-slate-400 font-light mb-12 max-w-3xl mx-auto">
-            La suite de automatización definitiva para AutoCAD desarrollada por <b>SAIE Educación</b>.
-        </p>
-
-        <!-- Grid de Herramientas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Herramienta 1 -->
-            <div class="glass p-8 rounded-3xl text-left hover:scale-105 transition-transform duration-300">
-                <div class="bg-blue-600/20 text-blue-400 w-fit px-4 py-1 rounded-lg text-xs font-bold mb-4">COMANDO: GM</div>
-                <h3 class="text-2xl font-bold mb-2">Architectural Wall Engine</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Inyecta metadatos BIM (XData) en muros paramétricos automáticamente.</p>
+    <section id="inicio" class="pt-32 pb-20 hero-gradient text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="inline-block px-4 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-semibold border border-cyan-500/30">
+                        Novedad: Integración con IA 2026
+                    </span>
+                    <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                        Transforma tu Futuro en la <span class="text-cyan-400">Arquitectura Digital</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-lg">
+                        Domina AutoCAD, Revit, SketchUp y V-Ray con metodologías de vanguardia. Proyectos más rápidos, clientes más satisfechos.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#cursos" class="px-8 py-4 bg-cyan-600 rounded-xl font-bold hover:bg-cyan-500 transition text-center shadow-lg shadow-cyan-900/20">
+                            Explorar Cursos
+                        </a>
+                        <a href="#beneficios" class="px-8 py-4 bg-white/10 rounded-xl font-bold hover:bg-white/20 transition text-center border border-white/10">
+                            Ver Beneficios
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="video-container shadow-2xl border-4 border-white/10">
+                        <!-- Aquí se puede colocar el video promocional de SketchUp -->
+                        <div class="w-full h-full bg-slate-800 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <i class="fas fa-play-circle text-6xl text-cyan-400 mb-4"></i>
+                                <p class="text-sm text-slate-400 italic">Previsualización del Video Promocional SAIE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Herramienta 2 -->
-            <div class="glass p-8 rounded-3xl text-left hover:scale-105 transition-transform duration-300">
-                <div class="bg-blue-600/20 text-blue-400 w-fit px-4 py-1 rounded-lg text-xs font-bold mb-4">COMANDO: QA</div>
-                <h3 class="text-2xl font-bold mb-2">Surface Matrix Quantifier</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Genera matrices de acabados y pintura directo a Excel con precisión quirúrgica.</p>
-            </div>
-
-            <!-- Herramienta 3 -->
-            <div class="glass p-8 rounded-3xl text-left hover:scale-105 transition-transform duration-300">
-                <div class="bg-blue-600/20 text-blue-400 w-fit px-4 py-1 rounded-lg text-xs font-bold mb-4">COMANDO: CQ</div>
-                <h3 class="text-2xl font-bold mb-2">Global Inventory Master</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Auditoría total de suministros y bloques dinámicos en un solo clic.</p>
-            </div>
-
-            <!-- Herramienta 4 -->
-            <div class="glass p-8 rounded-3xl text-left hover:scale-105 transition-transform duration-300">
-                <div class="bg-blue-600/20 text-blue-400 w-fit px-4 py-1 rounded-lg text-xs font-bold mb-4">COMANDO: AU</div>
-                <h3 class="text-2xl font-bold mb-2">Precision Area Surveyor</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Cálculo geométrico de alta precisión con jerarquía visual de texto ajustable.</p>
-            </div>
-
-            <!-- Herramienta 5 -->
-            <div class="glass p-8 rounded-3xl text-left hover:scale-105 transition-transform duration-300">
-                <div class="bg-blue-600/20 text-blue-400 w-fit px-4 py-1 rounded-lg text-xs font-bold mb-4">COMANDO: EE</div>
-                <h3 class="text-2xl font-bold mb-2">Blondel Stair Modeler</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Cerebro matemático para diseñar escaleras bajo normativa Blondel automática.</p>
-            </div>
-
-            <!-- Herramienta 6 -->
-            <div class="glass p-8 rounded-3xl text-left hover:scale-105 transition-transform duration-300">
-                <div class="bg-blue-600/20 text-blue-400 w-fit px-4 py-1 rounded-lg text-xs font-bold mb-4">COMANDO: DC</div>
-                <h3 class="text-2xl font-bold mb-2">Structural Core Designer</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Pre-dimensionamiento bajo NTC con generación de detalles de armado escalados.</p>
-            </div>
-
         </div>
+    </section>
 
-        <!-- Botón de Acción -->
-        <div class="mt-16">
-            <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-500 hover:text-white transition-all shadow-2xl">
-                ACCEDER A LA BIBLIOTECA
-            </button>
+    <!-- Sección de Cursos -->
+    <section id="cursos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Especialízate con los Mejores</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Ofrecemos módulos desde nivel básico hasta avanzado, diseñados para la práctica real en el campo laboral.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Curso SketchUp -->
+                <div class="card-hover bg-slate-50 rounded-2xl overflow-hidden border border-slate-200">
+                    <div class="h-48 bg-cyan-900 flex items-center justify-center text-white">
+                        <i class="fas fa-cube text-6xl opacity-20 absolute"></i>
+                        <span class="text-2xl font-bold">SketchUp + V-Ray</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-cyan-600 mb-3">
+                            <i class="fas fa-brain text-sm"></i>
+                            <span class="text-xs font-bold uppercase tracking-wider">Incluye IA</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Visualización 3D Pro</h3>
+                        <p class="text-slate-600 text-sm mb-4">Crea renders fotorrealistas e integra flujos de trabajo con inteligencia artificial para optimizar tiempos.</p>
+                        <button class="w-full py-3 border-2 border-cyan-600 text-cyan-600 font-bold rounded-xl hover:bg-cyan-600 hover:text-white transition">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Curso AutoCAD -->
+                <div class="card-hover bg-slate-50 rounded-2xl overflow-hidden border border-slate-200">
+                    <div class="h-48 bg-blue-900 flex items-center justify-center text-white">
+                        <i class="fas fa-drafting-compass text-6xl opacity-20 absolute"></i>
+                        <span class="text-2xl font-bold">AutoCAD 2026</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-blue-600 mb-3">
+                            <i class="fas fa-check-circle text-sm"></i>
+                            <span class="text-xs font-bold uppercase tracking-wider">Credibilidad Pro</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Dibujo Técnico Experto</h3>
+                        <p class="text-slate-600 text-sm mb-4">No finjas saber, domina el lenguaje universal de la arquitectura y asegura tu puesto en las mejores firmas.</p>
+                        <button class="w-full py-3 border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-600 hover:text-white transition">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Curso Revit -->
+                <div class="card-hover bg-slate-50 rounded-2xl overflow-hidden border border-slate-200">
+                    <div class="h-48 bg-emerald-900 flex items-center justify-center text-white">
+                        <i class="fas fa-layer-group text-6xl opacity-20 absolute"></i>
+                        <span class="text-2xl font-bold">Revit + BIM</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 text-emerald-600 mb-3">
+                            <i class="fas fa-bolt text-sm"></i>
+                            <span class="text-xs font-bold uppercase tracking-wider">Alta Eficiencia</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Metodología BIM</h3>
+                        <p class="text-slate-600 text-sm mb-4">Gestiona proyectos integrales. De la planimetría a la cuantificación en un solo modelo paramétrico.</p>
+                        <button class="w-full py-3 border-2 border-emerald-600 text-emerald-600 font-bold rounded-xl hover:bg-emerald-600 hover:text-white transition">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="p-12 text-center text-slate-600 text-xs tracking-widest uppercase">
-        © 2026 SAIE Educación | Ingeniería y Arquitectura Digital
+    <!-- Beneficios SAIE -->
+    <section id="beneficios" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 italic">¿Por qué elegir SAIE Educación?</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-cyan-400">Implementación de IA</h4>
+                                <p class="text-slate-400 text-sm">Integramos las últimas herramientas de IA en cada software para maximizar tu productividad.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-cyan-400">Atención 24/7</h4>
+                                <p class="text-slate-400 text-sm">Nunca estarás solo. Resolvemos tus dudas técnicas en cualquier momento del día.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-cyan-400">Sesiones en Vivo</h4>
+                                <p class="text-slate-400 text-sm">Clases interactivas donde puedes preguntar y resolver ejercicios en tiempo real.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-cyan-400">Certificación Curricular</h4>
+                                <p class="text-slate-400 text-sm">Obtén un certificado con valor curricular que respalde tus nuevas habilidades profesionales.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+                    <div class="text-center mb-8">
+                        <span class="text-cyan-400 font-bold uppercase tracking-widest text-sm">Promoción de Temporada</span>
+                        <h3 class="text-3xl font-bold mt-2">¡Inscríbete Ahora!</h3>
+                        <p class="text-slate-400">Aprovecha nuestros descuentos exclusivos.</p>
+                    </div>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');">
+                        <input type="text" placeholder="Nombre Completo" class="w-full px-4 py-3 bg-white/10 rounded-xl border border-white/10 focus:outline-none focus:border-cyan-500 transition" required>
+                        <input type="email" placeholder="Correo Electrónico" class="w-full px-4 py-3 bg-white/10 rounded-xl border border-white/10 focus:outline-none focus:border-cyan-500 transition" required>
+                        <select class="w-full px-4 py-3 bg-slate-800 text-white rounded-xl border border-white/10 focus:outline-none focus:border-cyan-500 transition">
+                            <option>Interés: SketchUp + V-Ray</option>
+                            <option>Interés: AutoCAD Experto</option>
+                            <option>Interés: Revit BIM</option>
+                            <option>Interés: D5 Render</option>
+                        </select>
+                        <button type="submit" class="w-full py-4 bg-cyan-600 rounded-xl font-bold hover:bg-cyan-500 transition shadow-lg shadow-cyan-900/40">
+                            Solicitar Información y Descuento
+                        </button>
+                    </form>
+                    <div id="success-msg" class="hidden mt-4 p-4 bg-emerald-500/20 border border-emerald-500/50 text-emerald-400 rounded-xl text-center text-sm">
+                        ¡Gracias! Un asesor de SAIE se pondrá en contacto contigo pronto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="py-12 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-slate-800 rounded flex items-center justify-center text-white font-bold">
+                        S
+                    </div>
+                    <span class="text-xl font-bold text-slate-800 tracking-tight">SAIE <span class="text-cyan-600">Educación</span></span>
+                </div>
+                <div class="flex gap-6 text-2xl text-slate-400">
+                    <a href="https://facebook.com/SAIEArquitectura" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-pink-600 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-red-600 transition"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="text-slate-500 text-sm text-center md:text-right">
+                    © 2026 SAIE Educación. Todos los derechos reservados.<br>
+                    Profesores altamente calificados para tu éxito.
+                </p>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        // Lógica simple para el menú móvil
+        const btn = document.getElementById('mobile-menu-btn');
+        btn.addEventListener('click', () => {
+            // Aquí se puede añadir la lógica para un menú desplegable real si se desea
+            console.log('Mobile menu clicked');
+        });
+    </script>
 </body>
 </html>
