@@ -12,12 +12,12 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=1000">
     <meta property="og:type" content="website">
 
-    <!-- LIBRERÍAS CON ENLACES ULTRA-ESTABLES (UNPKG) -->
+    <!-- LIBRERÍAS CON ENLACES ULTRA-ESTABLES -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/lucide@latest" crossorigin></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
@@ -69,21 +69,12 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
-        
-        .error-msg {
-            color: #ef4444;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            letter-spacing: normal;
-            text-transform: none;
-        }
     </style>
 </head>
 <body>
     <div id="root">
         <div id="loader">
-            <div class="animate-pulse">Cargando SAIE Suite...</div>
-            <div id="error-detect" class="error-msg"></div>
+            <div class="animate-pulse">Iniciando SAIE Suite...</div>
         </div>
     </div>
 
@@ -92,12 +83,8 @@
         
         const Icon = ({ name, className }) => {
             useEffect(() => { 
-                try {
-                    if (window.lucide) {
-                        window.lucide.createIcons(); 
-                    }
-                } catch (e) {
-                    console.warn("Icono no cargado:", name);
+                if (window.lucide) {
+                    window.lucide.createIcons(); 
                 }
             }, [name]);
             return <i data-lucide={name} className={className}></i>;
@@ -198,7 +185,7 @@
                                 Herramientas de automatización de alto nivel creadas por <span className="text-white font-bold tracking-widest uppercase">SAIE Educación</span>.
                             </p>
                             <div className="flex gap-4">
-                                <div className="px-8 py-3 bg-blue-600 rounded-2xl font-bold text-sm tracking-widest shadow-lg shadow-blue-500/20">EDICIÓN 2026</div>
+                                <div className="px-8 py-3 bg-blue-600 rounded-2xl font-bold text-sm tracking-widest shadow-lg shadow-blue-500/20 uppercase">Edición 2026</div>
                             </div>
                         </div>
                     );
@@ -214,7 +201,7 @@
                                     </div>
                                     <div>
                                         <div className="mb-2">
-                                            <span className="command-badge px-4 py-1 text-sm font-black rounded-lg uppercase">COMANDO: {slide.command}</span>
+                                            <span className="command-badge px-4 py-1 text-sm font-black rounded-lg uppercase tracking-wider">COMANDO: {slide.command}</span>
                                         </div>
                                         <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-none text-white">{slide.title}</h2>
                                     </div>
@@ -260,7 +247,7 @@
                             <p className="text-2xl text-slate-400 mb-16 font-light">
                                 Estas extensiones son el resultado de años de experiencia técnica. Únete a <span className="text-white font-bold uppercase tracking-widest">SAIE Educación</span> y domina la tecnología.
                             </p>
-                            <button className="px-14 py-6 bg-white text-black font-black text-xl rounded-3xl hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl active:scale-95 uppercase">
+                            <button className="px-14 py-6 bg-white text-black font-black text-xl rounded-3xl hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105 shadow-2xl active:scale-95 uppercase tracking-wider">
                                 Acceder a la Biblioteca
                             </button>
                         </div>
@@ -292,8 +279,10 @@
                         </div>
                         
                         <div className="flex gap-4">
-                            <button onClick={prev} className="p-4 text-slate-400 hover:text-white glass rounded-2xl"><Icon name="chevron-left" className="w-8 h-8" /></button>
-                            <button onClick={next} className="bg-white p-4 rounded-2xl text-black px-12 font-black text-lg hover:bg-blue-500 hover:text-white transition-all flex items-center gap-3">
+                            <button onClick={prev} className="p-4 text-slate-400 hover:text-white glass rounded-2xl shadow-xl transition-all active:scale-90">
+                                <Icon name="chevron-left" className="w-8 h-8" />
+                            </button>
+                            <button onClick={next} className="bg-white p-4 rounded-2xl text-black px-12 font-black text-lg hover:bg-blue-500 hover:text-white transition-all flex items-center gap-3 shadow-xl active:scale-95">
                                 SIGUIENTE <Icon name="chevron-right" className="w-6 h-6" />
                             </button>
                         </div>
@@ -302,8 +291,12 @@
             );
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        // Renderizado seguro: Espera a que el DOM esté listo
+        window.addEventListener('load', () => {
+            const rootElement = document.getElementById('root');
+            const root = ReactDOM.createRoot(rootElement);
+            root.render(<App />);
+        });
     </script>
 </body>
 </html>
