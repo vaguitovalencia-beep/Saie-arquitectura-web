@@ -9,7 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Oswald:wght@700&display=swap');
         
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .font-header { font-family: 'Oswald', sans-serif; }
 
         .tab-content { display: none; }
@@ -20,7 +20,6 @@
         /* Estilos dinámicos para sub-pestañas de recursos */
         .subtab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
         
-        /* Colores por Software (Recursos) */
         .subtab-autocad:hover { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; }
         .subtab-autocad.active { border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.05); }
         .subtab-revit:hover { background-color: rgba(29, 78, 216, 0.1); color: #1d4ed8; }
@@ -68,6 +67,14 @@
             background-attachment: fixed;
         }
 
+        .bg-contact {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.94)), 
+                              url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
         .text-gradient {
             background: linear-gradient(to right, #22d3ee, #3b82f6);
             -webkit-background-clip: text;
@@ -89,6 +96,21 @@
         .service-card:hover {
             transform: scale(1.02);
             background: rgba(255, 255, 255, 1);
+        }
+
+        /* Botón Circular Contacto */
+        .btn-circular {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        .btn-circular:hover {
+            transform: scale(1.15) rotate(5deg);
         }
     </style>
 </head>
@@ -130,7 +152,7 @@
                         Líderes en Innovación Digital
                     </span>
                     <h1 class="text-5xl md:text-8xl font-header leading-[0.95] mb-8 authority-shadow">
-                        BIENVENIDO A <span class="text-gradient uppercase">SAIE ARQUITECTURA...</span> <br>
+                        BIENVENIDO A <span class="text-gradient uppercase text-white">SAIE ARQUITECTURA...</span> <br>
                         <span class="text-4xl md:text-6xl font-light text-slate-300 tracking-tight">ESTE ECOSISTEMA ES PARA TI...</span>
                     </h1>
                     <p class="text-lg md:text-2xl text-slate-400 mb-14 max-w-3xl mx-auto font-medium leading-relaxed">
@@ -155,7 +177,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE ARQUITECTURA (Despacho Integral) -->
+        <!-- SECCIÓN: SAIE ARQUITECTURA -->
         <section id="arquitectura" class="tab-content py-32 px-4 bg-architecture">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
@@ -199,12 +221,12 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE EDUCACIÓN (Restaurada) -->
+        <!-- SECCIÓN: SAIE EDUCACIÓN -->
         <section id="educacion" class="tab-content py-32 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-5xl font-header mb-4 italic uppercase">Programas de Especialización</h2>
-                    <p class="text-slate-500 text-xl font-medium">Formación integral potenciada por Inteligencia Artificial.</p>
+                    <h2 class="text-5xl font-header mb-4 italic uppercase text-slate-900">Programas de Especialización</h2>
+                    <p class="text-slate-500 text-xl font-medium text-slate-400">Formación integral potenciada por Inteligencia Artificial.</p>
                     <div class="w-24 h-1.5 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
                 </div>
 
@@ -219,7 +241,7 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Arquitectura Técnica Inteligente</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina AutoCAD desde cero hasta nivel profesional. Diseña planos arquitectónicos integrando IA para optimizar tareas técnicas repetitivas.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-red-600 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('AutoCAD Básico-Avanzado + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-red-600 transition duration-300">Inscribirse ahora</button>
                     </div>
                     <!-- SketchUp -->
                     <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full">
@@ -231,7 +253,7 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Visualización 3D & Post-Producción</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Modelado avanzado con SketchUp, renderizado con V-Ray y retoque con Photoshop, potenciado por IA Generativa.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-sky-500 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('SketchUp + V-Ray + Photoshop + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-sky-500 transition duration-300">Inscribirse ahora</button>
                     </div>
                     <!-- Revit -->
                     <div class="edu-card card-revit p-8 rounded-[2.5rem] flex flex-col h-full">
@@ -243,7 +265,7 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Revit Integral: Arch + Struc + MEP</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Formación completa en todas las disciplinas BIM. Desarrolla proyectos reales desde el concepto hasta la documentación.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-blue-700 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('Revit + BIM Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-blue-700 transition duration-300">Inscribirse ahora</button>
                     </div>
                     <!-- Photoshop -->
                     <div class="edu-card card-ps p-8 rounded-[2.5rem] flex flex-col h-full">
@@ -255,7 +277,7 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Photoshop para Arquitectos</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Crea láminas impactantes y montajes atmosféricos utilizando IA para el retoque fotográfico de alto nivel arquitectónico.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-indigo-900 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('Photoshop Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-indigo-900 transition duration-300">Inscribirse ahora</button>
                     </div>
                     <!-- Illustrator -->
                     <div class="edu-card card-ai p-8 rounded-[2.5rem] flex flex-col h-full">
@@ -267,7 +289,7 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Adobe Illustrator Profesional + IA</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina el diseño vectorial profesional con Adobe Illustrator. Crea identidades visuales e ilustraciones técnicas con IA.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-amber-600 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('Adobe Illustrator Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-amber-600 transition duration-300">Inscribirse ahora</button>
                     </div>
                     <!-- Excel -->
                     <div class="edu-card card-excel p-8 rounded-[2.5rem] flex flex-col h-full">
@@ -279,9 +301,9 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Excel Pro & Automatización</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Administra datos, genera Dashboards predictivos con IA y automatiza reportes complejos para el área técnica.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-emerald-600 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('Excel Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-emerald-600 transition duration-300">Inscribirse ahora</button>
                     </div>
-                    <!-- IA Full (RESTAURADO) -->
+                    <!-- IA Full -->
                     <div class="edu-card card-ia p-8 rounded-[2.5rem] flex flex-col h-full md:col-span-2 lg:col-span-1">
                         <div class="flex justify-between items-start mb-6">
                             <div class="icon-box w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
@@ -291,15 +313,15 @@
                         </div>
                         <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Especialista en IA Generativa</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina ChatGPT, Midjourney, Claude y más. Aprende a crear automatizaciones inteligentes y contenido digital desde cero.</p>
-                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-purple-600 transition">Inscribirse ahora</button>
+                        <button onclick="openEnrollment('Inteligencia Artificial Profesional Full')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-purple-600 transition duration-300">Inscribirse ahora</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: RECURSOS (Restaurada Completa - 11 Plugins) -->
+        <!-- SECCIÓN: RECURSOS -->
         <section id="recursos" class="tab-content py-32 px-4">
-            <div class="max-w-7xl mx-auto">
+            <div class="max-w-7xl mx-auto text-center">
                 <div class="text-center mb-20">
                     <h2 class="text-5xl font-header mb-4 italic uppercase text-slate-900">Ecosistema de Recursos</h2>
                     <p class="text-slate-500 text-xl font-medium">Herramientas de software propietarias para el arquitecto moderno.</p>
@@ -322,7 +344,7 @@
 
                 <div id="sub-autocad" class="sub-tab-content block">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- 1. Wall Engine -->
+                        <!-- Plugin 1 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -333,7 +355,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Architectural Wall Engine</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Generador de componentes inteligentes. Crea muros paramétricos con metadatos BIM para cuantificación instantánea.</p>
                         </div>
-                        <!-- 2. Doors & Windows -->
+                        <!-- Plugin 2 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -344,7 +366,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Doors & Windows Master</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Asistente maestro de vanos. Inserta carpintería arquitectónica automáticamente escalando puertas y ventanas con un click.</p>
                         </div>
-                        <!-- 3. Cota Speed -->
+                        <!-- Plugin 3 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -355,7 +377,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Cota Speed Engine</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Dimensiones automáticas inteligentes. Acota polilíneas y bloques ajustando alturas de texto dinámicamente en segundos.</p>
                         </div>
-                        <!-- 4. Magic Number -->
+                        <!-- Plugin 4 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -366,7 +388,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Magic Number Sequence</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Orquestador de secuencias numéricas. Control total sobre el incremento, posición y tamaño del texto con un solo click.</p>
                         </div>
-                        <!-- 5. 3D Sync (Ready for SKP) -->
+                        <!-- Plugin 5 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -377,7 +399,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">3D Sync (Ready for SKP)</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Limpieza y purga profunda de proyectos. Alinea elementos al plano Z=0 para una exportación impecable a SketchUp.</p>
                         </div>
-                        <!-- 6. Modulator Design -->
+                        <!-- Plugin 6 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -388,7 +410,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Modulator Design Manager</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Asistente para diseño de mobiliario. Realiza modulaciones automáticas en cualquier geometría rectangular con precisión técnica.</p>
                         </div>
-                        <!-- 7. Surface Matrix -->
+                        <!-- Plugin 7 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -399,7 +421,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Surface Matrix Quantifier</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Calcula automáticamente áreas de acabados, repellados y pintura generando matrices de datos en Excel (CSV) al instante.</p>
                         </div>
-                        <!-- 8. Global Inventory -->
+                        <!-- Plugin 8 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -410,7 +432,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Global Inventory Master</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Auditoría total en un clic. Escanea bloques dinámicos para generar un inventario alfabético listo para tablas de costos.</p>
                         </div>
-                        <!-- 9. Precision Area -->
+                        <!-- Plugin 9 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -421,7 +443,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Precision Area Surveyor</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Cálculo geométrico de alta precisión. Define jerarquías visuales limpias en tus etiquetas de área sin encimar información.</p>
                         </div>
-                        <!-- 10. Stair Modeler -->
+                        <!-- Plugin 10 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -432,7 +454,7 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Stair Modeler (Blondel)</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Cerebro matemático para circulaciones. Aplica la Ley de Blondel para generar tramos de escalera con simbología automática.</p>
                         </div>
-                        <!-- 11. Structural Core -->
+                        <!-- Plugin 11 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
@@ -446,34 +468,127 @@
                     </div>
                 </div>
 
-                <div id="sub-revit" class="sub-tab-content hidden py-20 text-center">
-                    <p class="text-3xl font-black text-blue-700 italic uppercase">Próximamente: Plantillas BIM Profesionales</p>
+                <div id="sub-revit" class="sub-tab-content hidden py-20 text-center text-slate-400">
+                    <p class="text-3xl font-black italic uppercase">Próximamente: Plantillas BIM Profesionales</p>
                 </div>
-                <div id="sub-sketchup" class="sub-tab-content hidden py-20 text-center">
-                    <p class="text-3xl font-black text-sky-500 italic uppercase">Próximamente: Librerías & Componentes SketchUp</p>
+                <div id="sub-sketchup" class="sub-tab-content hidden py-20 text-center text-slate-400">
+                    <p class="text-3xl font-black italic uppercase">Próximamente: Librerías & Componentes SketchUp</p>
                 </div>
-                <div id="sub-vray" class="sub-tab-content hidden py-20 text-center">
-                    <p class="text-3xl font-black text-violet-500 italic uppercase">Próximamente: Assets para D5 & V-Ray</p>
+                <div id="sub-vray" class="sub-tab-content hidden py-20 text-center text-slate-400">
+                    <p class="text-3xl font-black italic uppercase">Próximamente: Assets para D5 & V-Ray</p>
                 </div>
             </div>
         </section>
 
         <!-- SECCIÓN: CONTACTO -->
-        <section id="contacto" class="tab-content py-32 px-4">
-            <div class="max-w-xl mx-auto text-center">
-                <h2 class="text-5xl font-header mb-8 italic uppercase">Contacta a SAIE</h2>
-                <div class="bg-white p-12 rounded-[3rem] shadow-2xl border border-slate-100">
-                    <form class="space-y-6" onsubmit="event.preventDefault();">
-                        <input type="text" placeholder="Tu Nombre Completo" class="w-full px-6 py-5 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition font-bold">
-                        <input type="email" placeholder="Correo Electrónico" class="w-full px-6 py-5 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition font-bold">
-                        <textarea placeholder="Cuéntanos tu proyecto o interés..." class="w-full px-6 py-5 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition h-40 font-medium"></textarea>
-                        <button class="w-full py-6 bg-cyan-600 text-white rounded-2xl font-black text-xl hover:bg-cyan-700 transition shadow-xl uppercase tracking-widest">Enviar Solicitud</button>
-                    </form>
+        <section id="contacto" class="tab-content py-32 px-4 bg-contact">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900">Contacta a SAIE</h2>
+                <p class="text-slate-600 text-lg font-bold uppercase tracking-widest mb-12 text-slate-500">Estamos listos para materializar tus proyectos</p>
+                
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Formulario de Contacto (Mailto Integrado) -->
+                    <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 order-2 lg:order-1">
+                        <div class="space-y-6">
+                            <div class="text-left">
+                                <label class="font-black text-xs uppercase tracking-widest text-slate-400 ml-2">Nombre completo</label>
+                                <input type="text" id="contact-name" placeholder="Ej. Arq. Rodrigo Mendoza" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1">
+                            </div>
+                            <div class="text-left">
+                                <label class="font-black text-xs uppercase tracking-widest text-slate-400 ml-2">Mensaje</label>
+                                <textarea id="contact-msg" placeholder="¿En qué podemos ayudarte?" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition h-32 font-medium mt-1"></textarea>
+                            </div>
+                            <div class="flex justify-center">
+                                <button onclick="sendGeneralContact()" class="btn-circular bg-slate-900 text-white shadow-2xl shadow-slate-400 group cursor-pointer">
+                                    <i class="fas fa-envelope text-3xl group-hover:text-cyan-400 transition"></i>
+                                </button>
+                            </div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">Haz clic en el botón circular para enviarnos un correo</p>
+                        </div>
+                    </div>
+
+                    <!-- Canales Directos -->
+                    <div class="space-y-8 order-1 lg:order-2">
+                        <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 text-left">
+                            <h4 class="text-2xl font-black mb-6 italic uppercase">Comunicación Directa</h4>
+                            <div class="space-y-6">
+                                <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-emerald-50 transition group">
+                                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-black text-slate-800">WhatsApp & Llamadas</p>
+                                        <p class="text-sm text-slate-500 font-bold">+52 556 248 2314</p>
+                                    </div>
+                                </a>
+                                <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-cyan-50 transition group">
+                                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl group-hover:bg-cyan-600 group-hover:text-white transition">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-black text-slate-800">Correo Corporativo</p>
+                                        <p class="text-sm text-slate-500 font-bold">arquival_al90@outlook.es</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Sección Compartir -->
+                        <div class="bg-slate-900 p-10 rounded-[3rem] shadow-xl text-left text-white">
+                            <h4 class="text-2xl font-black mb-4 italic uppercase text-cyan-400">¿Te gusta nuestro trabajo?</h4>
+                            <p class="text-slate-400 text-sm mb-8 font-medium italic">Ayúdanos a expandir el ecosistema SAIE compartiendo nuestra página con otros profesionales.</p>
+                            
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <a href="https://api.whatsapp.com/send?text=¡Mira el ecosistema digital de SAIE Arquitectura! https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-emerald-600 transition group">
+                                    <i class="fab fa-whatsapp text-2xl"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest">WhatsApp</span>
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition group">
+                                    <i class="fab fa-facebook-f text-2xl"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest">Facebook</span>
+                                </a>
+                                <button onclick="shareSite()" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-cyan-600 transition group cursor-pointer">
+                                    <i class="fas fa-share-alt text-2xl"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest">Otros</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <!-- VENTANA MODAL DE INSCRIPCIÓN -->
+    <div id="enrollment-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-in fade-in duration-300">
+        <div class="bg-white w-full max-w-lg rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-400 hover:text-slate-900 transition text-2xl cursor-pointer">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 id="modal-course-title" class="text-3xl font-header italic uppercase text-slate-900 mb-2 leading-none">Inscripción</h3>
+            <p class="text-slate-500 mb-8 font-medium">Estás a un paso de dominar el futuro. Ingresa tus datos:</p>
+            
+            <form id="modal-form" class="space-y-4" onsubmit="handleEnrollmentSubmit(event)">
+                <input type="hidden" id="hidden-course-name">
+                <div class="text-left">
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Nombre Completo</label>
+                    <input type="text" id="user-fullname" placeholder="Ej. Juan Pérez" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1" required>
+                </div>
+                <div class="text-left">
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Correo Electrónico</label>
+                    <input type="email" id="user-email-modal" placeholder="correo@ejemplo.com" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1" required>
+                </div>
+                <div class="text-left">
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Teléfono / WhatsApp</label>
+                    <input type="tel" id="user-phone-modal" placeholder="Ej. +52 55..." class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1" required>
+                </div>
+                <button type="submit" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-xl hover:bg-cyan-600 transition shadow-xl uppercase tracking-widest mt-4">
+                    Enviar Inscripción
+                </button>
+            </form>
+        </div>
+    </div>
 
     <footer class="bg-slate-900 text-white py-20 text-center">
         <p class="font-header text-4xl mb-6">SAIE <span class="text-cyan-500 uppercase">Arquitectura</span></p>
@@ -482,7 +597,7 @@
             <a href="https://www.instagram.com/soluciones_arq_edu/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/c/5215562482314" target="_blank" class="hover:text-emerald-500 transition"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <div class="mt-12 text-slate-700 font-bold text-xs uppercase italic">© 2026 Ecosistema SAIE. Todos los derechos reservados.</div>
+        <div class="mt-12 text-slate-700 font-bold text-xs uppercase italic tracking-widest">© 2026 Ecosistema SAIE. Todos los derechos reservados.</div>
     </footer>
 
     <script>
@@ -514,6 +629,73 @@
             activeSub.classList.add('block');
 
             document.getElementById('sbtn-' + subId).classList.add('active');
+        }
+
+        // --- LÓGICA DE MODAL DE INSCRIPCIÓN ---
+        function openEnrollment(courseName) {
+            document.getElementById('hidden-course-name').value = courseName;
+            document.getElementById('modal-course-title').innerText = "Inscripción: " + courseName;
+            const modal = document.getElementById('enrollment-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Evitar scroll
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('enrollment-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        function handleEnrollmentSubmit(e) {
+            e.preventDefault();
+            const course = document.getElementById('hidden-course-name').value;
+            const name = document.getElementById('user-fullname').value;
+            const email = document.getElementById('user-email-modal').value;
+            const phone = document.getElementById('user-phone-modal').value;
+            
+            const subject = encodeURIComponent(`NUEVA INSCRIPCIÓN: ${course}`);
+            const body = encodeURIComponent(
+                `Hola SAIE,\n\nMe gustaría inscribirme en el siguiente curso:\n` +
+                `----------------------------------------\n` +
+                `CURSO: ${course}\n` +
+                `----------------------------------------\n\n` +
+                `MIS DATOS:\n` +
+                `Nombre: ${name}\n` +
+                `Correo: ${email}\n` +
+                `Teléfono/WhatsApp: ${phone}\n\n` +
+                `Quedo a la espera de su respuesta para iniciar mi formación.`
+            );
+            
+            window.location.href = `mailto:arquival_al90@outlook.es?subject=${subject}&body=${body}`;
+            closeModal();
+            document.getElementById('modal-form').reset();
+        }
+
+        function sendGeneralContact() {
+            const name = document.getElementById('contact-name').value;
+            const msg = document.getElementById('contact-msg').value;
+            const subject = encodeURIComponent("CONTACTO GENERAL - SAIE WEB");
+            const body = encodeURIComponent(
+                `Nombre: ${name}\n` +
+                `Mensaje: ${msg}`
+            );
+            window.location.href = `mailto:arquival_al90@outlook.es?subject=${subject}&body=${body}`;
+        }
+
+        function shareSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'SAIE Arquitectura',
+                    text: '¡Mira el ecosistema digital de SAIE Arquitectura!',
+                    url: 'https://saiearquitectura.vercel.app/'
+                }).catch(console.error);
+            } else {
+                const url = encodeURIComponent('https://saiearquitectura.vercel.app/');
+                const text = encodeURIComponent('¡Mira el ecosistema digital de SAIE Arquitectura!');
+                window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+            }
         }
     </script>
 </body>
