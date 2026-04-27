@@ -7,30 +7,63 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Oswald:wght@700&display=swap');
+        
         body { font-family: 'Inter', sans-serif; }
+        .font-header { font-family: 'Oswald', sans-serif; }
+
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        
         .nav-link.active { color: #0891b2; border-bottom: 2px solid #0891b2; }
-        .bg-saie { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+
+        /* Estilos dinámicos para sub-pestañas de recursos */
+        .subtab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
+        
+        /* AutoCAD Colors */
+        .subtab-autocad:hover { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; }
+        .subtab-autocad.active { border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.05); }
+        
+        /* Revit Colors */
+        .subtab-revit:hover { background-color: rgba(29, 78, 216, 0.1); color: #1d4ed8; }
+        .subtab-revit.active { border-color: #1d4ed8; color: #1d4ed8; background-color: rgba(29, 78, 216, 0.05); }
+        
+        /* Sketchup Colors */
+        .subtab-sketchup:hover { background-color: rgba(56, 189, 248, 0.1); color: #0ea5e9; }
+        .subtab-sketchup.active { border-color: #0ea5e9; color: #0ea5e9; background-color: rgba(56, 189, 248, 0.05); }
+
+        /* V-Ray Colors */
+        .subtab-vray:hover { background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+        .subtab-vray.active { border-color: #8b5cf6; color: #8b5cf6; background-color: rgba(139, 92, 246, 0.05); }
+
+        .bg-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #22d3ee, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
     <!-- Navegación Principal -->
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-20 items-center">
-                <!-- Logo Placeholder -->
                 <div class="flex items-center gap-2">
                     <div class="w-10 h-10 bg-cyan-600 rounded-lg flex items-center justify-center text-white font-black text-xl">S</div>
                     <div class="flex flex-col">
                         <span class="text-xl font-black leading-none">SAIE</span>
-                        <span class="text-[9px] font-bold text-cyan-600 uppercase tracking-widest">Ecosistema Digital</span>
+                        <span class="text-[9px] font-bold text-cyan-600 uppercase tracking-widest">Arquitectura & Educación</span>
                     </div>
                 </div>
 
-                <!-- Menú Desktop -->
                 <div class="hidden md:flex space-x-6 items-center">
                     <button onclick="showTab('inicio')" class="nav-link px-2 py-1 font-bold text-slate-600 hover:text-cyan-600 transition active" id="btn-inicio">Inicio</button>
                     <button onclick="showTab('arquitectura')" class="nav-link px-2 py-1 font-bold text-slate-600 hover:text-cyan-600 transition" id="btn-arquitectura">SAIE Arquitectura</button>
@@ -45,167 +78,211 @@
     </nav>
 
     <!-- Contenido Principal -->
-    <main class="pt-24 min-h-screen">
+    <main class="min-h-screen">
 
-        <!-- SECCIÓN: INICIO -->
-        <section id="inicio" class="tab-content active animate-in fade-in duration-500">
-            <div class="bg-saie py-32 text-white text-center">
-                <div class="max-w-4xl mx-auto px-4">
-                    <h1 class="text-5xl md:text-7xl font-black mb-6">Bienvenidos al Futuro del <span class="text-cyan-400 italic">Diseño</span></h1>
-                    <p class="text-xl text-slate-400 mb-10">La convergencia perfecta entre la práctica profesional de arquitectura y la educación tecnológica de vanguardia.</p>
-                    <div class="flex justify-center gap-4">
-                        <button onclick="showTab('arquitectura')" class="px-8 py-4 bg-white text-slate-900 rounded-2xl font-black hover:bg-cyan-50 transition">Estudio Pro</button>
-                        <button onclick="showTab('educacion')" class="px-8 py-4 bg-cyan-600 text-white rounded-2xl font-black hover:bg-cyan-700 transition">Academia Digital</button>
+        <!-- SECCIÓN: INICIO (Rediseñada) -->
+        <section id="inicio" class="tab-content active pt-20">
+            <div class="bg-hero min-h-[90vh] flex items-center justify-center text-white text-center px-4">
+                <div class="max-w-5xl mx-auto">
+                    <span class="inline-block px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-black tracking-[0.3em] uppercase mb-8">
+                        Innovación Digital Arquitectónica
+                    </span>
+                    <h1 class="text-6xl md:text-8xl font-header leading-tight mb-6">
+                        SAIE <span class="text-gradient">ECOSISTEMA</span> <br>
+                        <span class="italic font-light text-slate-300">DE DISEÑO</span>
+                    </h1>
+                    <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto font-medium">
+                        Elevando los estándares de la arquitectura a través de <span class="text-white border-b-2 border-cyan-500">tecnología de vanguardia</span> y educación especializada.
+                    </p>
+                    
+                    <!-- Botones Dinámicos -->
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-[#1877F2] text-white rounded-2xl font-black hover:scale-105 transition shadow-xl shadow-blue-900/20">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                            Visita nuestro Facebook
+                        </a>
+                        <button onclick="showTab('arquitectura')" class="flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-2xl font-black hover:scale-105 transition shadow-xl">
+                            <i class="fas fa-building"></i>
+                            Nuestro trabajo en Arquitectura
+                        </button>
+                        <button onclick="showTab('educacion')" class="flex items-center gap-3 px-8 py-4 bg-slate-800 text-white rounded-2xl font-black hover:scale-105 transition shadow-xl border border-white/10">
+                            <i class="fas fa-graduation-cap"></i>
+                            Nuestro trabajo en Educación
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECCIÓN: SAIE ARQUITECTURA -->
-        <section id="arquitectura" class="tab-content py-20 px-4">
+        <section id="arquitectura" class="tab-content py-32 px-4">
             <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-4xl font-black mb-4 italic uppercase">SAIE Arquitectura</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto mb-12 text-lg font-medium">Soluciones integrales de diseño, construcción y supervisión de obra con estándares internacionales.</p>
+                <h2 class="text-5xl font-header mb-4 italic uppercase">SAIE Arquitectura</h2>
+                <div class="w-20 h-1 bg-cyan-600 mx-auto mb-12"></div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="p-10 bg-white rounded-3xl border border-slate-100 shadow-sm text-left">
-                        <i class="fas fa-pencil-ruler text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-2">Diseño Arquitectónico</h4>
-                        <p class="text-slate-500">Proyectos residenciales y comerciales con un enfoque en la eficiencia espacial y estética moderna.</p>
+                    <div class="p-12 bg-white rounded-3xl border border-slate-100 shadow-sm text-left hover:shadow-xl transition group">
+                        <i class="fas fa-pencil-ruler text-5xl text-cyan-600 mb-6 group-hover:scale-110 transition"></i>
+                        <h4 class="text-2xl font-black mb-4">Diseño Arquitectónico</h4>
+                        <p class="text-slate-500 leading-relaxed">Proyectos que trascienden. Fusionamos la estética con la eficiencia técnica para crear espacios que inspiran.</p>
                     </div>
-                    <div class="p-10 bg-white rounded-3xl border border-slate-100 shadow-sm text-left">
-                        <i class="fas fa-hard-hat text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-2">Supervisión de Obra</h4>
-                        <p class="text-slate-500">Control riguroso de calidad y tiempos para garantizar que cada detalle se construya según el plano.</p>
+                    <div class="p-12 bg-white rounded-3xl border border-slate-100 shadow-sm text-left hover:shadow-xl transition group">
+                        <i class="fas fa-hard-hat text-5xl text-cyan-600 mb-6 group-hover:scale-110 transition"></i>
+                        <h4 class="text-2xl font-black mb-4">Supervisión & Obra</h4>
+                        <p class="text-slate-500 leading-relaxed">Garantizamos la ejecución perfecta de cada detalle técnico, asegurando calidad y cumplimiento de tiempos.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECCIÓN: SAIE EDUCACIÓN -->
-        <section id="educacion" class="tab-content py-20 px-4">
+        <section id="educacion" class="tab-content py-32 px-4">
             <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-4xl font-black mb-4 italic uppercase">SAIE Educación</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto mb-12 text-lg font-medium">Formación especializada en software de última generación para la industria de la construcción.</p>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="p-8 bg-slate-900 text-white rounded-3xl">
-                        <h4 class="text-xl font-bold mb-4">AutoCAD Experto</h4>
-                        <p class="text-slate-400 text-sm">De cero a programador de procesos eficientes.</p>
+                <h2 class="text-5xl font-header mb-4 italic uppercase">SAIE Educación</h2>
+                <div class="w-20 h-1 bg-cyan-600 mx-auto mb-12"></div>
+                <div class="grid md:grid-cols-3 gap-8 text-white">
+                    <div class="p-10 bg-slate-900 rounded-3xl">
+                        <i class="fas fa-desktop text-3xl mb-6 text-cyan-400"></i>
+                        <h4 class="text-2xl font-bold mb-4 italic">AutoCAD Experto</h4>
+                        <p class="text-slate-400 text-sm">Flujos de trabajo avanzados y programación LISP aplicada.</p>
                     </div>
-                    <div class="p-8 bg-slate-900 text-white rounded-3xl">
-                        <h4 class="text-xl font-bold mb-4">Revit BIM</h4>
-                        <p class="text-slate-400 text-sm">Gestión de información y construcción virtual.</p>
+                    <div class="p-10 bg-slate-800 rounded-3xl">
+                        <i class="fas fa-cubes text-3xl mb-6 text-blue-400"></i>
+                        <h4 class="text-2xl font-bold mb-4 italic">Revit BIM</h4>
+                        <p class="text-slate-400 text-sm">Modelado inteligente y gestión de bases de datos de construcción.</p>
                     </div>
-                    <div class="p-8 bg-slate-900 text-white rounded-3xl">
-                        <h4 class="text-xl font-bold mb-4">Renderizado IA</h4>
-                        <p class="text-slate-400 text-sm">Visualización de alto impacto con inteligencia artificial.</p>
+                    <div class="p-10 bg-slate-900 rounded-3xl">
+                        <i class="fas fa-brain text-3xl mb-6 text-emerald-400"></i>
+                        <h4 class="text-2xl font-bold mb-4 italic">Visualización IA</h4>
+                        <p class="text-slate-400 text-sm">Renders de nueva generación utilizando Inteligencia Artificial.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: RECURSOS (AutoCAD focus) -->
-        <section id="recursos" class="tab-content py-20 px-4">
+        <!-- SECCIÓN: RECURSOS (Con pestañas de colores) -->
+        <section id="recursos" class="tab-content py-32 px-4">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-black mb-4 italic uppercase text-slate-900">Ecosistema de Recursos</h2>
-                    <p class="text-slate-500 text-lg">Optimiza tu flujo de trabajo con nuestras herramientas propietarias.</p>
+                <div class="text-center mb-20">
+                    <h2 class="text-5xl font-header mb-4 italic uppercase text-slate-900">Ecosistema de Recursos</h2>
+                    <p class="text-slate-500 text-xl font-medium">Optimiza tu productividad con herramientas de élite.</p>
                 </div>
 
-                <!-- Sub-menu Recursos -->
-                <div class="flex justify-center mb-12 border-b border-slate-200">
-                    <button class="px-6 py-3 border-b-2 border-cyan-600 text-cyan-600 font-bold uppercase tracking-widest text-xs">Plugins AutoCAD</button>
-                    <button class="px-6 py-3 text-slate-400 font-bold uppercase tracking-widest text-xs cursor-not-allowed">Plantillas Revit (Próximamente)</button>
+                <!-- Sub-navegación Recursos -->
+                <div class="flex flex-wrap justify-center mb-16 gap-2 border-b border-slate-200">
+                    <button onclick="showSubTab('autocad')" class="subtab-btn subtab-autocad active px-8 py-4 font-black uppercase tracking-widest text-xs" id="sbtn-autocad">
+                        <i class="fas fa-code mr-2"></i> Plugins AutoCAD
+                    </button>
+                    <button onclick="showSubTab('revit')" class="subtab-btn subtab-revit px-8 py-4 font-black uppercase tracking-widest text-xs" id="sbtn-revit">
+                        <i class="fas fa-project-diagram mr-2"></i> Plantillas Revit
+                    </button>
+                    <button onclick="showSubTab('sketchup')" class="subtab-btn subtab-sketchup px-8 py-4 font-black uppercase tracking-widest text-xs" id="sbtn-sketchup">
+                        <i class="fas fa-cube mr-2"></i> SketchUp Recursos
+                    </button>
+                    <button onclick="showSubTab('vray')" class="subtab-btn subtab-vray px-8 py-4 font-black uppercase tracking-widest text-xs" id="sbtn-vray">
+                        <i class="fas fa-magic mr-2"></i> V-Ray / D5 & Más
+                    </button>
                 </div>
 
-                <!-- Lista de Plugins LISP -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Plugin 1 -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-microchip text-xl"></i>
+                <!-- CONTENIDO: AUTOCAD PLUGINS -->
+                <div id="sub-autocad" class="sub-tab-content block">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Plugin 1 -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-microchip text-2xl"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">GM</span>
                             </div>
-                            <span class="text-[10px] font-black bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">Comando: GM</span>
+                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Architectural Wall Engine</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">No es un dibujante de líneas; es un <span class="font-bold text-slate-800">generador de componentes inteligentes.</span> Crea muros paramétricos con metadatos BIM (XData) para cuantificación instantánea.</p>
                         </div>
-                        <h4 class="text-xl font-black mb-3 text-slate-800">Architectural Wall Engine</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">No es un dibujante de líneas; es un <span class="font-bold text-slate-700">generador de componentes inteligentes.</span> Crea muros paramétricos con metadatos BIM (XData) para cuantificación automática instantánea.</p>
-                    </div>
 
-                    <!-- Plugin 2 -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-table text-xl"></i>
+                        <!-- Plugin 2 -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-table text-2xl"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">QA</span>
                             </div>
-                            <span class="text-[10px] font-black bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">Comando: QA</span>
+                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Surface Matrix Quantifier</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">La herramienta definitiva para presupuestos. Genera <span class="font-bold text-slate-800">matrices de datos en Excel (CSV)</span> calculando áreas de acabados y pintura automáticamente.</p>
                         </div>
-                        <h4 class="text-xl font-black mb-3 text-slate-800">Surface Matrix Quantifier</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">La herramienta definitiva para presupuestos. Genera <span class="font-bold text-slate-700">matrices de datos en Excel (CSV)</span> calculando áreas de acabados, repellados y pintura automáticamente.</p>
-                    </div>
 
-                    <!-- Plugin 3 -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-list-check text-xl"></i>
+                        <!-- Plugin 3 -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-list-check text-2xl"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">CQ</span>
                             </div>
-                            <span class="text-[10px] font-black bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">Comando: CQ</span>
+                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Global Inventory Master</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Auditoría total en un clic. Escanea bloques dinámicos y mobiliario para generar un <span class="font-bold text-slate-800">inventario alfabético ordenado</span> listo para tablas de costos.</p>
                         </div>
-                        <h4 class="text-xl font-black mb-3 text-slate-800">Global Inventory Master</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">Auditoría total en un clic. Escanea bloques dinámicos y mobiliario para generar un <span class="font-bold text-slate-700">inventario alfabético ordenado</span> listo para tablas de costos.</p>
-                    </div>
 
-                    <!-- Plugin 4 -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-vector-square text-xl"></i>
+                        <!-- Plugin 4 -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-vector-square text-2xl"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">AU</span>
                             </div>
-                            <span class="text-[10px] font-black bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">Comando: AU</span>
+                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Precision Area Surveyor</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Cálculo geométrico de alta precisión. Define <span class="font-bold text-slate-800">jerarquías visuales limpias</span> en tus etiquetas de área sin encimar información técnica.</p>
                         </div>
-                        <h4 class="text-xl font-black mb-3 text-slate-800">Precision Area Surveyor</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">Cálculo geométrico de alta precisión. Define <span class="font-bold text-slate-700">jerarquías visuales limpias</span> en tus etiquetas de área sin encimar información técnica.</p>
-                    </div>
 
-                    <!-- Plugin 5 -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-stairs text-xl"></i>
+                        <!-- Plugin 5 -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-stairs text-2xl"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">EE</span>
                             </div>
-                            <span class="text-[10px] font-black bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">Comando: EE</span>
+                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Stair Modeler (Blondel)</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Cerebro matemático para circulaciones. Aplica la <span class="font-bold text-slate-800">Ley de Blondel</span> para generar tramos rectos, en L o U con simbología automática.</p>
                         </div>
-                        <h4 class="text-xl font-black mb-3 text-slate-800">Stair Modeler (Blondel)</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">Cerebro matemático para circulaciones. Aplica la <span class="font-bold text-slate-700">Ley de Blondel</span> para generar tramos rectos, en L o U con simbología y numeración automática.</p>
-                    </div>
 
-                    <!-- Plugin 6 -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition">
-                                <i class="fas fa-layer-group text-xl"></i>
+                        <!-- Plugin 6 -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-layer-group text-2xl"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">DC</span>
                             </div>
-                            <span class="text-[10px] font-black bg-slate-100 px-3 py-1 rounded-full text-slate-500 uppercase tracking-widest">Comando: DC</span>
+                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Structural Core Designer</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Ingeniería aplicada. Pre-dimensionamiento basado en <span class="font-bold text-slate-800">NTC México</span>. Genera detalles constructivos escalados automáticamente.</p>
                         </div>
-                        <h4 class="text-xl font-black mb-3 text-slate-800">Structural Core Designer</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">Ingeniería aplicada. Pre-dimensionamiento basado en <span class="font-bold text-slate-700">NTC México</span>. Genera detalles constructivos escalados con armado de varillas automático.</p>
                     </div>
+                </div>
 
+                <!-- CONTENIDO OTROS (Placeholders) -->
+                <div id="sub-revit" class="sub-tab-content hidden py-20 text-center">
+                    <p class="text-3xl font-black text-blue-700 italic uppercase">Próximamente: Plantillas BIM Profesionales</p>
+                </div>
+                <div id="sub-sketchup" class="sub-tab-content hidden py-20 text-center">
+                    <p class="text-3xl font-black text-sky-500 italic uppercase">Próximamente: Librerías & Componentes SketchUp</p>
+                </div>
+                <div id="sub-vray" class="sub-tab-content hidden py-20 text-center">
+                    <p class="text-3xl font-black text-violet-500 italic uppercase">Próximamente: Assets para D5 & V-Ray</p>
                 </div>
             </div>
         </section>
 
         <!-- SECCIÓN: CONTACTO -->
-        <section id="contacto" class="tab-content py-20 px-4">
+        <section id="contacto" class="tab-content py-32 px-4">
             <div class="max-w-xl mx-auto text-center">
-                <h2 class="text-4xl font-black mb-6 italic uppercase">Contacta a SAIE</h2>
-                <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100">
-                    <form class="space-y-4" onsubmit="event.preventDefault();">
-                        <input type="text" placeholder="Tu Nombre" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition">
-                        <input type="email" placeholder="Email" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition">
-                        <textarea placeholder="¿En qué podemos ayudarte?" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition h-32"></textarea>
-                        <button class="w-full py-5 bg-cyan-600 text-white rounded-2xl font-black text-xl hover:bg-cyan-700 transition shadow-xl uppercase tracking-widest">Enviar Mensaje</button>
+                <h2 class="text-5xl font-header mb-8 italic uppercase">Contacta a SAIE</h2>
+                <div class="bg-white p-12 rounded-[3rem] shadow-2xl border border-slate-100">
+                    <form class="space-y-6" onsubmit="event.preventDefault();">
+                        <input type="text" placeholder="Tu Nombre Completo" class="w-full px-6 py-5 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition font-bold">
+                        <input type="email" placeholder="Correo Electrónico" class="w-full px-6 py-5 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition font-bold">
+                        <textarea placeholder="Cuéntanos tu proyecto o interés..." class="w-full px-6 py-5 rounded-2xl bg-slate-50 border outline-none focus:border-cyan-600 transition h-40 font-medium"></textarea>
+                        <button class="w-full py-6 bg-cyan-600 text-white rounded-2xl font-black text-xl hover:bg-cyan-700 transition shadow-xl uppercase tracking-widest">Enviar Solicitud</button>
                     </form>
                 </div>
             </div>
@@ -213,30 +290,50 @@
 
     </main>
 
-    <footer class="bg-slate-900 text-white py-12 text-center mt-20">
-        <p class="font-black text-2xl">SAIE <span class="text-cyan-500 tracking-widest">EDUCACIÓN</span></p>
-        <p class="text-slate-500 text-sm mt-4 uppercase font-bold tracking-widest">© 2026 Ecosistema Digital Arquitectónico</p>
+    <footer class="bg-slate-900 text-white py-20 text-center">
+        <p class="font-header text-4xl mb-6">SAIE <span class="text-cyan-500">EDUCACIÓN</span></p>
+        <p class="text-slate-500 text-sm uppercase font-black tracking-[0.5em] mb-8">Arquitectura Digital de Vanguardia</p>
+        <div class="flex justify-center gap-8 text-2xl text-slate-400">
+            <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="hover:text-[#1877F2] transition"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-emerald-500 transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="mt-12 text-slate-700 font-bold text-xs uppercase">© 2026 Ecosistema SAIE. Todos los derechos reservados.</div>
     </footer>
 
     <script>
         function showTab(tabId) {
-            // Ocultar todos los contenidos
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Quitar clase active de todos los botones
             const links = document.querySelectorAll('.nav-link');
             links.forEach(link => link.classList.remove('active'));
 
-            // Mostrar el contenido seleccionado
             document.getElementById(tabId).classList.add('active');
 
-            // Activar el botón correspondiente
             const activeBtn = document.getElementById('btn-' + tabId);
             if(activeBtn) activeBtn.classList.add('active');
 
-            // Scroll al inicio al cambiar de pestaña
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showSubTab(subId) {
+            // Ocultar todos los contenidos de sub-pestañas
+            const subContents = document.querySelectorAll('.sub-tab-content');
+            subContents.forEach(content => content.classList.add('hidden'));
+            subContents.forEach(content => content.classList.remove('block'));
+
+            // Quitar clase active de todos los botones de sub-pestaña
+            const subBtns = document.querySelectorAll('.subtab-btn');
+            subBtns.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar el seleccionado
+            const activeSub = document.getElementById('sub-' + subId);
+            activeSub.classList.remove('hidden');
+            activeSub.classList.add('block');
+
+            // Activar botón
+            document.getElementById('sbtn-' + subId).classList.add('active');
         }
     </script>
 </body>
