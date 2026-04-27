@@ -17,6 +17,18 @@
         
         .nav-link.active { color: #06b6d4; border-bottom: 2px solid #06b6d4; }
 
+        /* Sub-pestañas */
+        .subtab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; opacity: 0.8; }
+        .subtab-btn.active { border-color: currentColor; opacity: 1; font-weight: 900; }
+        
+        /* Pestaña Híbrida Adobe */
+        .subtab-adobe { 
+            background: linear-gradient(90deg, #f97316 0%, #312e81 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
         /* Fondos Reales SAIE */
         .bg-hero {
             background-image: linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.7)), 
@@ -36,8 +48,9 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
 
+        /* Fondo de Contacto más resaltado */
         .bg-contact {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)), 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.75)), 
                               url('img/diseño_saie.png');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
@@ -76,28 +89,26 @@
         .edu-card:hover { transform: translateY(-10px); filter: brightness(1.1); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .edu-card p { color: rgba(255,255,255,0.8); }
 
-        .card-autocad { background-color: #ef4444; } /* Rojo AutoCAD */
-        .card-sketchup { background-color: #0ea5e9; } /* Cyan SketchUp */
-        .card-revit { background-color: #1d4ed8; } /* Azul Revit */
-        .card-ps { background-color: #312e81; } /* Indigo PS */
-        .card-ai { background-color: #f59e0b; } /* Ambar AI */
-        .card-excel { background-color: #10b981; } /* Esmeralda Excel */
-        .card-ia-black { background-color: #1e1b4b; } /* Azul Muy Oscuro IA */
+        .card-autocad { background-color: #ef4444; } 
+        .card-sketchup { background-color: #0ea5e9; } 
+        .card-revit { background-color: #1d4ed8; } 
+        .card-ps { background-color: #312e81; } 
+        .card-ai { background-color: #f59e0b; } 
+        .card-excel { background-color: #10b981; } 
+        .card-ia-black { background-color: #1e1b4b; } 
 
-        /* Plugins Panel: Estilo Naranja-Rojo */
+        /* Plugins Panel: Fondo más claro para texto legible */
         .plugin-card {
-            background-color: rgba(251, 146, 60, 0.05); /* Naranja Tenue */
-            border: 1px solid rgba(251, 146, 60, 0.1);
+            background-color: rgba(255, 255, 255, 0.95); /* Fondo casi blanco para contraste */
+            border: 1px solid rgba(251, 146, 60, 0.2);
             transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
         .plugin-card:hover {
-            background-color: rgba(239, 68, 68, 0.15); /* Rojo Tenue */
-            border-color: rgba(239, 68, 68, 0.3);
+            background-color: rgba(255, 255, 255, 1); 
+            border-color: rgba(239, 68, 68, 0.5);
             transform: scale(1.02);
-        }
-        .plugin-card:active {
-            background-color: rgba(239, 68, 68, 0.4);
-            border-color: #ef4444;
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.15);
         }
 
         .volume-control {
@@ -139,7 +150,7 @@
 
     <main class="min-h-screen">
 
-        <!-- SECCIÓN: INICIO (CINE-SCREEN) -->
+        <!-- SECCIÓN: INICIO -->
         <section id="inicio" class="tab-content active pt-20 bg-hero relative overflow-hidden">
             <div class="min-h-screen flex flex-col items-center justify-center py-20 px-4 relative">
                 
@@ -172,11 +183,15 @@
                     <button onclick="showTab('educacion')" class="flex items-center gap-4 px-8 py-4 bg-cyan-600 text-white rounded-2xl font-black hover:scale-105 transition shadow-2xl">
                         <i class="fas fa-laptop-code"></i> Explorar Educación
                     </button>
+                    <!-- BOTÓN PORTAFOLIO RESTAURADO -->
+                    <button onclick="showTab('arquitectura')" class="flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-2xl font-black hover:bg-white hover:text-slate-900 transition shadow-2xl">
+                        <i class="fas fa-project-diagram"></i> Portafolio Obra
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE ARQUITECTURA -->
+        <!-- SECCIÓN: SAIE ARQUITECTURA (CON MÁS SERVICIOS) -->
         <section id="arquitectura" class="tab-content py-32 px-4 bg-architecture">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
@@ -186,27 +201,65 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <!-- 1 -->
                     <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
                         <i class="fas fa-pen-nib text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Arquitectura & Diseño</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Conceptos únicos y funcionales. Transformamos espacios con una visión estética de vanguardia.</p>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Conceptos únicos y funcionales. Transformamos espacios con una visión estética de vanguardia enfocada en las necesidades del cliente.</p>
                     </div>
-                    <!-- ... Otros servicios se mantienen iguales ... -->
+                    <!-- 2 NUEVO: Albañilería y Construcción Civil -->
+                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
+                        <i class="fas fa-hammer text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Construcción & Obra Civil</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Ejecución de obra desde cimentación hasta acabados. Garantizamos resistencia estructural, calidad de materiales y tiempos de entrega.</p>
+                    </div>
+                    <!-- 3 -->
                     <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
                         <i class="fas fa-hard-hat text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Supervisión de Obra</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Control riguroso de calidad y tiempos. Garantizamos excelencia en cada m².</p>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Control riguroso de calidad, cuadrillas y tiempos. Administramos tu proyecto para garantizar excelencia en cada metro cuadrado.</p>
                     </div>
+                    <!-- 4 -->
                     <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
                         <i class="fas fa-bolt text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Instalaciones Eléctricas</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Redes seguras y certificadas. Domótica e iluminación profesional.</p>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Redes de media y baja tensión seguras y certificadas. Cuadros de carga, iluminación profesional, tierras físicas y domótica.</p>
+                    </div>
+                    <!-- 5 -->
+                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
+                        <i class="fas fa-tint text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Plomería Integral</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Ingeniería hidráulica y sanitaria de durabilidad garantizada. Redes presurizadas, sistemas de bombeo y drenajes eficientes.</p>
+                    </div>
+                    <!-- 6 -->
+                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
+                        <i class="fas fa-th-large text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Tablaroca & Acabados</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Sistemas de construcción ligera, muros divisorios, plafones falsos decorativos y nichos con acabados estéticos nivel 5.</p>
+                    </div>
+                    <!-- 7 -->
+                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
+                        <i class="fas fa-fill-drip text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Pintura & Recubrimientos</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Acabados estéticos de lujo. Aplicación de pintura vinílica, esmaltes, pastas texturizadas y selladores de alta resistencia.</p>
+                    </div>
+                    <!-- 8 NUEVO: Trámites -->
+                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
+                        <i class="fas fa-file-signature text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Gestoría & Trámites</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Permisos de construcción, licencias, firmas de peritos (DRO) y regularizaciones. Facilitamos la viabilidad legal de tus proyectos.</p>
+                    </div>
+                    <!-- 9 NUEVO: Modelado BIM -->
+                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
+                        <i class="fas fa-cube text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Gestión & Modelado BIM</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Maquetas virtuales inteligentes para prevención de colisiones en obra y cuantificación exacta de materiales antes de construir.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE EDUCACIÓN (REDISEÑADO CON COLOR) -->
+        <!-- SECCIÓN: SAIE EDUCACIÓN -->
         <section id="educacion" class="tab-content py-32 px-4 bg-white">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-20 rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
@@ -309,7 +362,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: RECURSOS (11 PLUGINS ACTUALIZADOS) -->
+        <!-- SECCIÓN: RECURSOS (PLUGINS CON FONDO CLARO PARA LEGIBILIDAD) -->
         <section id="recursos" class="tab-content py-32 px-4 bg-recursos">
             <div class="max-w-7xl mx-auto text-center">
                 <div class="text-center mb-20">
@@ -423,11 +476,13 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: CONTACTO -->
+        <!-- SECCIÓN: CONTACTO (RESTAURADO COMPLETO) -->
         <section id="contacto" class="tab-content py-32 px-4 bg-contact">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">Contacta a SAIE</h2>
+                <p class="text-slate-900 text-lg font-black uppercase tracking-widest mb-12 italic">Estamos listos para materializar tus proyectos</p>
                 <div class="grid lg:grid-cols-2 gap-12 text-left items-start">
+                    
                     <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 order-2 lg:order-1">
                         <div class="space-y-6">
                             <div><label class="font-black text-xs uppercase text-slate-400">Nombre completo</label><input type="text" id="contact-name" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 font-bold mt-1"></div>
@@ -435,6 +490,51 @@
                             <div class="flex justify-center"><button onclick="sendGeneralContact()" class="btn-circular bg-slate-900 text-white shadow-xl hover:bg-cyan-600 transition"><i class="fas fa-envelope text-3xl"></i></button></div>
                         </div>
                     </div>
+
+                    <!-- Vías Directas & Compartir Restauradas -->
+                    <div class="space-y-8 order-1 lg:order-2">
+                        <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100">
+                            <h4 class="text-2xl font-black mb-6 italic uppercase text-slate-800">Comunicación Directa</h4>
+                            <div class="space-y-6">
+                                <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-emerald-50 transition group">
+                                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fab fa-whatsapp"></i></div>
+                                    <div>
+                                        <p class="font-black text-slate-800 italic uppercase">WhatsApp Directo</p>
+                                        <p class="text-sm text-slate-500 font-bold">+52 556 248 2314</p>
+                                    </div>
+                                </a>
+                                <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-cyan-50 transition group">
+                                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fas fa-at"></i></div>
+                                    <div>
+                                        <p class="font-black text-slate-800 italic uppercase">Correo Electrónico</p>
+                                        <p class="text-sm text-slate-500 font-bold">arquival_al90@outlook.es</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bloque de Compartir -->
+                        <div class="bg-slate-900 p-10 rounded-[3rem] shadow-xl text-white">
+                            <h4 class="text-2xl font-black mb-4 italic uppercase text-cyan-400">¿Te gusta nuestro trabajo?</h4>
+                            <p class="text-slate-400 text-sm mb-8 font-medium italic">Ayúdanos a expandir el ecosistema SAIE compartiendo nuestra página en tus redes sociales.</p>
+                            
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <a href="https://api.whatsapp.com/send?text=¡Mira el ecosistema digital de SAIE Arquitectura! https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-emerald-600 transition">
+                                    <i class="fab fa-whatsapp text-2xl"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest">WhatsApp</span>
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition">
+                                    <i class="fab fa-facebook-f text-2xl"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest">Facebook</span>
+                                </a>
+                                <button onclick="shareSite()" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-cyan-600 transition cursor-pointer">
+                                    <i class="fas fa-share-alt text-2xl"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest">Otros</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -494,6 +594,16 @@
             const name = document.getElementById('contact-name').value;
             const msg = document.getElementById('contact-msg').value;
             window.location.href = `mailto:arquival_al90@outlook.es?subject=CONTACTO&body=Nombre: ${name}\nMensaje: ${msg}`;
+        }
+
+        function shareSite() {
+            if (navigator.share) {
+                navigator.share({ title: 'SAIE Arquitectura', text: '¡Mira el ecosistema digital de SAIE Arquitectura!', url: 'https://saiearquitectura.vercel.app/' }).catch(console.error);
+            } else {
+                const url = encodeURIComponent('https://saiearquitectura.vercel.app/');
+                const text = encodeURIComponent('¡Mira el ecosistema digital de SAIE Arquitectura!');
+                window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+            }
         }
     </script>
 </body>
