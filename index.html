@@ -17,14 +17,9 @@
         
         .nav-link.active { color: #06b6d4; border-bottom: 2px solid #06b6d4; }
 
-        /* Estilos sub-pestañas */
+        /* Sub-pestañas */
         .subtab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; opacity: 0.8; }
-        .subtab-btn:hover { opacity: 1; }
         .subtab-btn.active { border-color: currentColor; opacity: 1; font-weight: 900; }
-        
-        .subtab-autocad { color: #ef4444; }
-        .subtab-revit { color: #1d4ed8; }
-        .subtab-sketchup { color: #0ea5e9; }
         
         /* Pestaña Híbrida Adobe */
         .subtab-adobe { 
@@ -33,17 +28,16 @@
             -webkit-text-fill-color: transparent;
             font-weight: 900;
         }
-        .subtab-render { color: #8b5cf6; }
 
-        /* Fondos con realce profesional */
+        /* Fondos Reales SAIE */
         .bg-hero {
-            background-image: linear-gradient(rgba(2, 6, 23, 0.5), rgba(2, 6, 23, 0.8)), 
+            background-image: linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.7)), 
                               url('img/diseño_saie2.png');
             background-size: cover; background-position: center;
         }
 
         .bg-architecture {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.75)), 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.8)), 
                               url('img/diseño_saie3.png');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
@@ -60,7 +54,6 @@
             background-size: cover; background-position: center; background-attachment: fixed;
         }
 
-        /* Paleta Profesional de Azules */
         .text-professional-blue {
             background: linear-gradient(135deg, #0ea5e9 0%, #1e40af 100%);
             -webkit-background-clip: text;
@@ -68,37 +61,44 @@
         }
 
         .authority-shadow {
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
-        /* Pantalla de Video Central */
+        /* Pantalla de Video Central - Ajustada */
         .video-cinema-frame {
             position: relative;
             z-index: 10;
-            border: 8px solid rgba(255, 255, 255, 0.05);
-            border-radius: 2rem;
-            box-shadow: 0 0 60px rgba(6, 182, 212, 0.2), 0 20px 50px rgba(0,0,0,0.8);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            box-shadow: 0 0 50px rgba(6, 182, 212, 0.15), 0 20px 40px rgba(0,0,0,0.6);
             overflow: hidden;
             background: #000;
+            transition: all 0.5s ease;
         }
 
         .software-logo {
-            width: 60px; height: 60px; object-fit: contain;
+            width: 55px; height: 55px; object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-            transition: transform 0.3s ease;
         }
-        .edu-card:hover .software-logo { transform: scale(1.1); }
+
+        .edu-card { 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white; border: 1px solid rgba(0,0,0,0.05);
+        }
+        .edu-card:hover { transform: translateY(-5px); border-color: #06b6d4; }
 
         .service-card { backdrop-filter: blur(8px); transition: all 0.4s ease; }
-        .service-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 1); }
+        .service-card:hover { transform: translateY(-8px); background: rgba(255, 255, 255, 1); }
 
-        .btn-circular {
-            width: 80px; height: 80px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        /* Botón de Volumen */
+        .volume-control {
+            position: absolute; bottom: 20px; right: 20px;
+            z-index: 50; background: rgba(0,0,0,0.5);
+            color: white; width: 45px; height: 45px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; backdrop-blur: sm; transition: all 0.3s;
         }
-        .btn-circular:hover { transform: scale(1.15) rotate(5deg); }
+        .volume-control:hover { background: #06b6d4; scale: 1.1; }
     </style>
 </head>
 <body class="text-slate-900">
@@ -107,11 +107,12 @@
     <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-3">
-                    <img src="img/logo_saie.png" alt="Logo SAIE" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/50?text=SAIE'">
+                <div class="flex items-center gap-4">
+                    <!-- Logo más grande -->
+                    <img src="img/logo_saie.png" alt="Logo SAIE" class="w-16 h-16 object-cover rounded-lg shadow-md" onerror="this.src='https://via.placeholder.com/64?text=SAIE'">
                     <div class="flex flex-col text-left">
-                        <span class="text-xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
-                        <span class="text-[9px] font-bold text-cyan-600 uppercase tracking-widest leading-none">Ecosistema Profesional</span>
+                        <span class="text-2xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
+                        <span class="text-[10px] font-bold text-cyan-600 uppercase tracking-widest leading-none">Ecosistema SAIE Arquitectura</span>
                     </div>
                 </div>
 
@@ -120,7 +121,7 @@
                     <button onclick="showTab('arquitectura')" class="nav-link px-2 py-1 font-bold text-slate-600 hover:text-cyan-600 transition" id="btn-arquitectura">SAIE Arquitectura</button>
                     <button onclick="showTab('educacion')" class="nav-link px-2 py-1 font-bold text-slate-600 hover:text-cyan-600 transition" id="btn-educacion">SAIE Educación</button>
                     <button onclick="showTab('recursos')" class="nav-link px-2 py-1 font-bold text-slate-600 hover:text-cyan-600 transition" id="btn-recursos">Recursos</button>
-                    <button onclick="showTab('contacto')" class="bg-cyan-600 text-white px-5 py-2 rounded-xl font-bold hover:bg-cyan-700 transition shadow-lg shadow-cyan-100" id="btn-contacto">Contacta a SAIE</button>
+                    <button onclick="showTab('contacto')" class="bg-cyan-600 text-white px-5 py-2 rounded-xl font-bold hover:bg-cyan-700 transition shadow-lg" id="btn-contacto">Contacta a SAIE</button>
                 </div>
 
                 <button class="md:hidden text-slate-800"><i class="fas fa-bars text-2xl"></i></button>
@@ -130,41 +131,45 @@
 
     <main class="min-h-screen">
 
-        <!-- SECCIÓN: INICIO (CINE-SCREEN) -->
+        <!-- SECCIÓN: INICIO (CINE-SCREEN MEJORADO) -->
         <section id="inicio" class="tab-content active pt-20 bg-hero relative overflow-hidden">
             <div class="min-h-screen flex flex-col items-center justify-center py-20 px-4 relative">
                 
-                <!-- Título Superior con Profundidad -->
-                <div class="relative z-20 text-center mb-[-40px]">
-                    <h1 class="text-5xl md:text-7xl font-header leading-[0.9] authority-shadow text-white uppercase italic tracking-tighter">
+                <!-- Título Superior con Profundidad y Grosor -->
+                <div class="relative z-20 text-center mb-[-60px]">
+                    <h1 class="text-5xl md:text-8xl font-black leading-[0.85] authority-shadow text-white uppercase italic tracking-tighter">
                         BIENVENIDO A <span class="text-professional-blue">SAIE ARQUITECTURA...</span>
                     </h1>
                 </div>
 
-                <!-- PANTALLA CENTRAL DE VIDEOS -->
-                <div class="w-full max-w-5xl video-cinema-frame my-10 aspect-video relative">
+                <!-- PANTALLA CENTRAL DE VIDEOS - Más pequeña para resaltar fondo -->
+                <div class="w-full max-w-4xl video-cinema-frame my-12 aspect-video relative group">
                     <video id="main-playlist-video" class="w-full h-full object-cover" muted autoplay playsinline>
                         <source src="video/promo_saie.mp4" type="video/mp4">
                     </video>
-                    <!-- Overlay de Gradiente para integracion -->
+                    <!-- Control de Volumen -->
+                    <div id="volume-toggle" class="volume-control" onclick="toggleMute()">
+                        <i id="vol-icon" class="fas fa-volume-mute"></i>
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                 </div>
 
                 <!-- Título Inferior con Profundidad -->
-                <div class="relative z-20 text-center mt-[-40px]">
-                    <h2 class="text-3xl md:text-5xl font-light text-slate-100 tracking-[0.1em] italic uppercase authority-shadow">
-                        ESTE ECOSISTEMA ES <span class="font-black text-cyan-400">PARA TI...</span>
+                <div class="relative z-20 text-center mt-[-60px]">
+                    <h2 class="text-4xl md:text-6xl font-black text-slate-100 tracking-tighter italic uppercase authority-shadow">
+                        ESTE ECOSISTEMA ES <span class="text-cyan-400">PARA TI...</span>
                     </h2>
-                    <p class="text-lg md:text-xl text-slate-300 mt-10 max-w-2xl mx-auto font-medium italic opacity-80">
-                        Donde la precisión técnica se encuentra con la visión creativa del diseño de autor.
-                    </p>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-6 mt-16 relative z-30">
-                    <button onclick="showTab('educacion')" class="flex items-center gap-4 px-10 py-5 bg-cyan-600 text-white rounded-2xl font-black hover:scale-105 transition shadow-2xl shadow-cyan-900/40">
+                <!-- Botones Inicio Restaurados -->
+                <div class="flex flex-wrap justify-center gap-6 mt-20 relative z-30">
+                    <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="flex items-center gap-4 px-8 py-4 bg-[#1877F2] text-white rounded-2xl font-black hover:scale-105 transition shadow-2xl">
+                        <i class="fab fa-facebook-f text-xl"></i> Facebook
+                    </a>
+                    <button onclick="showTab('educacion')" class="flex items-center gap-4 px-8 py-4 bg-cyan-600 text-white rounded-2xl font-black hover:scale-105 transition shadow-2xl">
                         <i class="fas fa-laptop-code"></i> Explorar Educación
                     </button>
-                    <button onclick="showTab('arquitectura')" class="flex items-center gap-4 px-10 py-5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-2xl font-black hover:bg-white hover:text-slate-900 transition shadow-2xl">
+                    <button onclick="showTab('arquitectura')" class="flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-2xl font-black hover:bg-white hover:text-slate-900 transition shadow-2xl">
                         <i class="fas fa-project-diagram"></i> Portafolio Obra
                     </button>
                 </div>
@@ -181,32 +186,32 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                    <div class="service-card p-10 bg-white/85 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                    <div class="service-card p-10 bg-white/80 rounded-[2.5rem] border border-slate-200 shadow-xl">
                         <i class="fas fa-pen-nib text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Arquitectura & Diseño</h4>
                         <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Conceptos únicos y funcionales. Transformamos espacios con una visión estética de vanguardia.</p>
                     </div>
-                    <div class="service-card p-10 bg-white/85 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                    <div class="service-card p-10 bg-white/80 rounded-[2.5rem] border border-slate-200 shadow-xl">
                         <i class="fas fa-hard-hat text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Supervisión de Obra</h4>
                         <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Control riguroso de calidad y tiempos. Garantizamos excelencia en cada m².</p>
                     </div>
-                    <div class="service-card p-10 bg-white/85 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                    <div class="service-card p-10 bg-white/80 rounded-[2.5rem] border border-slate-200 shadow-xl">
                         <i class="fas fa-bolt text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Instalaciones Eléctricas</h4>
                         <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Redes seguras y certificadas. Domótica e iluminación profesional.</p>
                     </div>
-                    <div class="service-card p-10 bg-white/85 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                    <div class="service-card p-10 bg-white/80 rounded-[2.5rem] border border-slate-200 shadow-xl">
                         <i class="fas fa-th-large text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Tablaroca & Acabados</h4>
                         <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Sistemas ligeros y plafones decorativos con acabados de alta gama.</p>
                     </div>
-                    <div class="service-card p-10 bg-white/85 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                    <div class="service-card p-10 bg-white/80 rounded-[2.5rem] border border-slate-200 shadow-xl">
                         <i class="fas fa-tint text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Plomería Integral</h4>
                         <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Ingeniería hidráulica de durabilidad garantizada.</p>
                     </div>
-                    <div class="service-card p-10 bg-white/85 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                    <div class="service-card p-10 bg-white/80 rounded-[2.5rem] border border-slate-200 shadow-xl">
                         <i class="fas fa-fill-drip text-4xl text-cyan-600 mb-6"></i>
                         <h4 class="text-2xl font-black mb-4 uppercase italic">Pintura & Recubrimientos</h4>
                         <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Acabados estéticos de lujo y alta resistencia.</p>
@@ -215,76 +220,110 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE EDUCACIÓN -->
+        <!-- SECCIÓN: SAIE EDUCACIÓN (9 PANELES RESTAURADOS) -->
         <section id="educacion" class="tab-content py-32 px-4 bg-white">
             <div class="max-w-7xl mx-auto">
-                <!-- Imagen Destacada de Educación -->
                 <div class="mb-20 rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
-                    <img src="img/saie_cursoonline.png" alt="Cursos Online SAIE" class="w-full h-auto object-cover" onerror="this.src='https://via.placeholder.com/1200x400?text=Educación+Online+SAIE'">
+                    <img src="img/saie_cursoonline.png" alt="Cursos Online SAIE" class="w-full h-auto object-cover">
                 </div>
 
                 <div class="text-center mb-16">
                     <h2 class="text-5xl font-header mb-4 italic uppercase text-slate-900">Programas de Especialización</h2>
-                    <p class="text-slate-500 text-xl font-medium italic">Domina las herramientas que definen la arquitectura actual.</p>
+                    <p class="text-slate-500 text-xl font-medium italic">Formación técnica de alto nivel para el profesional moderno.</p>
                     <div class="w-24 h-1.5 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- AutoCAD -->
-                    <div class="edu-card card-autocad p-8 rounded-[2.5rem] flex flex-col h-full overflow-hidden text-left">
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full text-left">
                         <div class="flex justify-between items-start mb-6">
                             <img src="img/autocad_logo.png" alt="AutoCAD" class="software-logo">
-                            <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">AutoCAD + IA</span>
+                            <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">AutoCAD + IA</span>
                         </div>
-                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
-                            <video controls class="w-full aspect-video object-cover" preload="metadata">
-                                <source src="video/autocad_promo.mp4" type="video/mp4">
-                            </video>
+                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                            <video controls class="w-full aspect-video object-cover"><source src="video/autocad_promo.mp4" type="video/mp4"></video>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-red-600 italic uppercase leading-none">Arquitectura Técnica</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Diseño de planos de alta precisión integrando automatización inteligente.</p>
+                        <h3 class="text-2xl font-black mb-4 text-red-600 italic uppercase">Arquitectura Técnica</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Dominio total de planos técnicos con automatización inteligente.</p>
                         <button onclick="openEnrollment('AutoCAD Básico-Avanzado + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-red-600 transition">Inscribirse ahora</button>
                     </div>
 
                     <!-- SketchUp -->
-                    <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full overflow-hidden text-left">
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full text-left">
                         <div class="flex justify-between items-start mb-6">
-                            <div class="flex gap-2">
-                                <img src="img/logo_sketchup.png" alt="SketchUp" class="software-logo">
-                                <img src="img/logo_vray.png" alt="Vray" class="software-logo">
-                            </div>
-                            <span class="bg-sky-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Hyper-Render</span>
+                            <div class="flex gap-2"><img src="img/logo_sketchup.png" alt="SKP" class="software-logo"><img src="img/logo_vray.png" alt="Vray" class="software-logo"></div>
+                            <span class="bg-sky-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Hyper-Render</span>
                         </div>
-                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
-                            <video controls class="w-full aspect-video object-cover" preload="metadata" playsinline>
-                                <source src="video/sketchup_promo.mp4" type="video/mp4">
-                            </video>
+                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                            <video controls class="w-full aspect-video object-cover"><source src="video/sketchup_promo.mp4" type="video/mp4"></video>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-sky-600 italic uppercase leading-none">Visualización 3D</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Modelado y renderizado fotorrealista de alto impacto visual.</p>
-                        <button onclick="openEnrollment('SketchUp + V-Ray + Photoshop + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-sky-500 transition">Inscribirse ahora</button>
+                        <h3 class="text-2xl font-black mb-4 text-sky-600 italic uppercase">Visualización 3D</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Modelado avanzado y renderizado fotorrealista para proyectos de autor.</p>
+                        <button onclick="openEnrollment('SketchUp + V-Ray + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-sky-500 transition">Inscribirse ahora</button>
                     </div>
 
                     <!-- Revit -->
-                    <div class="edu-card card-revit p-8 rounded-[2.5rem] flex flex-col h-full overflow-hidden text-left">
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full text-left">
                         <div class="flex justify-between items-start mb-6">
                             <img src="img/logo_revit.png" alt="Revit" class="software-logo">
-                            <span class="bg-blue-700 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">BIM Master</span>
+                            <span class="bg-blue-700 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">BIM Management</span>
                         </div>
-                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
-                            <video controls class="w-full aspect-video object-cover" preload="metadata">
-                                <source src="video/revit_promo.mp4" type="video/mp4">
-                            </video>
+                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                            <video controls class="w-full aspect-video object-cover"><source src="video/revit_promo.mp4" type="video/mp4"></video>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-blue-700 italic uppercase leading-none">BIM Integral</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Domina el flujo de trabajo BIM en arquitectura, estructuras e instalaciones.</p>
+                        <h3 class="text-2xl font-black mb-4 text-blue-700 italic uppercase">BIM Especializado</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Flujo de trabajo colaborativo en arquitectura y estructuras.</p>
                         <button onclick="openEnrollment('Revit + BIM Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-blue-700 transition">Inscribirse ahora</button>
+                    </div>
+
+                    <!-- Photoshop -->
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full text-left">
+                        <div class="flex justify-between items-start mb-6">
+                            <img src="img/logo_photoshop.png" alt="PS" class="software-logo">
+                            <span class="bg-indigo-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Post-Producción</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-indigo-900 italic uppercase">Photoshop Arq</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Láminas de presentación y retoque de renders con IA.</p>
+                        <button onclick="openEnrollment('Photoshop Pro + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-indigo-900 transition">Inscribirse ahora</button>
+                    </div>
+
+                    <!-- Illustrator -->
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full text-left">
+                        <div class="flex justify-between items-start mb-6">
+                            <img src="img/logo_illustrator.png" alt="AI" class="software-logo">
+                            <span class="bg-amber-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Adobe Master</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-amber-600 italic uppercase">Illustrator Técnico</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Diseño vectorial para diagramas arquitectónicos y portafolios.</p>
+                        <button onclick="openEnrollment('Illustrator Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-amber-600 transition">Inscribirse ahora</button>
+                    </div>
+
+                    <!-- Excel -->
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full text-left">
+                        <div class="flex justify-between items-start mb-6">
+                            <img src="img/logo_excel.png" alt="Excel" class="software-logo">
+                            <span class="bg-emerald-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Data Expert</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-emerald-600 italic uppercase">Excel para Ingenieros</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow italic">Cuantificación de obra y presupuestos automatizados.</p>
+                        <button onclick="openEnrollment('Excel Pro + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-emerald-600 transition">Inscribirse ahora</button>
+                    </div>
+
+                    <!-- IA Full Card Especial -->
+                    <div class="edu-card p-8 rounded-[2.5rem] flex flex-col h-full md:col-span-2 lg:col-span-1 text-left bg-slate-900 text-white border-none shadow-2xl">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl"><i class="fas fa-brain"></i></div>
+                            <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Next-Gen Tech</span>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4 text-purple-400 italic uppercase italic">IA Generativa Full</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow italic">Domina ChatGPT, Midjourney y automatizaciones para transformar tu productividad.</p>
+                        <button onclick="openEnrollment('IA Generativa Profesional')" class="w-full py-4 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-500 transition shadow-lg shadow-purple-900/40">Inscribirse ahora</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: RECURSOS (FONDO saie_edu1.png) -->
+        <!-- SECCIÓN: RECURSOS (11 PLUGINS RESTAURADOS) -->
         <section id="recursos" class="tab-content py-32 px-4 bg-recursos">
             <div class="max-w-7xl mx-auto text-center">
                 <div class="text-center mb-20">
@@ -292,26 +331,17 @@
                     <p class="text-slate-800 text-xl font-bold italic uppercase tracking-wider">Herramientas exclusivas para optimizar tu flujo de trabajo.</p>
                 </div>
 
-                <!-- Navegación de Recursos Mejorada -->
+                <!-- Navegación Recursos -->
                 <div class="flex flex-wrap justify-center mb-16 gap-6">
-                    <button onclick="showSubTab('autocad')" class="subtab-btn subtab-autocad active text-xs font-black uppercase tracking-widest" id="sbtn-autocad">
-                        <i class="fas fa-code mr-2"></i> Plugins AutoCAD
-                    </button>
-                    <button onclick="showSubTab('adobe')" class="subtab-btn subtab-adobe text-xs font-black uppercase tracking-widest" id="sbtn-adobe">
-                        <i class="fas fa-palette mr-2"></i> Photoshop / Illustrator
-                    </button>
-                    <button onclick="showSubTab('render')" class="subtab-btn subtab-render text-xs font-black uppercase tracking-widest" id="sbtn-render">
-                        <i class="fas fa-magic mr-2"></i> V-Ray / D5
-                    </button>
-                    <button onclick="showSubTab('revit')" class="subtab-btn subtab-revit text-xs font-black uppercase tracking-widest" id="sbtn-revit">
-                        <i class="fas fa-project-diagram mr-2"></i> Plantillas Revit
-                    </button>
+                    <button onclick="showSubTab('autocad')" class="subtab-btn active text-xs font-black uppercase tracking-widest text-red-600" id="sbtn-autocad">Plugins AutoCAD</button>
+                    <button onclick="showSubTab('adobe')" class="subtab-btn subtab-adobe text-xs font-black uppercase tracking-widest" id="sbtn-adobe">Photoshop / Illustrator</button>
+                    <button onclick="showSubTab('render')" class="subtab-btn text-xs font-black uppercase tracking-widest text-purple-600" id="sbtn-render">V-Ray / D5</button>
+                    <button onclick="showSubTab('revit')" class="subtab-btn text-xs font-black uppercase tracking-widest text-blue-600" id="sbtn-revit">Plantillas Revit</button>
                 </div>
 
-                <!-- Contenido Plugins (11 originales) -->
+                <!-- 11 Plugins Completos -->
                 <div id="sub-autocad" class="sub-tab-content block text-left">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Listado de los 11 Plugins restaurado -->
                         <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-microchip"></i></div>
@@ -328,33 +358,90 @@
                             <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Doors & Windows Master</h4>
                             <p class="text-slate-600 text-sm leading-relaxed italic">Asistente maestro para inserción automática de carpinterías.</p>
                         </div>
-                        <!-- ... (Los otros 9 plugins mantenidos en la lógica interna) -->
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-ruler-combined"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">DA</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Cota Speed Engine</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Dimensiones automáticas inteligentes para planos técnicos.</p>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-sort-numeric-down"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">NN</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Magic Number Sequence</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Orquestador de secuencias numéricas automáticas en planos.</p>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-rocket"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">SL</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">3D Sync (SKP Ready)</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Optimización de archivos para exportación a SketchUp.</p>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-th"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">MF</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Modulator Design</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Asistente para diseño de mobiliario y modulaciones.</p>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-table"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">QA</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Surface Matrix</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Cálculo de áreas de acabados y reportes Excel instantáneos.</p>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-list-check"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">CQ</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Inventory Master</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Auditoría de bloques para presupuestos de obra.</p>
+                        </div>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-vector-square"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">AU</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Area Surveyor</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Etiquetas dinámicas de área para presentaciones limpias.</p>
+                        </div>
                         <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
                             <div class="flex justify-between items-start mb-6">
                                 <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-stairs"></i></div>
                                 <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">EE</span>
                             </div>
-                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Stair Modeler (Blondel)</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed italic">Calculador y generador automático de circulaciones verticales.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Stair Pro (Blondel)</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Cerebro matemático para circulaciones verticales.</p>
                         </div>
-                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition py-20 flex items-center justify-center col-span-full">
-                            <p class="text-2xl font-black italic text-slate-400 uppercase tracking-tighter text-center">Y 8 herramientas más integradas para tu flujo profesional...</p>
+                        <div class="bg-white/90 backdrop-blur p-8 rounded-[2.5rem] border border-slate-200 shadow-xl hover:shadow-2xl transition group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition"><i class="fas fa-layer-group"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">DC</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Structural Design</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed italic">Detalles constructivos automáticos según NTC.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Nuevas Sub-pestañas Próximamente -->
-                <div id="sub-adobe" class="sub-tab-content hidden py-32 bg-white/40 rounded-[3rem] backdrop-blur-md">
-                    <p class="text-4xl font-black italic uppercase text-slate-700 tracking-tighter">Próximamente: Recursos Profesionales de Diseño</p>
+                <!-- Próximamente -->
+                <div id="sub-adobe" class="sub-tab-content hidden py-32 bg-white/30 backdrop-blur-md rounded-[3rem]">
+                    <p class="text-4xl font-black italic uppercase text-slate-700 tracking-tighter">Próximamente: Recursos de Diseño</p>
                 </div>
-                <div id="sub-render" class="sub-tab-content hidden py-32 bg-white/40 rounded-[3rem] backdrop-blur-md">
+                <div id="sub-render" class="sub-tab-content hidden py-32 bg-white/30 backdrop-blur-md rounded-[3rem]">
                     <p class="text-4xl font-black italic uppercase text-slate-700 tracking-tighter">Próximamente: Assets V-Ray & D5</p>
                 </div>
-                <div id="sub-revit" class="sub-tab-content hidden py-32 bg-white/40 rounded-[3rem] backdrop-blur-md">
-                    <p class="text-4xl font-black italic uppercase text-slate-700 tracking-tighter">Próximamente: Plantillas BIM Especializadas</p>
-                </div>
-                <div id="sub-sketchup" class="sub-tab-content hidden py-32 bg-white/40 rounded-[3rem] backdrop-blur-md">
-                    <p class="text-4xl font-black italic uppercase text-slate-700 tracking-tighter">Próximamente: Librerías SketchUp</p>
+                <div id="sub-revit" class="sub-tab-content hidden py-32 bg-white/30 backdrop-blur-md rounded-[3rem]">
+                    <p class="text-4xl font-black italic uppercase text-slate-700 tracking-tighter">Próximamente: Plantillas Revit BIM</p>
                 </div>
             </div>
         </section>
@@ -364,45 +451,19 @@
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">Contacta a SAIE</h2>
                 <p class="text-slate-900 text-lg font-black uppercase tracking-widest mb-12 italic">Estamos listos para materializar tus proyectos</p>
-                
-                <div class="grid lg:grid-cols-2 gap-12 items-start text-left">
+                <div class="grid lg:grid-cols-2 gap-12 text-left items-start">
                     <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 order-2 lg:order-1">
                         <div class="space-y-6">
-                            <div class="text-left">
-                                <label class="font-black text-xs uppercase tracking-widest text-slate-400 ml-2">Nombre completo</label>
-                                <input type="text" id="contact-name" placeholder="Ej. Arq. Rodrigo Mendoza" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1">
-                            </div>
-                            <div class="text-left">
-                                <label class="font-black text-xs uppercase tracking-widest text-slate-400 ml-2">Mensaje</label>
-                                <textarea id="contact-msg" placeholder="¿En qué podemos ayudarte?" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition h-32 font-medium mt-1"></textarea>
-                            </div>
-                            <div class="flex justify-center">
-                                <button onclick="sendGeneralContact()" class="btn-circular bg-slate-900 text-white shadow-2xl shadow-slate-400 group cursor-pointer">
-                                    <i class="fas fa-envelope text-3xl group-hover:text-cyan-400 transition"></i>
-                                </button>
-                            </div>
+                            <div><label class="font-black text-xs uppercase text-slate-400">Nombre completo</label><input type="text" id="contact-name" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 font-bold mt-1"></div>
+                            <div><label class="font-black text-xs uppercase text-slate-400">Mensaje</label><textarea id="contact-msg" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 h-32 mt-1"></textarea></div>
+                            <div class="flex justify-center"><button onclick="sendGeneralContact()" class="btn-circular bg-slate-900 text-white shadow-xl hover:bg-cyan-600 transition"><i class="fas fa-envelope text-3xl"></i></button></div>
                         </div>
                     </div>
-
-                    <div class="space-y-8 order-1 lg:order-2">
-                        <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100">
-                            <h4 class="text-2xl font-black mb-6 italic uppercase text-slate-800">Comunicación Directa</h4>
-                            <div class="space-y-6">
-                                <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-emerald-50 transition group">
-                                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fab fa-whatsapp"></i></div>
-                                    <div>
-                                        <p class="font-black text-slate-800 italic uppercase">WhatsApp & Llamadas</p>
-                                        <p class="text-sm text-slate-500 font-bold">+52 556 248 2314</p>
-                                    </div>
-                                </a>
-                                <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-cyan-50 transition group">
-                                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fas fa-at"></i></div>
-                                    <div>
-                                        <p class="font-black text-slate-800 italic uppercase">Correo Corporativo</p>
-                                        <p class="text-sm text-slate-500 font-bold">arquival_al90@outlook.es</p>
-                                    </div>
-                                </a>
-                            </div>
+                    <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 order-1 lg:order-2">
+                        <h4 class="text-2xl font-black mb-6 italic uppercase">Vías Directas</h4>
+                        <div class="space-y-6">
+                            <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-emerald-50 transition group"><div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xl"><i class="fab fa-whatsapp"></i></div><div><p class="font-black italic text-slate-800">WhatsApp</p><p class="text-sm text-slate-500 font-bold">+52 556 248 2314</p></div></a>
+                            <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-cyan-50 transition group"><div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-xl"><i class="fas fa-at"></i></div><div><p class="font-black italic text-slate-800">Email</p><p class="text-sm text-slate-500 font-bold">arquival_al90@outlook.es</p></div></a>
                         </div>
                     </div>
                 </div>
@@ -411,34 +472,9 @@
 
     </main>
 
-    <!-- VENTANA MODAL DE INSCRIPCIÓN -->
-    <div id="enrollment-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
-        <div class="bg-white w-full max-w-lg rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative text-left">
-            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-400 hover:text-slate-900 transition text-2xl cursor-pointer"><i class="fas fa-times"></i></button>
-            <h3 id="modal-course-title" class="text-3xl font-header italic uppercase text-slate-900 mb-2 leading-none">Inscripción</h3>
-            <p class="text-slate-500 mb-8 font-medium italic">Ingresa tus datos para continuar:</p>
-            <form id="modal-form" class="space-y-4" onsubmit="handleEnrollmentSubmit(event)">
-                <input type="hidden" id="hidden-course-name">
-                <div>
-                    <label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Nombre Completo</label>
-                    <input type="text" id="user-fullname" placeholder="Ej. Juan Pérez" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1" required>
-                </div>
-                <div>
-                    <label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Correo Electrónico</label>
-                    <input type="email" id="user-email-modal" placeholder="correo@ejemplo.com" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1" required>
-                </div>
-                <div>
-                    <label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Teléfono / WhatsApp</label>
-                    <input type="tel" id="user-phone-modal" placeholder="Ej. +52 55..." class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 transition font-bold mt-1" required>
-                </div>
-                <button type="submit" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-xl hover:bg-cyan-600 transition shadow-xl uppercase tracking-widest mt-4">Enviar Inscripción</button>
-            </form>
-        </div>
-    </div>
-
     <footer class="bg-slate-950 text-white py-20 text-center">
-        <p class="font-header text-4xl mb-6 text-white uppercase tracking-widest leading-none italic">SAIE Arquitectura</p>
-        <div class="flex justify-center gap-8 text-3xl text-slate-400">
+        <p class="font-header text-4xl mb-6 uppercase tracking-widest italic">SAIE Arquitectura</p>
+        <div class="flex justify-center gap-8 text-3xl text-slate-500">
             <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="hover:text-[#1877F2] transition"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/soluciones_arq_edu/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/c/5215562482314" target="_blank" class="hover:text-emerald-500 transition"><i class="fab fa-whatsapp"></i></a>
@@ -447,29 +483,26 @@
     </footer>
 
     <script>
-        // LISTA DE VIDEOS SECUENCIAL
         const playlist = [
-            "video/promo_saie.mp4",
-            "video/saie_edu3.mp4",
-            "video/saie_edu1.mp4",
-            "video/saie_educacionpart1.mp4",
-            "video/saie_educacionpart2.mp4",
-            "video/saie_educacionpart3.mp4",
-            "video/saie_educacionpart4.mp4",
-            "video/saie_educacionpart5.mp4",
-            "video/saie_edu2.mp4",
-            "video/saie_edu4.mp4"
+            "video/promo_saie.mp4", "video/saie_edu3.mp4", "video/saie_edu1.mp4", 
+            "video/saie_educacionpart1.mp4", "video/saie_educacionpart2.mp4", "video/saie_educacionpart3.mp4", 
+            "video/saie_educacionpart4.mp4", "video/saie_educacionpart5.mp4", "video/saie_edu2.mp4", "video/saie_edu4.mp4"
         ];
         
         let currentVideoIndex = 0;
         const videoPlayer = document.getElementById('main-playlist-video');
 
-        // Función para cambiar de video automáticamente
         videoPlayer.onended = function() {
             currentVideoIndex = (currentVideoIndex + 1) % playlist.length;
             videoPlayer.src = playlist[currentVideoIndex];
             videoPlayer.play();
         };
+
+        function toggleMute() {
+            videoPlayer.muted = !videoPlayer.muted;
+            const icon = document.getElementById('vol-icon');
+            icon.className = videoPlayer.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        }
 
         function showTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
@@ -494,48 +527,15 @@
         }
 
         function openEnrollment(courseName) {
-            document.getElementById('hidden-course-name').value = courseName;
-            document.getElementById('modal-course-title').innerText = "Inscripción: " + courseName;
-            const modal = document.getElementById('enrollment-modal');
-            modal.classList.remove('hidden'); modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('enrollment-modal');
-            modal.classList.add('hidden'); modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        function handleEnrollmentSubmit(e) {
-            e.preventDefault();
-            const course = document.getElementById('hidden-course-name').value;
-            const name = document.getElementById('user-fullname').value;
-            const email = document.getElementById('user-email-modal').value;
-            const phone = document.getElementById('user-phone-modal').value;
-            const subject = encodeURIComponent(`NUEVA INSCRIPCIÓN: ${course}`);
-            const body = encodeURIComponent(`CURSO: ${course}\nNombre: ${name}\nCorreo: ${email}\nTeléfono: ${phone}`);
+            const subject = encodeURIComponent(`Inscripción: ${courseName}`);
+            const body = encodeURIComponent(`Hola SAIE,\nMe gustaría inscribirme en: ${courseName}`);
             window.location.href = `mailto:arquival_al90@outlook.es?subject=${subject}&body=${body}`;
-            closeModal();
-            document.getElementById('modal-form').reset();
         }
 
         function sendGeneralContact() {
             const name = document.getElementById('contact-name').value;
             const msg = document.getElementById('contact-msg').value;
-            const subject = encodeURIComponent("CONTACTO GENERAL - SAIE WEB");
-            const body = encodeURIComponent(`Nombre: ${name}\nMensaje: ${msg}`);
-            window.location.href = `mailto:arquival_al90@outlook.es?subject=${subject}&body=${body}`;
-        }
-
-        function shareSite() {
-            if (navigator.share) {
-                navigator.share({ title: 'SAIE Arquitectura', text: '¡Mira el ecosistema digital de SAIE Arquitectura!', url: 'https://saiearquitectura.vercel.app/' }).catch(console.error);
-            } else {
-                const url = encodeURIComponent('https://saiearquitectura.vercel.app/');
-                const text = encodeURIComponent('¡Mira el ecosistema digital de SAIE Arquitectura!');
-                window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
-            }
+            window.location.href = `mailto:arquival_al90@outlook.es?subject=CONTACTO&body=Nombre: ${name}\nMensaje: ${msg}`;
         }
     </script>
 </body>
