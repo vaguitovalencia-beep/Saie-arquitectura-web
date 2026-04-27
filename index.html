@@ -112,6 +112,8 @@
         .btn-circular:hover {
             transform: scale(1.15) rotate(5deg);
         }
+
+        video { outline: none; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -121,7 +123,11 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-cyan-600 rounded-lg flex items-center justify-center text-white font-black text-xl">S</div>
+                    <!-- Logotipo dinámico (img/logo_saie.jpg) -->
+                    <img src="img/logo_saie.jpg" alt="SAIE" class="h-12 w-auto rounded-lg" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='flex'">
+                    <div id="text-logo" class="hidden items-center gap-2">
+                        <div class="w-10 h-10 bg-cyan-600 rounded-lg flex items-center justify-center text-white font-black text-xl">S</div>
+                    </div>
                     <div class="flex flex-col">
                         <span class="text-xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
                         <span class="text-[9px] font-bold text-cyan-600 uppercase tracking-widest">Ecosistema Profesional</span>
@@ -231,30 +237,50 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- AutoCAD -->
-                    <div class="edu-card card-autocad p-8 rounded-[2.5rem] flex flex-col h-full">
+                    <!-- AutoCAD (Con Video) -->
+                    <div class="edu-card card-autocad p-8 rounded-[2.5rem] flex flex-col h-full overflow-hidden">
                         <div class="flex justify-between items-start mb-6">
                             <div class="icon-box w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
                                 <i class="fas fa-drafting-compass"></i>
                             </div>
                             <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">AutoCAD + IA</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Arquitectura Técnica Inteligente</h3>
+                        
+                        <!-- Video Promo AutoCAD -->
+                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
+                            <video controls class="w-full aspect-video object-cover">
+                                <source src="video/autocad_promo.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                        </div>
+
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-red-600">Arquitectura Técnica Inteligente</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina AutoCAD desde cero hasta nivel profesional. Diseña planos arquitectónicos integrando IA para optimizar tareas técnicas repetitivas.</p>
                         <button onclick="openEnrollment('AutoCAD Básico-Avanzado + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-red-600 transition duration-300">Inscribirse ahora</button>
                     </div>
-                    <!-- SketchUp -->
-                    <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full">
+
+                    <!-- SketchUp (Con Video) -->
+                    <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full overflow-hidden">
                         <div class="flex justify-between items-start mb-6">
                             <div class="icon-box w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
                                 <i class="fas fa-cube"></i>
                             </div>
                             <span class="bg-sky-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Hyper-Render</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Visualización 3D & Post-Producción</h3>
+                        
+                        <!-- Video Promo SketchUp -->
+                        <div class="mb-6 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner">
+                            <video controls class="w-full aspect-video object-cover">
+                                <source src="video/sketchup_promo.mp4" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                        </div>
+
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-sky-600">Visualización 3D & Post-Producción</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Modelado avanzado con SketchUp, renderizado con V-Ray y retoque con Photoshop, potenciado por IA Generativa.</p>
                         <button onclick="openEnrollment('SketchUp + V-Ray + Photoshop + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-sky-500 transition duration-300">Inscribirse ahora</button>
                     </div>
+
                     <!-- Revit -->
                     <div class="edu-card card-revit p-8 rounded-[2.5rem] flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
@@ -263,10 +289,11 @@
                             </div>
                             <span class="bg-blue-700 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">BIM Management</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Revit Integral: Arch + Struc + MEP</h3>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-blue-700">Revit Integral: Arch + Struc + MEP</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Formación completa en todas las disciplinas BIM. Desarrolla proyectos reales desde el concepto hasta la documentación.</p>
                         <button onclick="openEnrollment('Revit + BIM Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-blue-700 transition duration-300">Inscribirse ahora</button>
                     </div>
+
                     <!-- Photoshop -->
                     <div class="edu-card card-ps p-8 rounded-[2.5rem] flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
@@ -275,10 +302,11 @@
                             </div>
                             <span class="bg-indigo-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Post-Producción</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Photoshop para Arquitectos</h3>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-indigo-900">Photoshop para Arquitectos</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Crea láminas impactantes y montajes atmosféricos utilizando IA para el retoque fotográfico de alto nivel arquitectónico.</p>
                         <button onclick="openEnrollment('Photoshop Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-indigo-900 transition duration-300">Inscribirse ahora</button>
                     </div>
+
                     <!-- Illustrator -->
                     <div class="edu-card card-ai p-8 rounded-[2.5rem] flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
@@ -287,10 +315,11 @@
                             </div>
                             <span class="bg-amber-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Adobe Specialist</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Adobe Illustrator Profesional + IA</h3>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-amber-600">Adobe Illustrator Profesional + IA</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina el diseño vectorial profesional con Adobe Illustrator. Crea identidades visuales e ilustraciones técnicas con IA.</p>
                         <button onclick="openEnrollment('Adobe Illustrator Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-amber-600 transition duration-300">Inscribirse ahora</button>
                     </div>
+
                     <!-- Excel -->
                     <div class="edu-card card-excel p-8 rounded-[2.5rem] flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
@@ -299,10 +328,11 @@
                             </div>
                             <span class="bg-emerald-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Data Master</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Excel Pro & Automatización</h3>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-emerald-600">Excel Pro & Automatización</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Administra datos, genera Dashboards predictivos con IA y automatiza reportes complejos para el área técnica.</p>
                         <button onclick="openEnrollment('Excel Profesional + IA')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-emerald-600 transition duration-300">Inscribirse ahora</button>
                     </div>
+
                     <!-- IA Full -->
                     <div class="edu-card card-ia p-8 rounded-[2.5rem] flex flex-col h-full md:col-span-2 lg:col-span-1">
                         <div class="flex justify-between items-start mb-6">
@@ -311,7 +341,7 @@
                             </div>
                             <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Next-Gen Tech</span>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Especialista en IA Generativa</h3>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none text-purple-600">Especialista en IA Generativa</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina ChatGPT, Midjourney, Claude y más. Aprende a crear automatizaciones inteligentes y contenido digital desde cero.</p>
                         <button onclick="openEnrollment('Inteligencia Artificial Profesional Full')" class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-purple-600 transition duration-300">Inscribirse ahora</button>
                     </div>
@@ -342,7 +372,7 @@
                     </button>
                 </div>
 
-                <div id="sub-autocad" class="sub-tab-content block">
+                <div id="sub-autocad" class="sub-tab-content block text-left">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Plugin 1 -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
@@ -488,7 +518,7 @@
                 
                 <div class="grid lg:grid-cols-2 gap-12 items-start">
                     <!-- Formulario de Contacto (Mailto Integrado) -->
-                    <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 order-2 lg:order-1">
+                    <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 order-2 lg:order-1 text-left">
                         <div class="space-y-6">
                             <div class="text-left">
                                 <label class="font-black text-xs uppercase tracking-widest text-slate-400 ml-2">Nombre completo</label>
@@ -503,7 +533,7 @@
                                     <i class="fas fa-envelope text-3xl group-hover:text-cyan-400 transition"></i>
                                 </button>
                             </div>
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">Haz clic en el botón circular para enviarnos un correo</p>
+                            <p class="text-[10px] text-center font-black text-slate-400 uppercase tracking-tighter">Haz clic en el botón circular para enviarnos un correo</p>
                         </div>
                     </div>
 
@@ -591,7 +621,7 @@
     </div>
 
     <footer class="bg-slate-900 text-white py-20 text-center">
-        <p class="font-header text-4xl mb-6">SAIE <span class="text-cyan-500 uppercase">Arquitectura</span></p>
+        <p class="font-header text-4xl mb-6 text-white uppercase tracking-widest">SAIE Arquitectura</p>
         <div class="flex justify-center gap-8 text-3xl text-slate-400">
             <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="hover:text-[#1877F2] transition"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/soluciones_arq_edu/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
