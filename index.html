@@ -20,24 +20,52 @@
         /* Estilos dinámicos para sub-pestañas de recursos */
         .subtab-btn { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
         
-        /* Colores por Software */
+        /* Colores por Software (Recursos) */
         .subtab-autocad:hover { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; }
         .subtab-autocad.active { border-color: #ef4444; color: #ef4444; background-color: rgba(239, 68, 68, 0.05); }
-        
         .subtab-revit:hover { background-color: rgba(29, 78, 216, 0.1); color: #1d4ed8; }
         .subtab-revit.active { border-color: #1d4ed8; color: #1d4ed8; background-color: rgba(29, 78, 216, 0.05); }
-        
         .subtab-sketchup:hover { background-color: rgba(56, 189, 248, 0.1); color: #0ea5e9; }
         .subtab-sketchup.active { border-color: #0ea5e9; color: #0ea5e9; background-color: rgba(56, 189, 248, 0.05); }
-
         .subtab-vray:hover { background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
         .subtab-vray.active { border-color: #8b5cf6; color: #8b5cf6; background-color: rgba(139, 92, 246, 0.05); }
 
+        /* Efectos de Tarjetas de Educación */
+        .edu-card { 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .card-autocad:hover { border-color: #ef4444; box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.2); }
+        .card-autocad:hover .icon-box { background: #ef4444; color: white; }
+        .card-sketchup:hover { border-color: #0ea5e9; box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.2); }
+        .card-sketchup:hover .icon-box { background: #0ea5e9; color: white; }
+        .card-revit:hover { border-color: #1d4ed8; box-shadow: 0 20px 40px -10px rgba(29, 78, 216, 0.2); }
+        .card-revit:hover .icon-box { background: #1d4ed8; color: white; }
+        .card-ps:hover { border-color: #312e81; box-shadow: 0 20px 40px -10px rgba(49, 46, 129, 0.2); }
+        .card-ps:hover .icon-box { background: #312e81; color: white; }
+        .card-ai:hover { border-color: #f59e0b; box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.2); }
+        .card-ai:hover .icon-box { background: #f59e0b; color: white; }
+        .card-excel:hover { border-color: #10b981; box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2); }
+        .card-excel:hover .icon-box { background: #10b981; color: white; }
+        .card-ia:hover { border-color: #8b5cf6; box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.2); }
+        .card-ia:hover .icon-box { background: #8b5cf6; color: white; }
+
+        /* Fondos Dinámicos */
         .bg-hero {
             background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.96)), 
                               url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
+        }
+
+        .bg-architecture {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.92)), 
+                              url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .text-gradient {
@@ -48,6 +76,19 @@
 
         .authority-shadow {
             text-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .icon-box {
+            transition: all 0.3s ease;
+        }
+
+        .service-card {
+            backdrop-filter: blur(8px);
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 1);
         }
     </style>
 </head>
@@ -60,7 +101,7 @@
                 <div class="flex items-center gap-2">
                     <div class="w-10 h-10 bg-cyan-600 rounded-lg flex items-center justify-center text-white font-black text-xl">S</div>
                     <div class="flex flex-col">
-                        <span class="text-xl font-black leading-none uppercase tracking-tighter">SAIE</span>
+                        <span class="text-xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
                         <span class="text-[9px] font-bold text-cyan-600 uppercase tracking-widest">Ecosistema Profesional</span>
                     </div>
                 </div>
@@ -89,7 +130,7 @@
                         Líderes en Innovación Digital
                     </span>
                     <h1 class="text-5xl md:text-8xl font-header leading-[0.95] mb-8 authority-shadow">
-                        BIENVENIDO A <span class="text-gradient">SAIE ARQUITECTURA...</span> <br>
+                        BIENVENIDO A <span class="text-gradient uppercase">SAIE ARQUITECTURA...</span> <br>
                         <span class="text-4xl md:text-6xl font-light text-slate-300 tracking-tight">ESTE ECOSISTEMA ES PARA TI...</span>
                     </h1>
                     <p class="text-lg md:text-2xl text-slate-400 mb-14 max-w-3xl mx-auto font-medium leading-relaxed">
@@ -114,52 +155,149 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE ARQUITECTURA -->
-        <section id="arquitectura" class="tab-content py-32 px-4">
-            <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-5xl font-header mb-4 italic uppercase">SAIE Arquitectura</h2>
-                <div class="w-24 h-1.5 bg-cyan-600 mx-auto mb-12 rounded-full"></div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="p-12 bg-white rounded-[3rem] border border-slate-100 shadow-sm text-left hover:shadow-2xl transition group">
-                        <i class="fas fa-pencil-ruler text-5xl text-cyan-600 mb-8 group-hover:scale-110 transition"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase">Diseño de Autor</h4>
-                        <p class="text-slate-500 leading-relaxed text-lg">Creamos arquitectura con identidad única, optimizando recursos y maximizando el impacto visual de cada espacio.</p>
+        <!-- SECCIÓN: SAIE ARQUITECTURA (Despacho Integral) -->
+        <section id="arquitectura" class="tab-content py-32 px-4 bg-architecture">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900">SAIE Arquitectura & Obra</h2>
+                    <p class="text-slate-600 text-xl font-bold tracking-widest uppercase">Servicios Integrales de Construcción Profesional</p>
+                    <div class="w-32 h-1.5 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card p-10 bg-white/70 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <i class="fas fa-pen-nib text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Arquitectura & Diseño de Autor</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Conceptos únicos y funcionales. Transformamos espacios con una visión estética de vanguardia y eficiencia espacial.</p>
                     </div>
-                    <div class="p-12 bg-white rounded-[3rem] border border-slate-100 shadow-sm text-left hover:shadow-2xl transition group">
-                        <i class="fas fa-hard-hat text-5xl text-cyan-600 mb-8 group-hover:scale-110 transition"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase">Gestión Técnica Total</h4>
-                        <p class="text-slate-500 leading-relaxed text-lg">Supervisión experta que garantiza que la realidad supere al render. Calidad constructiva sin compromisos.</p>
+                    <div class="service-card p-10 bg-white/70 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <i class="fas fa-hard-hat text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Supervisión Técnica de Obra</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Control riguroso de calidad, tiempos y presupuestos. Garantizamos que lo proyectado se ejecute con excelencia.</p>
+                    </div>
+                    <div class="service-card p-10 bg-white/70 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <i class="fas fa-bolt text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Instalaciones Eléctricas</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Redes eléctricas seguras y certificadas. Instalación de tableros, iluminación profesional y domótica inteligente.</p>
+                    </div>
+                    <div class="service-card p-10 bg-white/70 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <i class="fas fa-th-large text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Tablaroca & Acabados</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Sistemas de construcción ligera. Muros divisorios, plafones decorativos y nichos arquitectónicos con acabados nivel 5.</p>
+                    </div>
+                    <div class="service-card p-10 bg-white/70 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <i class="fas fa-tint text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Plomería & Hidrosanitarios</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Ingeniería hidráulica de alta durabilidad. Redes de agua fría/caliente y drenajes con pruebas de presión profesional.</p>
+                    </div>
+                    <div class="service-card p-10 bg-white/70 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <i class="fas fa-fill-drip text-4xl text-cyan-600 mb-6"></i>
+                        <h4 class="text-2xl font-black mb-4 uppercase italic">Pintura & Recubrimientos</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed font-medium">Acabados estéticos de lujo. Aplicación de pintura vinílica, esmaltes y recubrimientos texturizados de alta resistencia.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE EDUCACIÓN -->
+        <!-- SECCIÓN: SAIE EDUCACIÓN (Restaurada) -->
         <section id="educacion" class="tab-content py-32 px-4">
-            <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-5xl font-header mb-4 italic uppercase">SAIE Educación</h2>
-                <div class="w-24 h-1.5 bg-cyan-600 mx-auto mb-12 rounded-full"></div>
-                <div class="grid md:grid-cols-3 gap-8 text-white">
-                    <div class="p-10 bg-slate-900 rounded-[2.5rem] shadow-xl">
-                        <i class="fas fa-terminal text-3xl mb-8 text-cyan-400"></i>
-                        <h4 class="text-2xl font-bold mb-4 italic uppercase">AutoCAD Master</h4>
-                        <p class="text-slate-400 leading-relaxed">Domina la lógica de programación y automatización para reducir tus tiempos de dibujo en un 70%.</p>
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-header mb-4 italic uppercase">Programas de Especialización</h2>
+                    <p class="text-slate-500 text-xl font-medium">Formación integral potenciada por Inteligencia Artificial.</p>
+                    <div class="w-24 h-1.5 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- AutoCAD -->
+                    <div class="edu-card card-autocad p-8 rounded-[2.5rem] flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-drafting-compass"></i>
+                            </div>
+                            <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">AutoCAD + IA</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Arquitectura Técnica Inteligente</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina AutoCAD desde cero hasta nivel profesional. Diseña planos arquitectónicos integrando IA para optimizar tareas técnicas repetitivas.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-red-600 transition">Inscribirse ahora</button>
                     </div>
-                    <div class="p-10 bg-slate-800 rounded-[2.5rem] shadow-xl">
-                        <i class="fas fa-layer-group text-3xl mb-8 text-blue-400"></i>
-                        <h4 class="text-2xl font-bold mb-4 italic uppercase">BIM Management</h4>
-                        <p class="text-slate-400 leading-relaxed">Modelado inteligente en Revit enfocado a la cuantificación y coordinación de ingenierías.</p>
+                    <!-- SketchUp -->
+                    <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <span class="bg-sky-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Hyper-Render</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Visualización 3D & Post-Producción</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Modelado avanzado con SketchUp, renderizado con V-Ray y retoque con Photoshop, potenciado por IA Generativa.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-sky-500 transition">Inscribirse ahora</button>
                     </div>
-                    <div class="p-10 bg-slate-900 rounded-[2.5rem] shadow-xl">
-                        <i class="fas fa-magic text-3xl mb-8 text-emerald-400"></i>
-                        <h4 class="text-2xl font-bold mb-4 italic uppercase">Hyper-Render IA</h4>
-                        <p class="text-slate-400 leading-relaxed">Visualización fotorrealista potenciada por algoritmos de IA para acabados de nivel cinematográfico.</p>
+                    <!-- Revit -->
+                    <div class="edu-card card-revit p-8 rounded-[2.5rem] flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <span class="bg-blue-700 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">BIM Management</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Revit Integral: Arch + Struc + MEP</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Formación completa en todas las disciplinas BIM. Desarrolla proyectos reales desde el concepto hasta la documentación.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-blue-700 transition">Inscribirse ahora</button>
+                    </div>
+                    <!-- Photoshop -->
+                    <div class="edu-card card-ps p-8 rounded-[2.5rem] flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-indigo-50 text-indigo-900 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                            </div>
+                            <span class="bg-indigo-900 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Post-Producción</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Photoshop para Arquitectos</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Crea láminas impactantes y montajes atmosféricos utilizando IA para el retoque fotográfico de alto nivel arquitectónico.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-indigo-900 transition">Inscribirse ahora</button>
+                    </div>
+                    <!-- Illustrator -->
+                    <div class="edu-card card-ai p-8 rounded-[2.5rem] flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-pen-nib"></i>
+                            </div>
+                            <span class="bg-amber-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Adobe Specialist</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Adobe Illustrator Profesional + IA</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina el diseño vectorial profesional con Adobe Illustrator. Crea identidades visuales e ilustraciones técnicas con IA.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-amber-600 transition">Inscribirse ahora</button>
+                    </div>
+                    <!-- Excel -->
+                    <div class="edu-card card-excel p-8 rounded-[2.5rem] flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-file-excel"></i>
+                            </div>
+                            <span class="bg-emerald-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Data Master</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Excel Pro & Automatización</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Administra datos, genera Dashboards predictivos con IA y automatiza reportes complejos para el área técnica.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-emerald-600 transition">Inscribirse ahora</button>
+                    </div>
+                    <!-- IA Full (RESTAURADO) -->
+                    <div class="edu-card card-ia p-8 rounded-[2.5rem] flex flex-col h-full md:col-span-2 lg:col-span-1">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-box w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Next-Gen Tech</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800 italic uppercase leading-none">Especialista en IA Generativa</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">Domina ChatGPT, Midjourney, Claude y más. Aprende a crear automatizaciones inteligentes y contenido digital desde cero.</p>
+                        <button class="w-full py-4 bg-slate-900 text-white rounded-xl font-black hover:bg-purple-600 transition">Inscribirse ahora</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: RECURSOS -->
+        <!-- SECCIÓN: RECURSOS (Restaurada Completa - 11 Plugins) -->
         <section id="recursos" class="tab-content py-32 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-20">
@@ -167,7 +305,6 @@
                     <p class="text-slate-500 text-xl font-medium">Herramientas de software propietarias para el arquitecto moderno.</p>
                 </div>
 
-                <!-- Sub-navegación Recursos -->
                 <div class="flex flex-wrap justify-center mb-16 gap-2 border-b border-slate-200">
                     <button onclick="showSubTab('autocad')" class="subtab-btn subtab-autocad active px-8 py-4 font-black uppercase tracking-widest text-xs" id="sbtn-autocad">
                         <i class="fas fa-code mr-2"></i> Plugins AutoCAD
@@ -183,86 +320,132 @@
                     </button>
                 </div>
 
-                <!-- CONTENIDO: AUTOCAD PLUGINS -->
                 <div id="sub-autocad" class="sub-tab-content block">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        
-                        <!-- Plugin 1: Wall Engine -->
+                        <!-- 1. Wall Engine -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                                    <i class="fas fa-microchip text-2xl"></i>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-microchip"></i>
                                 </div>
-                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">GM</span>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">GM</span>
                             </div>
-                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Architectural Wall Engine</h4>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Architectural Wall Engine</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Generador de componentes inteligentes. Crea muros paramétricos con metadatos BIM para cuantificación instantánea.</p>
                         </div>
-
-                        <!-- Plugin: DOORS AND WINDOWS MASTER (NUEVO) -->
+                        <!-- 2. Doors & Windows -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                                    <i class="fas fa-door-open text-2xl"></i>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-door-open"></i>
                                 </div>
-                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">IP</span>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">IP</span>
                             </div>
-                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Doors & Windows Master</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">Asistente maestro de vanos. Inserta carpintería arquitectónica <span class="font-bold text-slate-800">automáticamente con un click</span>, escalando puertas y ventanas con precisión quirúrgica.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Doors & Windows Master</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Asistente maestro de vanos. Inserta carpintería arquitectónica automáticamente escalando puertas y ventanas con un click.</p>
                         </div>
-
-                        <!-- Plugin: COTA SPEED -->
+                        <!-- 3. Cota Speed -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                                    <i class="fas fa-ruler-combined text-2xl"></i>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-ruler-combined"></i>
                                 </div>
-                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">DA</span>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">DA</span>
                             </div>
-                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Cota Speed Engine</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">Dimensiones automáticas inteligentes. Acota polilíneas, círculos y bloques ajustando alturas de texto dinámicamente.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Cota Speed Engine</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Dimensiones automáticas inteligentes. Acota polilíneas y bloques ajustando alturas de texto dinámicamente en segundos.</p>
                         </div>
-
-                        <!-- Plugin: MAGIC NUMBER -->
+                        <!-- 4. Magic Number -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                                    <i class="fas fa-sort-numeric-down text-2xl"></i>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-sort-numeric-down"></i>
                                 </div>
-                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">NN</span>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">NN</span>
                             </div>
-                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Magic Number Sequence</h4>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Magic Number Sequence</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">Orquestador de secuencias numéricas. Control total sobre el incremento, posición y tamaño del texto con un solo click.</p>
                         </div>
-
-                        <!-- Plugin: READY FOR SKETCHUP -->
+                        <!-- 5. 3D Sync (Ready for SKP) -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                                    <i class="fas fa-rocket text-2xl"></i>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-rocket"></i>
                                 </div>
-                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">SL</span>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">SL</span>
                             </div>
-                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">3D Sync (Ready for SKP)</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">Limpieza y purga profunda de proyectos. Alinea elementos al plano Z=0 para una exportación impecable a la tercera dimensión.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">3D Sync (Ready for SKP)</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Limpieza y purga profunda de proyectos. Alinea elementos al plano Z=0 para una exportación impecable a SketchUp.</p>
                         </div>
-
-                        <!-- Plugin: MODULATOR MANAGER -->
+                        <!-- 6. Modulator Design -->
                         <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
-                            <div class="flex justify-between items-start mb-8">
-                                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                                    <i class="fas fa-th text-2xl"></i>
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-th"></i>
                                 </div>
-                                <span class="text-[10px] font-black bg-red-100 px-4 py-1 rounded-full text-red-600 uppercase tracking-widest">MF</span>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">MF</span>
                             </div>
-                            <h4 class="text-xl font-black mb-4 text-slate-800 uppercase italic">Modulator Design Manager</h4>
-                            <p class="text-slate-500 text-sm leading-relaxed">Asistente para diseño de mobiliario y revestimientos. Realiza modulaciones automáticas en cualquier geometría rectangular.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Modulator Design Manager</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Asistente para diseño de mobiliario. Realiza modulaciones automáticas en cualquier geometría rectangular con precisión técnica.</p>
                         </div>
-
+                        <!-- 7. Surface Matrix -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-table"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">QA</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Surface Matrix Quantifier</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Calcula automáticamente áreas de acabados, repellados y pintura generando matrices de datos en Excel (CSV) al instante.</p>
+                        </div>
+                        <!-- 8. Global Inventory -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-list-check"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">CQ</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Global Inventory Master</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Auditoría total en un clic. Escanea bloques dinámicos para generar un inventario alfabético listo para tablas de costos.</p>
+                        </div>
+                        <!-- 9. Precision Area -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-vector-square"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">AU</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Precision Area Surveyor</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Cálculo geométrico de alta precisión. Define jerarquías visuales limpias en tus etiquetas de área sin encimar información.</p>
+                        </div>
+                        <!-- 10. Stair Modeler -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-stairs"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">EE</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Stair Modeler (Blondel)</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Cerebro matemático para circulaciones. Aplica la Ley de Blondel para generar tramos de escalera con simbología automática.</p>
+                        </div>
+                        <!-- 11. Structural Core -->
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:border-red-100 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase tracking-widest">DC</span>
+                            </div>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Structural Core Designer</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Ingeniería aplicada. Pre-dimensionamiento basado en NTC México. Genera detalles constructivos escalados automáticamente.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- CONTENIDO OTROS (Placeholders) -->
                 <div id="sub-revit" class="sub-tab-content hidden py-20 text-center">
                     <p class="text-3xl font-black text-blue-700 italic uppercase">Próximamente: Plantillas BIM Profesionales</p>
                 </div>
@@ -294,13 +477,12 @@
 
     <footer class="bg-slate-900 text-white py-20 text-center">
         <p class="font-header text-4xl mb-6">SAIE <span class="text-cyan-500 uppercase">Arquitectura</span></p>
-        <p class="text-slate-500 text-sm uppercase font-black tracking-[0.5em] mb-8 italic">Donde tus ideas se vuelven realidad digital</p>
         <div class="flex justify-center gap-8 text-3xl text-slate-400">
             <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="hover:text-[#1877F2] transition"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/soluciones_arq_edu/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/c/5215562482314" target="_blank" class="hover:text-emerald-500 transition"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <div class="mt-12 text-slate-700 font-bold text-xs uppercase">© 2026 Ecosistema SAIE. Todos los derechos reservados.</div>
+        <div class="mt-12 text-slate-700 font-bold text-xs uppercase italic">© 2026 Ecosistema SAIE. Todos los derechos reservados.</div>
     </footer>
 
     <script>
