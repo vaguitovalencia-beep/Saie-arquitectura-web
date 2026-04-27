@@ -128,10 +128,11 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-4">
-                    <img src="img/logo_saie.png" alt="Logo SAIE" class="w-16 h-16 object-cover rounded-lg shadow-md" onerror="this.src='https://via.placeholder.com/64?text=SAIE'">
+                    <!-- Logo y texto más grandes -->
+                    <img src="img/logo_saie.png" alt="Logo SAIE" class="w-20 h-20 object-cover rounded-xl shadow-md" onerror="this.src='https://via.placeholder.com/80?text=SAIE'">
                     <div class="flex flex-col text-left">
-                        <span class="text-2xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
-                        <span class="text-[10px] font-bold text-cyan-600 uppercase tracking-widest leading-none">Ecosistema SAIE Arquitectura</span>
+                        <span class="text-3xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
+                        <span class="text-xs font-bold text-cyan-600 uppercase tracking-widest leading-none mt-1">Ecosistema SAIE Arquitectura</span>
                     </div>
                 </div>
 
@@ -476,62 +477,57 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: CONTACTO (RESTAURADO COMPLETO) -->
+        <!-- SECCIÓN: CONTACTO (RETOCADO FINAL) -->
         <section id="contacto" class="tab-content py-32 px-4 bg-contact">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">Contacta a SAIE</h2>
-                <p class="text-slate-900 text-lg font-black uppercase tracking-widest mb-12 italic">Estamos listos para materializar tus proyectos</p>
-                <div class="grid lg:grid-cols-2 gap-12 text-left items-start">
+                <p class="text-slate-900 text-lg font-black uppercase tracking-widest mb-16 italic">Estamos listos para materializar tus proyectos</p>
+                
+                <div class="max-w-2xl mx-auto text-left space-y-12">
                     
-                    <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-100 order-2 lg:order-1">
+                    <!-- Vías Directas Iluminadas -->
+                    <div class="bg-white/95 p-10 rounded-[3rem] shadow-2xl border border-slate-100 backdrop-blur-md">
+                        <h4 class="text-2xl font-black mb-8 text-center italic uppercase text-slate-800">Comunicación Directa</h4>
                         <div class="space-y-6">
-                            <div><label class="font-black text-xs uppercase text-slate-400">Nombre completo</label><input type="text" id="contact-name" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 font-bold mt-1"></div>
-                            <div><label class="font-black text-xs uppercase text-slate-400">Mensaje</label><textarea id="contact-msg" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 h-32 mt-1"></textarea></div>
-                            <div class="flex justify-center"><button onclick="sendGeneralContact()" class="btn-circular bg-slate-900 text-white shadow-xl hover:bg-cyan-600 transition"><i class="fas fa-envelope text-3xl"></i></button></div>
+                            
+                            <!-- WhatsApp Panel (Se ilumina en verde al pasar el mouse/click) -->
+                            <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-6 rounded-3xl hover:bg-emerald-500 active:bg-emerald-600 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-emerald-400">
+                                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl shadow-sm group-hover:bg-white group-hover:text-emerald-500 transition-colors"><i class="fab fa-whatsapp"></i></div>
+                                <div>
+                                    <p class="font-black italic text-slate-800 group-hover:text-white transition-colors text-lg uppercase">WhatsApp Directo</p>
+                                    <p class="text-sm text-slate-500 group-hover:text-emerald-50 font-bold transition-colors">+52 556 248 2314</p>
+                                </div>
+                            </a>
+
+                            <!-- Correo Panel (Se ilumina en azul/cyan al pasar el mouse/click) -->
+                            <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-6 rounded-3xl hover:bg-cyan-500 active:bg-cyan-600 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-cyan-400">
+                                <div class="w-16 h-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-3xl shadow-sm group-hover:bg-white group-hover:text-cyan-500 transition-colors"><i class="fas fa-at"></i></div>
+                                <div>
+                                    <p class="font-black italic text-slate-800 group-hover:text-white transition-colors text-lg uppercase">Correo Electrónico</p>
+                                    <p class="text-sm text-slate-500 group-hover:text-cyan-50 font-bold transition-colors">arquival_al90@outlook.es</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Vías Directas & Compartir Restauradas -->
-                    <div class="space-y-8 order-1 lg:order-2">
-                        <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100">
-                            <h4 class="text-2xl font-black mb-6 italic uppercase text-slate-800">Comunicación Directa</h4>
-                            <div class="space-y-6">
-                                <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-emerald-50 transition group">
-                                    <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fab fa-whatsapp"></i></div>
-                                    <div>
-                                        <p class="font-black text-slate-800 italic uppercase">WhatsApp Directo</p>
-                                        <p class="text-sm text-slate-500 font-bold">+52 556 248 2314</p>
-                                    </div>
-                                </a>
-                                <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-4 rounded-2xl hover:bg-cyan-50 transition group">
-                                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-2xl shadow-sm"><i class="fas fa-at"></i></div>
-                                    <div>
-                                        <p class="font-black text-slate-800 italic uppercase">Correo Electrónico</p>
-                                        <p class="text-sm text-slate-500 font-bold">arquival_al90@outlook.es</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Bloque de Compartir -->
-                        <div class="bg-slate-900 p-10 rounded-[3rem] shadow-xl text-white">
-                            <h4 class="text-2xl font-black mb-4 italic uppercase text-cyan-400">¿Te gusta nuestro trabajo?</h4>
-                            <p class="text-slate-400 text-sm mb-8 font-medium italic">Ayúdanos a expandir el ecosistema SAIE compartiendo nuestra página en tus redes sociales.</p>
-                            
-                            <div class="grid grid-cols-3 gap-4 text-center">
-                                <a href="https://api.whatsapp.com/send?text=¡Mira el ecosistema digital de SAIE Arquitectura! https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-emerald-600 transition">
-                                    <i class="fab fa-whatsapp text-2xl"></i>
-                                    <span class="text-[10px] font-black uppercase tracking-widest">WhatsApp</span>
-                                </a>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition">
-                                    <i class="fab fa-facebook-f text-2xl"></i>
-                                    <span class="text-[10px] font-black uppercase tracking-widest">Facebook</span>
-                                </a>
-                                <button onclick="shareSite()" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-cyan-600 transition cursor-pointer">
-                                    <i class="fas fa-share-alt text-2xl"></i>
-                                    <span class="text-[10px] font-black uppercase tracking-widest">Otros</span>
-                                </button>
-                            </div>
+                    <!-- Bloque de Compartir -->
+                    <div class="bg-slate-900 p-10 rounded-[3rem] shadow-xl text-white">
+                        <h4 class="text-2xl font-black mb-4 italic uppercase text-cyan-400 text-center">¿Te gusta nuestro trabajo?</h4>
+                        <p class="text-slate-400 text-sm mb-8 font-medium italic text-center">Ayúdanos a expandir el ecosistema SAIE compartiendo nuestra página en tus redes sociales.</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <a href="https://api.whatsapp.com/send?text=¡Mira el ecosistema digital de SAIE Arquitectura! https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-emerald-600 transition">
+                                <i class="fab fa-whatsapp text-2xl"></i>
+                                <span class="text-[10px] font-black uppercase tracking-widest">WhatsApp</span>
+                            </a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition">
+                                <i class="fab fa-facebook-f text-2xl"></i>
+                                <span class="text-[10px] font-black uppercase tracking-widest">Facebook</span>
+                            </a>
+                            <button onclick="shareSite()" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-cyan-600 transition cursor-pointer">
+                                <i class="fas fa-share-alt text-2xl"></i>
+                                <span class="text-[10px] font-black uppercase tracking-widest">Otros</span>
+                            </button>
                         </div>
                     </div>
 
@@ -588,12 +584,6 @@
             const subject = encodeURIComponent(`Inscripción: ${courseName}`);
             const body = encodeURIComponent(`Hola SAIE,\nMe gustaría inscribirme en: ${courseName}`);
             window.location.href = `mailto:arquival_al90@outlook.es?subject=${subject}&body=${body}`;
-        }
-
-        function sendGeneralContact() {
-            const name = document.getElementById('contact-name').value;
-            const msg = document.getElementById('contact-msg').value;
-            window.location.href = `mailto:arquival_al90@outlook.es?subject=CONTACTO&body=Nombre: ${name}\nMensaje: ${msg}`;
         }
 
         function shareSite() {
