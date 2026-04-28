@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Evitar indexación de rutas sensibles si llegas a crear backend
+
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://saiearquitectura.vercel.app/sitemap.xml
