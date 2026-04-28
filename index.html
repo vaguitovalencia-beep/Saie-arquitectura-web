@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAIE | Arquitectura & Educación Digital</title>
+    <title>SAIE Arquitectura | Construcción y Educación Digital</title>
+    <meta name="description" content="En SAIE Arquitectura integramos diseño, construcción y educación en un solo ecosistema. Cursos de AutoCAD, Revit, SketchUp, BIM, Photoshop, Illustrator y IA.">
+    <meta name="keywords" content="Arquitectura, Construcción, Obra Civil, Educación Digital, Cursos Online, AutoCAD, Revit, BIM, SketchUp, V-Ray, Photoshop, Illustrator, Excel, Inteligencia Artificial, Diseño de Interiores, Renderizado 3D, Plugins AutoCAD">
+    <meta name="author" content="SAIE Arquitectura">
+    <link rel="canonical" href="https://saiearquitectura.vercel.app/" />
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -13,7 +18,8 @@
         .font-header { font-family: 'Oswald', sans-serif; }
 
         .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         .nav-link.active { color: #06b6d4; border-bottom: 2px solid #06b6d4; }
 
@@ -29,29 +35,29 @@
             font-weight: 900;
         }
 
-        /* Fondos Reales SAIE */
+        /* Fondos Dinámicos y Resaltados */
         .bg-hero {
-            background-image: linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.7)), 
-                              url('img/diseño_saie2.png');
-            background-size: cover; background-position: center;
+            background-image: linear-gradient(rgba(2, 6, 23, 0.4), rgba(2, 6, 23, 0.8)), url('img/saie_inicio.webp');
+            background-size: cover; background-position: center; background-attachment: fixed;
         }
 
         .bg-architecture {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.8)), 
-                              url('img/diseño_saie3.png');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.85)), url('img/diseño_saie3.png');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .bg-educacion {
+            background-image: linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.95)), url('img/saie_educacion.webp');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
 
         .bg-recursos {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.85)), 
-                              url('img/saie_edu1.png');
+            background-image: linear-gradient(rgba(248, 250, 252, 0.6), rgba(248, 250, 252, 0.85)), url('img/saie_recursos.webp');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
 
-        /* Fondo de Contacto más resaltado */
         .bg-contact {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.75)), 
-                              url('img/diseño_saie.png');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8)), url('img/saie_contacto.webp');
             background-size: cover; background-position: center; background-attachment: fixed;
         }
 
@@ -61,78 +67,100 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .authority-shadow {
-            text-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
+        .authority-shadow { text-shadow: 0 10px 30px rgba(0,0,0,0.6); }
 
         /* Pantalla de Video Central */
         .video-cinema-frame {
-            position: relative;
-            z-index: 10;
+            position: relative; z-index: 10;
             border: 4px solid rgba(255, 255, 255, 0.1);
             border-radius: 1.5rem;
             box-shadow: 0 0 50px rgba(6, 182, 212, 0.15), 0 20px 40px rgba(0,0,0,0.6);
-            overflow: hidden;
-            background: #000;
+            overflow: hidden; background: #000;
         }
+        
+        .volume-control {
+            position: absolute; bottom: 20px; right: 20px;
+            z-index: 50; background: rgba(0,0,0,0.4);
+            color: rgba(255,255,255,0.7); width: 45px; height: 45px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .volume-control:hover { background: #06b6d4; color: white; transform: scale(1.1); }
 
+        /* Cards y Logos */
         .software-logo {
-            width: 60px; height: 60px; object-fit: contain;
+            width: 70px; height: 70px; object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
 
-        /* Educación: Cards con Color Corporativo */
         .edu-card { 
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             color: white; border: 1px solid rgba(255,255,255,0.1);
         }
-        .edu-card:hover { transform: translateY(-10px); filter: brightness(1.1); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .edu-card p { color: rgba(255,255,255,0.8); }
+        .edu-card:hover { transform: translateY(-10px); filter: brightness(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .edu-card p { color: rgba(255,255,255,0.85); }
 
-        .card-autocad { background-color: #ef4444; } 
-        .card-sketchup { background-color: #0ea5e9; } 
-        .card-revit { background-color: #1d4ed8; } 
+        .card-autocad { background-color: #dc2626; } 
+        .card-sketchup { background-color: #0284c7; } 
+        .card-revit { background-color: #1e40af; } 
         .card-ps { background-color: #312e81; } 
-        .card-ai { background-color: #f59e0b; } 
-        .card-excel { background-color: #10b981; } 
+        .card-ai { background-color: #d97706; } 
+        .card-excel { background-color: #059669; } 
         .card-ia-black { background-color: #1e1b4b; } 
 
-        /* Plugins Panel: Fondo más claro para texto legible */
         .plugin-card {
-            background-color: rgba(255, 255, 255, 0.95); /* Fondo casi blanco para contraste */
+            background-color: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(251, 146, 60, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            transition: all 0.3s ease; backdrop-filter: blur(5px);
         }
         .plugin-card:hover {
             background-color: rgba(255, 255, 255, 1); 
-            border-color: rgba(239, 68, 68, 0.5);
-            transform: scale(1.02);
+            border-color: rgba(239, 68, 68, 0.5); transform: scale(1.02);
             box-shadow: 0 15px 30px rgba(239, 68, 68, 0.15);
         }
 
-        .volume-control {
-            position: absolute; bottom: 20px; right: 20px;
-            z-index: 50; background: rgba(0,0,0,0.5);
-            color: white; width: 45px; height: 45px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.3s;
+        /* Testimonios Vertical Marquee */
+        .marquee-container { height: 500px; overflow: hidden; position: relative; }
+        .marquee-container::before, .marquee-container::after {
+            content: ""; position: absolute; left: 0; right: 0; height: 100px; z-index: 10;
         }
-        .volume-control:hover { background: #06b6d4; }
+        .marquee-container::before { top: 0; background: linear-gradient(to bottom, rgba(248,250,252,1), transparent); }
+        .marquee-container::after { bottom: 0; background: linear-gradient(to top, rgba(248,250,252,1), transparent); }
+        
+        .marquee-content { animation: scroll-up 20s linear infinite; }
+        .marquee-container:hover .marquee-content { animation-play-state: paused; }
+        @keyframes scroll-up { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+
+        /* Estilos de Galería */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 1rem; cursor: pointer; aspect-ratio: 4/3; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* Precio Badge */
+        .price-badge { position: absolute; top: -10px; right: 20px; padding: 4px 12px; border-radius: 999px; font-weight: 900; font-size: 0.8rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .price-pay { background: #059669; color: white; }
+        .price-free { background: #3b82f6; color: white; }
+
+        /* Estilos de botones de video bloqueados */
+        video { outline: none; }
+        video::-webkit-media-controls-enclosure { overflow: hidden; }
+        video::-webkit-media-controls-panel { width: calc(100% + 30px); }
     </style>
 </head>
-<body class="text-slate-900">
+<body class="text-slate-900 bg-slate-50">
 
     <!-- Navegación Principal -->
     <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-4">
-                    <!-- Logo y texto más grandes -->
-                    <img src="img/logo_saie.png" alt="Logo SAIE" class="w-20 h-20 object-cover rounded-xl shadow-md" onerror="this.src='https://via.placeholder.com/80?text=SAIE'">
+                    <img src="img/logotipo_saie.webp" alt="Logotipo SAIE" class="w-16 h-16 object-contain" loading="lazy" onerror="this.src='https://via.placeholder.com/64?text=SAIE'">
                     <div class="flex flex-col text-left">
                         <span class="text-3xl font-black leading-none uppercase tracking-tighter text-slate-800">SAIE</span>
-                        <span class="text-xs font-bold text-cyan-600 uppercase tracking-widest leading-none mt-1">Ecosistema SAIE Arquitectura</span>
+                        <span class="text-[11px] font-bold text-cyan-600 uppercase tracking-widest leading-none mt-1">Ecosistema SAIE Arquitectura</span>
                     </div>
                 </div>
 
@@ -144,7 +172,18 @@
                     <button onclick="showTab('contacto')" class="bg-cyan-600 text-white px-5 py-2 rounded-xl font-bold hover:bg-cyan-700 transition shadow-lg" id="btn-contacto">Contacta a SAIE</button>
                 </div>
 
-                <button class="md:hidden text-slate-800"><i class="fas fa-bars text-2xl"></i></button>
+                <!-- Botón Hamburguesa -->
+                <button id="mobile-btn" class="md:hidden text-slate-800 p-2"><i class="fas fa-bars text-2xl"></i></button>
+            </div>
+        </div>
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <button onclick="showTab('inicio')" class="text-left font-bold text-slate-700 hover:text-cyan-600">Inicio</button>
+                <button onclick="showTab('arquitectura')" class="text-left font-bold text-slate-700 hover:text-cyan-600">SAIE Arquitectura</button>
+                <button onclick="showTab('educacion')" class="text-left font-bold text-slate-700 hover:text-cyan-600">SAIE Educación</button>
+                <button onclick="showTab('recursos')" class="text-left font-bold text-slate-700 hover:text-cyan-600">Recursos</button>
+                <button onclick="showTab('contacto')" class="text-center bg-cyan-600 text-white py-3 rounded-xl font-bold">Contacta a SAIE</button>
             </div>
         </div>
     </nav>
@@ -155,342 +194,568 @@
         <section id="inicio" class="tab-content active pt-20 bg-hero relative overflow-hidden">
             <div class="min-h-screen flex flex-col items-center justify-center py-20 px-4 relative">
                 
-                <div class="relative z-20 text-center mb-[-70px]">
-                    <h1 class="text-4xl md:text-7xl font-black leading-[0.85] authority-shadow text-white uppercase italic tracking-tighter">
-                        bienvenido a <span class="text-professional-blue">SAIE Arquitectura...</span>
+                <div class="relative z-20 text-center mb-[-60px]">
+                    <h1 class="text-5xl md:text-8xl font-black leading-[0.85] authority-shadow text-white uppercase italic tracking-tighter">
+                        SAIE... <span class="text-professional-blue">TU PROPIO ECOSISTEMA</span>
                     </h1>
                 </div>
 
+                <!-- Video Principal Lazy -->
                 <div class="w-full max-w-4xl video-cinema-frame my-12 aspect-video relative group">
-                    <video id="main-playlist-video" class="w-full h-full object-cover" muted autoplay playsinline>
-                        <source src="video/promo_saie.mp4" type="video/mp4">
+                    <video id="hero-video" class="w-full h-full object-cover" muted loop playsinline controlsList="nodownload" oncontextmenu="return false;" autoplay>
+                        <source src="video/intro_iniciosaie.mp4" type="video/mp4">
                     </video>
-                    <div id="volume-toggle" class="volume-control" onclick="toggleMute()">
-                        <i id="vol-icon" class="fas fa-volume-mute"></i>
+                    <div id="volume-toggle" class="volume-control" onclick="toggleMute('hero-video', 'vol-icon-hero')">
+                        <i id="vol-icon-hero" class="fas fa-volume-mute"></i>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
                 </div>
 
-                <div class="relative z-20 text-center mt-[-60px]">
-                    <h2 class="text-3xl md:text-5xl font-black text-slate-100 tracking-tighter italic uppercase authority-shadow">
-                        este Ecosistema es <span class="text-cyan-400">para ti...</span>
-                    </h2>
+                <div class="relative z-20 text-center max-w-4xl mx-auto px-4 mt-[-40px] bg-slate-900/60 backdrop-blur-sm p-8 rounded-3xl border border-white/10 shadow-2xl">
+                    <p class="text-lg md:text-xl text-white font-medium leading-relaxed italic">
+                        En SAIE Arquitectura integramos el diseño, la construcción y la educación en un solo ecosistema, donde la tecnología y la innovación se convierten en herramientas clave para el desarrollo profesional.
+                    </p>
+                    <div class="w-16 h-1 bg-cyan-500 mx-auto my-6 rounded-full"></div>
+                    <p class="text-sm md:text-md text-slate-300 font-normal leading-relaxed">
+                        Nuestro enfoque combina la experiencia en proyectos reales con formación práctica y soluciones digitales, permitiendo a estudiantes y profesionales adquirir habilidades aplicables, optimizar sus procesos de trabajo y elevar la calidad de sus resultados.
+                    </p>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-6 mt-20 relative z-30">
+                <div class="flex flex-wrap justify-center gap-6 mt-16 relative z-30">
                     <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="flex items-center gap-4 px-8 py-4 bg-[#1877F2] text-white rounded-2xl font-black hover:scale-105 transition shadow-2xl">
                         <i class="fab fa-facebook-f text-xl"></i> Facebook
                     </a>
                     <button onclick="showTab('educacion')" class="flex items-center gap-4 px-8 py-4 bg-cyan-600 text-white rounded-2xl font-black hover:scale-105 transition shadow-2xl">
                         <i class="fas fa-laptop-code"></i> Explorar Educación
                     </button>
-                    <!-- BOTÓN PORTAFOLIO RESTAURADO -->
                     <button onclick="showTab('arquitectura')" class="flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-2xl font-black hover:bg-white hover:text-slate-900 transition shadow-2xl">
                         <i class="fas fa-project-diagram"></i> Portafolio Obra
                     </button>
                 </div>
+
+                <div class="mt-20 max-w-3xl text-center relative z-20">
+                    <p class="text-sm text-slate-400 italic tracking-wide">
+                        "Creemos en una nueva forma de aprender y construir, donde el conocimiento no solo se enseña, sino que se aplica. Por eso, desarrollamos cursos, herramientas y metodologías que acompañan a nuestros usuarios en cada etapa, desde el aprendizaje hasta la ejecución de proyectos, impulsando su crecimiento en un entorno cada vez más competitivo y tecnológico."
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: SAIE ARQUITECTURA (CON MÁS SERVICIOS) -->
+        <!-- SECCIÓN: SAIE ARQUITECTURA -->
         <section id="arquitectura" class="tab-content py-32 px-4 bg-architecture">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">SAIE Arquitectura & Obra</h2>
-                    <p class="text-slate-800 text-xl font-bold tracking-widest uppercase">Servicios Integrales de Construcción Profesional</p>
-                    <div class="w-32 h-1.5 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
+                <div class="text-center mb-16 bg-white/90 backdrop-blur-md p-10 rounded-3xl shadow-xl inline-block w-full">
+                    <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">Nuestros Servicios</h2>
+                    <div class="w-32 h-1.5 bg-cyan-600 mx-auto mt-6 mb-6 rounded-full"></div>
+                    <p class="text-slate-700 text-lg font-medium leading-relaxed max-w-4xl mx-auto">
+                        En nuestro despacho arquitectónico ofrecemos soluciones integrales que abarcan desde el diseño conceptual hasta la ejecución y mantenimiento de obra. Nos especializamos en desarrollar proyectos funcionales, estéticos y técnicamente bien resueltos, respaldados por un equipo profesional y mano de obra altamente calificada.
+                    </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                    <!-- 1 -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-pen-nib text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Arquitectura & Diseño</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Conceptos únicos y funcionales. Transformamos espacios con una visión estética de vanguardia enfocada en las necesidades del cliente.</p>
+                <!-- Pestañas Internas Arquitectura -->
+                <div class="flex justify-center mb-12 gap-4">
+                    <button onclick="showSubArq('arq-servicios')" class="arq-btn active px-8 py-3 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest text-sm shadow-xl transition hover:bg-cyan-600">Servicios</button>
+                    <button onclick="showSubArq('arq-trabajo')" class="arq-btn px-8 py-3 bg-white text-slate-600 rounded-full font-black uppercase tracking-widest text-sm shadow-xl transition hover:text-cyan-600">Nuestro Trabajo</button>
+                </div>
+
+                <!-- Servicios Grid (14 Paneles) -->
+                <div id="arq-servicios" class="arq-content block">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-university text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Diseño Arquitectónico</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Creamos propuestas arquitectónicas personalizadas, adaptadas a tus necesidades, estilo de vida y presupuesto. Cuidamos funcionalidad, estética y aprovechamiento óptimo de los espacios.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-drafting-compass text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Planos y Proyectos Ejecutivos</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Elaboramos planos detallados para construcción, incluyendo plantas, cortes, fachadas y especificaciones técnicas para una correcta planeación.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-cube text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Renderizado y Visualización 3D</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Generamos imágenes fotorrealistas de tus proyectos para que puedas visualizar el resultado final antes de construir.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-lightbulb text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Diseño de Iluminación</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Proyectos de iluminación que combinan estética y funcionalidad, resaltando espacios arquitectónicos interiores y exteriores.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-map-marked-alt text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Digitalización y Levantamientos</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Convertimos planos físicos en archivos digitales profesionales (CAD) y realizamos levantamientos en sitio precisos.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-hammer text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Construcción y Albañilería</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Ejecutamos obras desde cimentación hasta acabados finales, garantizando calidad estructural y cumplimiento de tiempos.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-bolt text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Instalaciones Eléctricas</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Diseño e instalación de sistemas eléctricos seguros y eficientes, comerciales y residenciales, cumpliendo normativas.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-tint text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Plomería e Hidrosanitarios</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Mantenimiento e instalación de redes de agua potable y drenaje. Aseguramos sistemas duraderos y libres de fugas.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-border-all text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Tablaroca y Sistemas Ligeros</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Construcción de muros, plafones y divisiones con acabados modernos, limpios e ideales para remodelaciones.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-layer-group text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Colocación de Pisos</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Instalamos cerámicos, porcelanatos y recubrimientos cuidando alineación y nivelación de alta calidad.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-fill-drip text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Pintura y Acabados</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Aplicación en interiores y exteriores con materiales de calidad, logrando acabados duraderos y atractivos.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-tools text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Remodelaciones</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Transformamos espacios existentes para mejorar su funcionalidad y valor, desde cambios pequeños hasta renovaciones.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-wrench text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Mantenimiento General</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Servicios preventivos y correctivos para conservar tus instalaciones en óptimas condiciones.</p>
+                        </div>
+                        <div class="service-card p-8 bg-white/90 rounded-[2rem] border border-slate-200 shadow-xl">
+                            <i class="fas fa-handshake text-3xl text-cyan-600 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 uppercase italic">Compromiso y Calidad</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed font-medium">Responsabilidad y atención al detalle para superar expectativas ofreciendo soluciones eficientes.</p>
+                        </div>
                     </div>
-                    <!-- 2 NUEVO: Albañilería y Construcción Civil -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-hammer text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Construcción & Obra Civil</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Ejecución de obra desde cimentación hasta acabados. Garantizamos resistencia estructural, calidad de materiales y tiempos de entrega.</p>
-                    </div>
-                    <!-- 3 -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-hard-hat text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Supervisión de Obra</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Control riguroso de calidad, cuadrillas y tiempos. Administramos tu proyecto para garantizar excelencia en cada metro cuadrado.</p>
-                    </div>
-                    <!-- 4 -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-bolt text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Instalaciones Eléctricas</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Redes de media y baja tensión seguras y certificadas. Cuadros de carga, iluminación profesional, tierras físicas y domótica.</p>
-                    </div>
-                    <!-- 5 -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-tint text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Plomería Integral</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Ingeniería hidráulica y sanitaria de durabilidad garantizada. Redes presurizadas, sistemas de bombeo y drenajes eficientes.</p>
-                    </div>
-                    <!-- 6 -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-th-large text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Tablaroca & Acabados</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Sistemas de construcción ligera, muros divisorios, plafones falsos decorativos y nichos con acabados estéticos nivel 5.</p>
-                    </div>
-                    <!-- 7 -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-fill-drip text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Pintura & Recubrimientos</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Acabados estéticos de lujo. Aplicación de pintura vinílica, esmaltes, pastas texturizadas y selladores de alta resistencia.</p>
-                    </div>
-                    <!-- 8 NUEVO: Trámites -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-file-signature text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Gestoría & Trámites</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Permisos de construcción, licencias, firmas de peritos (DRO) y regularizaciones. Facilitamos la viabilidad legal de tus proyectos.</p>
-                    </div>
-                    <!-- 9 NUEVO: Modelado BIM -->
-                    <div class="bg-white/80 p-10 rounded-[2.5rem] border border-slate-200 shadow-xl hover:translate-y-[-8px] transition duration-300">
-                        <i class="fas fa-cube text-4xl text-cyan-600 mb-6"></i>
-                        <h4 class="text-2xl font-black mb-4 uppercase italic">Gestión & Modelado BIM</h4>
-                        <p class="text-slate-700 text-sm leading-relaxed font-medium italic">Maquetas virtuales inteligentes para prevención de colisiones en obra y cuantificación exacta de materiales antes de construir.</p>
+                </div>
+
+                <!-- Nuestro Trabajo Grid -->
+                <div id="arq-trabajo" class="arq-content hidden">
+                    <div class="gallery-grid" id="gallery-container">
+                        <!-- Las imágenes se insertan vía JS -->
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SECCIÓN: SAIE EDUCACIÓN -->
-        <section id="educacion" class="tab-content py-32 px-4 bg-white">
+        <section id="educacion" class="tab-content py-32 px-4 bg-educacion">
             <div class="max-w-7xl mx-auto">
-                <div class="mb-20 rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100">
-                    <img src="img/saie_cursoonline.png" alt="Educación SAIE" class="w-full h-auto object-cover">
+                <div class="text-center mb-16 bg-white/90 backdrop-blur-md p-10 rounded-3xl shadow-xl">
+                    <h2 class="text-4xl md:text-5xl font-header mb-6 italic uppercase text-slate-900 authority-shadow">Formación Profesional SAIE</h2>
+                    <p class="text-slate-700 text-lg font-medium leading-relaxed max-w-4xl mx-auto">
+                        SAIE Educación es una plataforma de formación enfocada en arquitectura, construcción y herramientas digitales, donde el aprendizaje se basa en la práctica real.
+                        <br><br>
+                        Nuestros cursos integran software, metodología y tecnología para ayudarte a desarrollar proyectos de manera profesional, eficiente y competitiva.
+                    </p>
                 </div>
 
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl font-header mb-4 italic uppercase text-slate-900">Programas de Especialización</h2>
-                    <p class="text-slate-500 text-xl font-medium italic">Domina las herramientas que definen la arquitectura moderna.</p>
-                    <div class="w-24 h-1.5 bg-cyan-600 mx-auto mt-6 rounded-full"></div>
-                </div>
-
+                <!-- Cursos -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- AutoCAD -->
-                    <div class="edu-card card-autocad p-8 rounded-[2.5rem] flex flex-col h-full text-left">
-                        <div class="flex justify-between items-start mb-6">
-                            <img src="img/autocad_logo.png" alt="AutoCAD" class="software-logo">
-                            <span class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic">AutoCAD + IA</span>
+                    <!-- SketchUp -->
+                    <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full text-left relative">
+                        <div class="flex justify-center mb-6">
+                            <img src="img/Sketchupvray_saie.webp" alt="SketchUp" class="w-full h-40 object-cover rounded-xl shadow-lg" loading="lazy">
                         </div>
-                        <div class="mb-6 rounded-2xl overflow-hidden bg-black/20">
-                            <video controls class="w-full aspect-video object-cover"><source src="video/autocad_promo.mp4" type="video/mp4"></video>
+                        <div class="mb-4 rounded-2xl overflow-hidden bg-black/20">
+                            <video class="w-full aspect-video object-cover lazy-video" preload="none" controls controlsList="nodownload" oncontextmenu="return false;">
+                                <source src="video/promo_sketchup.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 italic uppercase">AutoCAD Inteligente: Básico a Pro</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡Diseña el futuro hoy mismo! 🚀 Domina planos técnicos con precisión extrema. Integramos IA para automatizar tareas repetitivas y potenciar tu productividad inteligente.</p>
-                        <button onclick="openEnrollment('AutoCAD Básico-Avanzado + IA')" class="w-full py-4 bg-white text-red-600 rounded-xl font-black hover:bg-slate-100 transition">Inscribirse ahora</button>
+                        <h3 class="text-2xl font-black mb-4 italic uppercase leading-tight">Curso de SketchUp + V-Ray + Photoshop + AI</h3>
+                        <p class="text-sm leading-relaxed mb-4 italic font-bold">¡Da vida a tus ideas y crea presentaciones visuales impactantes! 🚀</p>
+                        <p class="text-xs leading-relaxed mb-4 flex-grow opacity-90">Modelado, renderizado fotorrealista y postproducción profesional. Integramos IA para optimizar materiales e iluminación, mejorando tu productividad.<br><br>✅ Instructores certificados<br>✅ Integración de IA<br>✅ Certificación profesional</p>
+                        <button onclick="openEnrollment('SketchUp + V-Ray + PS + IA')" class="w-full py-4 bg-white text-sky-600 rounded-xl font-black hover:bg-slate-100 transition mt-auto">Inscribirse ahora</button>
                     </div>
 
-                    <!-- SketchUp -->
-                    <div class="edu-card card-sketchup p-8 rounded-[2.5rem] flex flex-col h-full text-left">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="flex gap-2"><img src="img/logo_sketchup.png" alt="SKP" class="software-logo"><img src="img/logo_vray.png" alt="Vray" class="software-logo"></div>
-                            <span class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic">Visualización + IA</span>
+                    <!-- AutoCAD -->
+                    <div class="edu-card card-autocad p-8 rounded-[2.5rem] flex flex-col h-full text-left relative">
+                        <div class="flex justify-center mb-6">
+                            <img src="img/autocad_saie.webp" alt="AutoCAD" class="w-full h-40 object-cover rounded-xl shadow-lg" loading="lazy">
                         </div>
-                        <div class="mb-6 rounded-2xl overflow-hidden bg-black/20">
-                            <video controls class="w-full aspect-video object-cover"><source src="video/sketchup_promo.mp4" type="video/mp4"></video>
+                        <div class="mb-4 rounded-2xl overflow-hidden bg-black/20">
+                            <video class="w-full aspect-video object-cover lazy-video" preload="none" controls controlsList="nodownload" oncontextmenu="return false;">
+                                <source src="video/promo_autocad.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 italic uppercase">SketchUp + V-Ray + Photoshop Master</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡Da vida a tus ideas! 🚀 Aprende modelado, renderizado fotorrealista y post-producción profesional. Usamos IA para optimizar iluminación y materiales con resultados de alto impacto.</p>
-                        <button onclick="openEnrollment('SketchUp + V-Ray + Photoshop + IA')" class="w-full py-4 bg-white text-sky-600 rounded-xl font-black hover:bg-slate-100 transition">Inscribirse ahora</button>
+                        <h3 class="text-2xl font-black mb-4 italic uppercase leading-tight">Curso de AutoCAD Básico – Avanzado + IA</h3>
+                        <p class="text-sm leading-relaxed mb-4 italic font-bold">¡Domina AutoCAD desde cero hasta un nivel profesional! 🚀</p>
+                        <p class="text-xs leading-relaxed mb-4 flex-grow opacity-90">Diseña planos arquitectónicos y estructurales con precisión. Herramientas de IA para optimizar tareas repetitivas y potenciar productividad.<br><br>✅ Metodología moderna<br>✅ Flujo de trabajo con IA<br>✅ Certificación profesional</p>
+                        <button onclick="openEnrollment('AutoCAD Básico-Avanzado + IA')" class="w-full py-4 bg-white text-red-600 rounded-xl font-black hover:bg-slate-100 transition mt-auto">Inscribirse ahora</button>
                     </div>
 
                     <!-- Revit -->
-                    <div class="edu-card card-revit p-8 rounded-[2.5rem] flex flex-col h-full text-left">
-                        <div class="flex justify-between items-start mb-6">
-                            <img src="img/logo_revit.png" alt="Revit" class="software-logo">
-                            <span class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic">BIM Integral</span>
+                    <div class="edu-card card-revit p-8 rounded-[2.5rem] flex flex-col h-full text-left relative">
+                        <div class="flex justify-center mb-6">
+                            <img src="img/revit_saie.webp" alt="Revit" class="w-full h-40 object-cover rounded-xl shadow-lg" loading="lazy">
                         </div>
-                        <div class="mb-6 rounded-2xl overflow-hidden bg-black/20">
-                            <video controls class="w-full aspect-video object-cover"><source src="video/revit_promo.mp4" type="video/mp4"></video>
+                        <div class="mb-4 rounded-2xl overflow-hidden bg-black/20">
+                            <video class="w-full aspect-video object-cover lazy-video" preload="none" controls controlsList="nodownload" oncontextmenu="return false;">
+                                <source src="video/revit_promo.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 italic uppercase">Revit + BIM Management + IA</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡Domina la revolución BIM! 🚀 Formación integral en Arquitectura, Estructuras y MEP. Desarrolla proyectos reales coordinados y automatizados mediante Inteligencia Artificial.</p>
-                        <button onclick="openEnrollment('Revit + BIM Profesional + IA')" class="w-full py-4 bg-white text-blue-700 rounded-xl font-black hover:bg-slate-100 transition">Inscribirse ahora</button>
+                        <h3 class="text-2xl font-black mb-4 italic uppercase leading-tight">Curso Completo de Revit + BIM + IA</h3>
+                        <p class="text-sm leading-relaxed mb-4 italic font-bold">¡Domina el software que revoluciona la construcción! 🚀</p>
+                        <p class="text-xs leading-relaxed mb-4 flex-grow opacity-90">Formación integral: Architecture, Structure, MEP y BIM. Automatiza procesos con IA y desarrolla proyectos reales.<br><br>✅ Instructores con experiencia en obra<br>✅ Optimización BIM con IA<br>✅ Certificación profesional</p>
+                        <button onclick="openEnrollment('Revit + BIM + IA')" class="w-full py-4 bg-white text-blue-700 rounded-xl font-black hover:bg-slate-100 transition mt-auto">Inscribirse ahora</button>
                     </div>
 
                     <!-- Photoshop -->
-                    <div class="edu-card card-ps p-8 rounded-[2.5rem] flex flex-col h-full text-left">
-                        <div class="flex justify-between items-start mb-6">
-                            <img src="img/logo_photoshop.png" alt="PS" class="software-logo">
-                            <span class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic">Edición Pro</span>
+                    <div class="edu-card card-ps p-8 rounded-[2.5rem] flex flex-col h-full text-left relative">
+                        <div class="flex justify-center mb-6">
+                            <img src="img/photoshop_saie.webp" alt="Photoshop" class="w-full h-40 object-cover rounded-xl shadow-lg" loading="lazy">
                         </div>
-                        <h3 class="text-2xl font-black mb-4 italic uppercase">Photoshop Profesional Arq + IA</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡Presentaciones que impactan! 🚀 Domina retoque, fotomontaje y láminas arquitectónicas. Usamos IA Generativa para transformar tus renders en escenas realistas y atmosféricas.</p>
-                        <button onclick="openEnrollment('Photoshop Profesional + IA')" class="w-full py-4 bg-white text-indigo-900 rounded-xl font-black hover:bg-slate-100 transition">Inscribirse ahora</button>
+                        <div class="mb-4 rounded-2xl overflow-hidden bg-black/20">
+                            <video class="w-full aspect-video object-cover lazy-video" preload="none" controls controlsList="nodownload" oncontextmenu="return false;">
+                                <source src="video/Promo Photoshop.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 italic uppercase leading-tight">Photoshop Profesional + IA</h3>
+                        <p class="text-sm leading-relaxed mb-4 italic font-bold">¡Domina la edición digital, retoque y fotomontaje! 🚀</p>
+                        <p class="text-xs leading-relaxed mb-4 flex-grow opacity-90">Crea renders realistas, láminas arquitectónicas y diseño gráfico. Uso de IA para generar fondos, cielos y entornos al instante.<br><br>✅ Postproducción arquitectónica<br>✅ Fotomontaje avanzado<br>✅ Certificación profesional</p>
+                        <button onclick="openEnrollment('Photoshop Profesional + IA')" class="w-full py-4 bg-white text-indigo-900 rounded-xl font-black hover:bg-slate-100 transition mt-auto">Inscribirse ahora</button>
                     </div>
 
                     <!-- Illustrator -->
-                    <div class="edu-card card-ai p-8 rounded-[2.5rem] flex flex-col h-full text-left">
-                        <div class="flex justify-between items-start mb-6">
-                            <img src="img/logo_illustrator.png" alt="AI" class="software-logo">
-                            <span class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic">Branding Pro</span>
+                    <div class="edu-card card-ai p-8 rounded-[2.5rem] flex flex-col h-full text-left relative">
+                        <div class="flex justify-center mb-6">
+                            <img src="img/illustrator_saie.webp" alt="Illustrator" class="w-full h-40 object-cover rounded-xl shadow-lg" loading="lazy">
                         </div>
-                        <h3 class="text-2xl font-black mb-4 italic uppercase">Illustrator Profesional + IA</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡Crea tu marca profesional! 🚀 Domina el diseño vectorial, branding y diagramas técnicos. Potencia tu creatividad con IA para generar propuestas visuales modernas y competitivas.</p>
-                        <button onclick="openEnrollment('Illustrator Profesional + IA')" class="w-full py-4 bg-white text-amber-600 rounded-xl font-black hover:bg-slate-100 transition">Inscribirse ahora</button>
+                        <h3 class="text-2xl font-black mb-4 italic uppercase leading-tight mt-4">Adobe Illustrator + IA Creativa</h3>
+                        <p class="text-sm leading-relaxed mb-4 italic font-bold">¡Diseño vectorial profesional y branding! 🚀</p>
+                        <p class="text-xs leading-relaxed mb-4 flex-grow opacity-90">Crea identidades visuales, láminas técnicas y publicidad. Acelera el flujo de diseño y genera propuestas con Inteligencia Artificial.<br><br>✅ Ilustración digital<br>✅ Optimización con IA<br>✅ Certificación profesional</p>
+                        <button onclick="openEnrollment('Illustrator + IA Creativa')" class="w-full py-4 bg-white text-amber-600 rounded-xl font-black hover:bg-slate-100 transition mt-auto">Inscribirse ahora</button>
                     </div>
 
                     <!-- Excel -->
-                    <div class="edu-card card-excel p-8 rounded-[2.5rem] flex flex-col h-full text-left">
-                        <div class="flex justify-between items-start mb-6">
-                            <img src="img/logo_excel.png" alt="Excel" class="software-logo">
-                            <span class="bg-white/20 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic">Data Intelligence</span>
+                    <div class="edu-card card-excel p-8 rounded-[2.5rem] flex flex-col h-full text-left relative">
+                        <div class="flex justify-center mb-6">
+                            <img src="img/excel_saie.webp" alt="Excel" class="w-full h-40 object-cover rounded-xl shadow-lg" loading="lazy">
                         </div>
-                        <h3 class="text-2xl font-black mb-4 italic uppercase">Excel Pro + Análisis de IA</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡Dominio absoluto de datos! 🚀 Aprende bases de datos, dashboards y automatización con IA para reportes técnicos y financieros que ahorran horas de trabajo manual.</p>
-                        <button onclick="openEnrollment('Excel Profesional + IA')" class="w-full py-4 bg-white text-emerald-600 rounded-xl font-black hover:bg-slate-100 transition">Inscribirse ahora</button>
+                        <div class="mb-4 rounded-2xl overflow-hidden bg-black/20">
+                            <video class="w-full aspect-video object-cover lazy-video" preload="none" controls controlsList="nodownload" oncontextmenu="return false;">
+                                <source src="video/promo_excel.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 italic uppercase leading-tight">Excel Profesional + IA</h3>
+                        <p class="text-sm leading-relaxed mb-4 italic font-bold">¡Domina la herramienta indispensable en oficinas y obra! 🚀</p>
+                        <p class="text-xs leading-relaxed mb-4 flex-grow opacity-90">Básico a Avanzado. Dashboards, automatización con macros e IA para análisis de datos y presupuestos precisos.<br><br>✅ Tablas dinámicas y Macros<br>✅ Reportes automatizados<br>✅ Certificación profesional</p>
+                        <button onclick="openEnrollment('Excel Profesional + IA')" class="w-full py-4 bg-white text-emerald-600 rounded-xl font-black hover:bg-slate-100 transition mt-auto">Inscribirse ahora</button>
                     </div>
 
-                    <!-- IA Card -->
-                    <div class="edu-card card-ia-black p-8 rounded-[2.5rem] flex flex-col h-full md:col-span-2 lg:col-span-1 text-left shadow-2xl">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl"><i class="fas fa-brain"></i></div>
-                            <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase italic tracking-tighter">IA Profesional</span>
+                    <!-- IA Full -->
+                    <div class="edu-card card-ia-black p-8 rounded-[2.5rem] flex flex-col h-full md:col-span-2 lg:col-span-3 text-left shadow-2xl relative">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="w-full md:w-1/3">
+                                <img src="img/ia_saie.webp" alt="IA" class="w-full h-48 object-cover rounded-2xl shadow-lg" loading="lazy">
+                            </div>
+                            <div class="w-full md:w-2/3 flex flex-col h-full">
+                                <h3 class="text-3xl md:text-4xl font-black mb-4 italic uppercase text-purple-400">Inteligencia Artificial — Nivel Profesional</h3>
+                                <p class="text-sm leading-relaxed mb-4 italic font-bold text-white">¡Domina la tecnología que está transformando el mundo! 🚀</p>
+                                <p class="text-sm leading-relaxed mb-6 flex-grow text-slate-300">Aprende IA Generativa, automatización inteligente y análisis de datos. Trabaja con ChatGPT, Claude, Midjourney y más para optimizar tu productividad en cualquier área.</p>
+                                <button onclick="openEnrollment('Inteligencia Artificial Full')" class="w-full py-4 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-500 transition shadow-lg mt-auto text-lg uppercase tracking-widest">Inscribirse ahora</button>
+                            </div>
                         </div>
-                        <h3 class="text-3xl font-black mb-4 italic uppercase text-purple-400">Inteligencia Artificial Full</h3>
-                        <p class="text-sm leading-relaxed mb-8 flex-grow italic">¡La tecnología que transforma el mundo! 🚀 Domina ChatGPT, Midjourney y automatizaciones inteligentes. Una habilidad obligatoria para el éxito en el mercado actual.</p>
-                        <button onclick="openEnrollment('IA Profesional Full')" class="w-full py-4 bg-purple-600 text-white rounded-xl font-black hover:bg-purple-500 transition shadow-lg shadow-purple-900/40">Inscribirse ahora</button>
+                    </div>
+                </div>
+
+                <!-- Footer Educación -->
+                <div class="mt-20 text-center bg-slate-900 text-white p-12 rounded-[3rem] shadow-2xl">
+                    <h3 class="text-3xl md:text-4xl font-black italic uppercase mb-8 text-cyan-400">Aquí no solo aprendes herramientas… <br><span class="text-white">aprendes a utilizarlas en el mundo real.</span></h3>
+                    <ul class="text-lg md:text-xl font-medium space-y-4 inline-block text-left opacity-90">
+                        <li><i class="fas fa-check-circle text-cyan-500 mr-3"></i> Formación práctica orientada a proyectos reales</li>
+                        <li><i class="fas fa-check-circle text-cyan-500 mr-3"></i> Dominio de software profesional (AutoCAD, Revit, SketchUp)</li>
+                        <li><i class="fas fa-check-circle text-cyan-500 mr-3"></i> Integración de tecnología y automatización.</li>
+                    </ul>
+                </div>
+
+                <!-- Testimonios Marquee -->
+                <div class="mt-20 text-center">
+                    <h3 class="text-4xl font-header italic uppercase mb-10 text-slate-900 bg-white/80 py-4 px-8 inline-block rounded-full shadow-lg">Testimonios de Nuestra Comunidad</h3>
+                    <div class="marquee-container bg-white/80 rounded-[3rem] p-8 shadow-inner border border-slate-200">
+                        <div class="marquee-content">
+                            <!-- Loop 1 -->
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Alexia</span></div>
+                                <img src="img/alexia_test.png" alt="Testimonio Alexia" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Denisse</span></div>
+                                <img src="img/Denisse_test.png" alt="Testimonio Denisse" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Luis</span></div>
+                                <img src="img/Luis_test.png" alt="Testimonio Luis" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Ambar</span></div>
+                                <img src="img/Ambar_test.png" alt="Testimonio Ambar" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Fernanda</span></div>
+                                <img src="img/fernanda_test.png" alt="Testimonio Fernanda" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <!-- Loop 2 (Duplicado para efecto infinito) -->
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Alexia</span></div>
+                                <img src="img/alexia_test.png" alt="Testimonio Alexia" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Denisse</span></div>
+                                <img src="img/Denisse_test.png" alt="Testimonio Denisse" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Luis</span></div>
+                                <img src="img/Luis_test.png" alt="Testimonio Luis" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Ambar</span></div>
+                                <img src="img/Ambar_test.png" alt="Testimonio Ambar" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl shadow-lg mb-6 flex flex-col items-center">
+                                <div class="flex items-center gap-3 mb-4 w-full justify-center border-b pb-4"><i class="fas fa-user-circle text-3xl text-cyan-600"></i><span class="font-black text-xl">Fernanda</span></div>
+                                <img src="img/fernanda_test.png" alt="Testimonio Fernanda" class="max-w-full rounded-xl" loading="lazy">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN: RECURSOS (PLUGINS CON FONDO CLARO PARA LEGIBILIDAD) -->
+        <!-- SECCIÓN: RECURSOS -->
         <section id="recursos" class="tab-content py-32 px-4 bg-recursos">
             <div class="max-w-7xl mx-auto text-center">
-                <div class="text-center mb-20">
-                    <h2 class="text-5xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">Ecosistema de Recursos</h2>
-                    <p class="text-slate-800 text-xl font-bold italic uppercase tracking-wider">Herramientas exclusivas diseñadas para elevar tu productividad CAD.</p>
+                <div class="mb-16 bg-white/95 backdrop-blur-md p-10 rounded-3xl shadow-xl inline-block w-full text-left">
+                    <p class="text-slate-800 text-lg font-medium leading-relaxed max-w-4xl mx-auto">
+                        Los Recursos en SAIE es un espacio donde encontrarás herramientas, plugins y materiales diseñados para optimizar tu trabajo en arquitectura y construcción.<br><br>
+                        Cada recurso está enfocado en mejorar la eficiencia, automatizar tareas y ayudarte a desarrollar proyectos con mayor calidad y rapidez.
+                    </p>
                 </div>
 
-                <div id="sub-autocad" class="block text-left">
+                <div class="flex flex-wrap justify-center mb-16 gap-4 bg-white/80 p-4 rounded-full shadow-lg backdrop-blur-md">
+                    <button onclick="showSubTab('autocad')" class="subtab-btn subtab-autocad active px-6 py-2 font-black uppercase tracking-widest text-xs rounded-full" id="sbtn-autocad">Plugins AutoCAD</button>
+                    <button onclick="showSubTab('revit')" class="subtab-btn subtab-revit px-6 py-2 font-black uppercase tracking-widest text-xs rounded-full" id="sbtn-revit">Recursos Revit</button>
+                    <button onclick="showSubTab('sketchup')" class="subtab-btn subtab-sketchup px-6 py-2 font-black uppercase tracking-widest text-xs rounded-full" id="sbtn-sketchup">Recursos SketchUp</button>
+                    <button onclick="showSubTab('adobe')" class="subtab-btn subtab-adobe px-6 py-2 font-black uppercase tracking-widest text-xs rounded-full" id="sbtn-adobe">Recursos PS/AI</button>
+                    <button onclick="showSubTab('render')" class="subtab-btn subtab-render px-6 py-2 font-black uppercase tracking-widest text-xs text-purple-600 rounded-full" id="sbtn-render">Recursos V-Ray/D5</button>
+                </div>
+
+                <!-- AUTOCAD PLUGINS -->
+                <div id="sub-autocad" class="sub-tab-content block text-left">
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Plugin 1 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$50.00 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-microchip"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: GM</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-microchip text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: GM</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Architectural Wall Engine</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">¡No es solo dibujo, es inteligencia BIM! Genera muros paramétricos con capas automáticas y metadatos listos para cuantificar.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Architectural Wall Engine</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Generador de componentes inteligentes para muros paramétricos con metadatos BIM.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 2 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+                        
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$173.57 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-table"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: QA</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-table text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: QA</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Surface Matrix Quantifier</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">¡La herramienta definitiva para presupuestos! Genera matrices de datos en Excel para acabados, pintura y repellados al instante.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Surface Matrix Quantifier</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">La herramienta definitiva para presupuestos. Calcula áreas y genera matrices CSV al instante.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 3 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+                        
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$78.90 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-list-check"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: CQ</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-list-check text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: CQ</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Global Budget Master</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Auditoría total en un clic. Escanea bloques dinámicos y mobiliario para generar inventarios alfabéticos listos para tablas de costos.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Global Budget Master</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Auditoría total. Escanea bloques para generar inventarios alfabéticos para tablas de costos.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 4 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+                        
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$24.50 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-ruler-combined"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: DA</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-ruler-combined text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: DA</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Cota Speed</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">¡Acota en tiempo récord! Un solo clic sobre cualquier línea o arco coloca la cota exacta ajustando escala y altura de texto automáticamente.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Cota Speed</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">¡Acota en tiempo récord! Ajusta escala y altura de texto automáticamente con un clic.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 5 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+                        
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-free">FREE</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-sort-numeric-down"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: NN</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-sort-numeric-down text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: NN</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Magic Number Sequence</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Secuencias numéricas automáticas. Ideal para ejes y niveles; cada clic avanza la secuencia ajustando posición y tamaño libremente.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Magic Number Sequence</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Secuencias numéricas automáticas, ideal para ejes y niveles.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 6 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$15.60 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-th"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: MF</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-th text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: MF</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Modulator Manager</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">El asistente perfecto para muebles. Modula cualquier rectángulo automáticamente para divisiones o revestimientos técnicos ahorrando horas de trabajo.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Modulator Manager</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Modula rectángulos automáticamente para divisiones o revestimientos técnicos.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 7 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-free">FREE</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-rocket"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: SL</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-rocket text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: SL</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Ready for SketchUp</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Tu pase directo al 3D. Limpia, purga y nivela tu proyecto a Z=0 para una exportación impecable sin desastres en el lienzo.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Ready for SketchUp</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Limpia y nivela tu proyecto a Z=0 para una exportación 3D impecable.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 8 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$43.75 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-door-open"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: IP</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-door-open text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: IP</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Doors & Windows Master</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Asistente maestro de vanos. Coloca ventanas y puertas automáticas ajustándolas y escalándolas al hueco exacto con un clic.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Doors & Windows Master</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Coloca ventanas y puertas automáticas ajustándolas al hueco exacto.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 9 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$8.10 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-vector-square"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: AU</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-vector-square text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: AU</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Precision Area Surveyor</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Cálculo de alta precisión. Define jerarquías visuales limpias y ubica etiquetas libremente para planos estéticos y profesionales.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Precision Area Surveyor</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Cálculo de alta precisión para etiquetas limpias sin encimar información.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 10 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$180.90 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-stairs"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: EE</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-stairs text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: EE</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Blondel Stair Modeler</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Cerebro matemático para circulaciones. Calcula huellas y peraltes según la Ley de Blondel con simbología técnica automática.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Blondel Stair Modeler</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Cerebro matemático para escaleras. Aplica la Ley de Blondel con simbología automática.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
-                        <!-- Plugin 11 -->
-                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full group">
+
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative">
+                            <span class="price-badge price-pay">$210.30 MXN</span>
                             <div class="flex justify-between items-start mb-6">
-                                <div class="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-3xl transition duration-300 group-hover:bg-red-600 group-hover:text-white"><i class="fas fa-layer-group"></i></div>
-                                <span class="text-[12px] font-black bg-red-600 text-white px-3 py-1 rounded-full uppercase">CM: DC</span>
+                                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center"><i class="fas fa-layer-group text-xl"></i></div>
+                                <span class="text-[10px] font-black bg-red-100 px-3 py-1 rounded-full text-red-600 uppercase">CM: DC</span>
                             </div>
-                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Structural Core Designer</h4>
-                            <p class="text-slate-700 text-sm leading-relaxed italic font-medium">Ingeniería NTC. Pre-dimensiona y dibuja detalles constructivos con armado de varillas y estribos configurables automáticamente.</p>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Structural Core Designer</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Ingeniería NTC. Dibuja detalles constructivos con armado de varillas automáticamente.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition shadow-md">Solicita link de descarga</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- REVIT -->
+                <div id="sub-revit" class="sub-tab-content hidden text-left">
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative border-blue-200">
+                            <span class="price-badge price-pay">$20.50 MXN</span>
+                            <i class="fas fa-cubes text-4xl text-blue-600 mb-4"></i>
+                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Librería Revit (Arch)</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Componentes paramétricos optimizados para proyectos residenciales y comerciales. Familias ligeras y detalladas.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition">Solicita link de descarga</a>
+                        </div>
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative border-blue-200">
+                            <span class="price-badge price-pay">$35.90 MXN</span>
+                            <i class="fas fa-plug text-4xl text-blue-600 mb-4"></i>
+                            <h4 class="text-2xl font-black mb-3 text-slate-800 uppercase italic">Librería MEP</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Conectores, tuberías y tableros para ingeniería. Componentes 100% ruteables para cálculo exacto en Revit.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition">Solicita link de descarga</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKETCHUP -->
+                <div id="sub-sketchup" class="sub-tab-content hidden text-left">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative border-sky-200">
+                            <span class="price-badge price-pay">$50.00 MXN</span>
+                            <i class="fas fa-couch text-4xl text-sky-500 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Bloques para SketchUp</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Mobiliario de alta calidad, proxy ready para renders ligeros sin perder detalle.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-600 transition">Solicita link de descarga</a>
+                        </div>
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative border-sky-200">
+                            <span class="price-badge price-pay">$60.00 MXN</span>
+                            <i class="fas fa-puzzle-piece text-4xl text-sky-500 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Plugins SketchUp</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Colección de extensiones (Ruby) para modelado orgánico, superficies y optimización visual.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-600 transition">Solicita link de descarga</a>
+                        </div>
+                        <div class="plugin-card p-8 rounded-[2.5rem] flex flex-col h-full relative border-sky-200">
+                            <span class="price-badge price-pay">$150.00 MXN</span>
+                            <i class="fas fa-city text-4xl text-sky-500 mb-4"></i>
+                            <h4 class="text-xl font-black mb-3 text-slate-800 uppercase italic">Escenas Completas</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">Entornos configurados listos para renderizar. Iluminación y materiales HD aplicados.</p>
+                            <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-3 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-600 transition">Solicita link de descarga</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADOBE (PS/AI) -->
+                <div id="sub-adobe" class="sub-tab-content hidden text-left">
+                    <div class="max-w-2xl mx-auto plugin-card p-10 rounded-[3rem] flex flex-col relative border-indigo-200 shadow-2xl">
+                        <span class="price-badge price-pay">$50.00 MXN</span>
+                        <div class="flex gap-4 mb-6">
+                            <i class="fas fa-paint-brush text-5xl text-orange-500"></i>
+                            <i class="fas fa-magic text-5xl text-indigo-700"></i>
+                        </div>
+                        <h4 class="text-3xl font-black mb-4 text-slate-800 uppercase italic">Megapack Post-Producción</h4>
+                        <p class="text-slate-600 text-md leading-relaxed mb-8">Todo lo necesario para tus escenas y diseños de Illustrator y Photoshop. Pinceles, escalas humanas en PNG de alta resolución, cielos HDRI y texturas seamless.</p>
+                        <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-4 bg-slate-900 text-white rounded-2xl font-black hover:bg-indigo-700 transition text-lg">Solicita link de descarga</a>
+                    </div>
+                </div>
+
+                <!-- RENDER (VRAY/D5) -->
+                <div id="sub-render" class="sub-tab-content hidden text-left">
+                    <div class="max-w-2xl mx-auto plugin-card p-10 rounded-[3rem] flex flex-col relative border-purple-200 shadow-2xl">
+                        <span class="price-badge price-pay">$74.80 MXN</span>
+                        <i class="fas fa-gem text-5xl text-purple-600 mb-6"></i>
+                        <h4 class="text-3xl font-black mb-4 text-slate-800 uppercase italic">Texturas PBR & Materiales</h4>
+                        <p class="text-slate-600 text-md leading-relaxed mb-8">Texturas PBR completas (Diffuse, Normal, Roughness, Displacement) y todo lo necesario para que tus escenas en V-Ray y D5 alcancen el fotorrealismo extremo.</p>
+                        <a href="https://m.me/61550726997616" target="_blank" class="w-full text-center py-4 bg-purple-600 text-white rounded-2xl font-black hover:bg-purple-700 transition text-lg">Solicita link de descarga</a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- SECCIÓN: CONTACTO (RETOCADO FINAL) -->
+        <!-- SECCIÓN: CONTACTO -->
         <section id="contacto" class="tab-content py-32 px-4 bg-contact">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-5xl md:text-6xl font-header mb-4 italic uppercase text-slate-900 authority-shadow">Contacta a SAIE</h2>
                 <p class="text-slate-900 text-lg font-black uppercase tracking-widest mb-16 italic">Estamos listos para materializar tus proyectos</p>
                 
                 <div class="max-w-2xl mx-auto text-left space-y-12">
-                    
-                    <!-- Vías Directas Iluminadas -->
                     <div class="bg-white/95 p-10 rounded-[3rem] shadow-2xl border border-slate-100 backdrop-blur-md">
                         <h4 class="text-2xl font-black mb-8 text-center italic uppercase text-slate-800">Comunicación Directa</h4>
                         <div class="space-y-6">
-                            
-                            <!-- WhatsApp Panel (Se ilumina en verde al pasar el mouse/click) -->
+                            <!-- WhatsApp -->
                             <a href="https://wa.me/525562482314" target="_blank" class="flex items-center gap-6 p-6 rounded-3xl hover:bg-emerald-500 active:bg-emerald-600 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-emerald-400">
                                 <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl shadow-sm group-hover:bg-white group-hover:text-emerald-500 transition-colors"><i class="fab fa-whatsapp"></i></div>
                                 <div>
@@ -498,8 +763,7 @@
                                     <p class="text-sm text-slate-500 group-hover:text-emerald-50 font-bold transition-colors">+52 556 248 2314</p>
                                 </div>
                             </a>
-
-                            <!-- Correo Panel (Se ilumina en azul/cyan al pasar el mouse/click) -->
+                            <!-- Correo -->
                             <a href="mailto:arquival_al90@outlook.es" class="flex items-center gap-6 p-6 rounded-3xl hover:bg-cyan-500 active:bg-cyan-600 hover:text-white transition-all duration-300 group shadow-sm hover:shadow-xl hover:-translate-y-1 border border-transparent hover:border-cyan-400">
                                 <div class="w-16 h-16 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center text-3xl shadow-sm group-hover:bg-white group-hover:text-cyan-500 transition-colors"><i class="fas fa-at"></i></div>
                                 <div>
@@ -510,11 +774,10 @@
                         </div>
                     </div>
 
-                    <!-- Bloque de Compartir -->
+                    <!-- Compartir -->
                     <div class="bg-slate-900 p-10 rounded-[3rem] shadow-xl text-white">
                         <h4 class="text-2xl font-black mb-4 italic uppercase text-cyan-400 text-center">¿Te gusta nuestro trabajo?</h4>
                         <p class="text-slate-400 text-sm mb-8 font-medium italic text-center">Ayúdanos a expandir el ecosistema SAIE compartiendo nuestra página en tus redes sociales.</p>
-                        
                         <div class="grid grid-cols-3 gap-4 text-center">
                             <a href="https://api.whatsapp.com/send?text=¡Mira el ecosistema digital de SAIE Arquitectura! https://saiearquitectura.vercel.app/" target="_blank" class="flex flex-col items-center gap-2 p-4 bg-white/5 rounded-2xl hover:bg-emerald-600 transition">
                                 <i class="fab fa-whatsapp text-2xl"></i>
@@ -530,16 +793,39 @@
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
     </main>
 
+    <!-- LIGHTBOX GALERÍA DE ARQUITECTURA -->
+    <div id="lightbox" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/95 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-cyan-400 transition text-4xl"><i class="fas fa-times"></i></button>
+        <button onclick="prevImage()" class="absolute left-6 text-white hover:text-cyan-400 transition text-5xl"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightbox-img" src="" alt="Galería SAIE" class="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl">
+        <button onclick="nextImage()" class="absolute right-6 text-white hover:text-cyan-400 transition text-5xl"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- VENTANA MODAL DE INSCRIPCIÓN -->
+    <div id="enrollment-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-lg rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative text-left">
+            <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-400 hover:text-slate-900 transition text-2xl cursor-pointer"><i class="fas fa-times"></i></button>
+            <h3 id="modal-course-title" class="text-3xl font-header italic uppercase text-slate-900 mb-2 leading-none">Inscripción</h3>
+            <p class="text-slate-500 mb-8 font-medium italic">Ingresa tus datos para continuar:</p>
+            <form id="modal-form" class="space-y-4" onsubmit="handleEnrollmentSubmit(event)">
+                <input type="hidden" id="hidden-course-name">
+                <div><label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Nombre Completo</label><input type="text" id="user-fullname" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 font-bold mt-1" required></div>
+                <div><label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Correo Electrónico</label><input type="email" id="user-email-modal" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 font-bold mt-1" required></div>
+                <div><label class="text-[10px] font-black uppercase text-slate-400 ml-2 tracking-widest">Teléfono / WhatsApp</label><input type="tel" id="user-phone-modal" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-cyan-600 font-bold mt-1" required></div>
+                <button type="submit" class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-xl hover:bg-cyan-600 transition shadow-xl uppercase tracking-widest mt-4">Enviar Inscripción</button>
+            </form>
+        </div>
+    </div>
+
     <footer class="bg-slate-950 text-white py-20 text-center">
-        <p class="font-header text-4xl mb-6 uppercase tracking-widest italic">SAIE Arquitectura</p>
-        <div class="flex justify-center gap-8 text-3xl text-slate-500">
+        <p class="font-header text-4xl mb-6 text-white uppercase tracking-widest leading-none italic">SAIE Arquitectura</p>
+        <div class="flex justify-center gap-8 text-3xl text-slate-400">
             <a href="https://www.facebook.com/profile.php?id=61550726997616" target="_blank" class="hover:text-[#1877F2] transition"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/soluciones_arq_edu/" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/c/5215562482314" target="_blank" class="hover:text-emerald-500 transition"><i class="fab fa-whatsapp"></i></a>
@@ -548,27 +834,87 @@
     </footer>
 
     <script>
-        const playlist = [
-            "video/promo_saie.mp4", "video/saie_edu3.mp4", "video/saie_edu1.mp4", 
-            "video/saie_educacionpart1.mp4", "video/saie_educacionpart2.mp4", "video/saie_educacionpart3.mp4", 
-            "video/saie_educacionpart4.mp4", "video/saie_educacionpart5.mp4", "video/saie_edu2.mp4", "video/saie_edu4.mp4"
+        // --- LAZY LOADING & INTERSECTION OBSERVER ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const lazyVideos = document.querySelectorAll("video.lazy-video");
+            if("IntersectionObserver" in window) {
+                const videoObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const video = entry.target;
+                            video.preload = "metadata";
+                            observer.unobserve(video);
+                        }
+                    });
+                });
+                lazyVideos.forEach(v => videoObserver.observe(v));
+            }
+
+            // Init Gallery
+            renderGallery();
+        });
+
+        // --- GALERÍA DE ARQUITECTURA ---
+        const galleryImages = [
+            "img/galeria_arq01.webp", "img/galeria_saie2.jpeg", "img/galeria_saie3.jpeg", "img/galeria_saie4.jpeg",
+            "img/galeria_saie5.jpeg", "img/galeria_saie6.jpeg", "img/galeria_saie7.jpeg", "img/galeria_saie8.jpeg",
+            "img/galeria_saie9.jpeg", "img/galeria_saie10.jpeg", "img/galeria_saie11.jpeg", "img/galeria_arq12.webp",
+            "img/galeria_saie13.jpeg", "img/galeria_saie14.jpeg", "img/galeria_saie15.jpeg"
         ];
-        
-        let currentVideoIndex = 0;
-        const videoPlayer = document.getElementById('main-playlist-video');
+        let currentImageIndex = 0;
 
-        videoPlayer.onended = function() {
-            currentVideoIndex = (currentVideoIndex + 1) % playlist.length;
-            videoPlayer.src = playlist[currentVideoIndex];
-            videoPlayer.play();
-        };
-
-        function toggleMute() {
-            videoPlayer.muted = !videoPlayer.muted;
-            const icon = document.getElementById('vol-icon');
-            icon.className = videoPlayer.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            if(!container) return;
+            galleryImages.forEach((src, index) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item shadow-lg';
+                div.innerHTML = `
+                    <img src="${src}" alt="Proyecto SAIE" loading="lazy" onerror="this.style.display='none'">
+                    <div class="gallery-overlay" onclick="openLightbox(${index})">
+                        <i class="fas fa-expand text-white text-4xl drop-shadow-md"></i>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
         }
 
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = galleryImages[currentImageIndex];
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+            setTimeout(() => { lb.style.opacity = '1'; }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.style.opacity = '0';
+            setTimeout(() => { lb.classList.add('hidden'); lb.classList.remove('flex'); }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
+        }
+
+        // --- MENÚ MÓVIL ---
+        const btnMobile = document.getElementById('mobile-btn');
+        const menuMobile = document.getElementById('mobile-menu');
+        btnMobile.addEventListener('click', () => {
+            menuMobile.classList.toggle('hidden');
+        });
+
+        // --- TABS & NAVEGACIÓN ---
         function showTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
@@ -577,13 +923,65 @@
             document.getElementById(tabId).classList.add('active');
             const activeBtn = document.getElementById('btn-' + tabId);
             if(activeBtn) activeBtn.classList.add('active');
+            menuMobile.classList.add('hidden'); // Cerrar menu movil si estaba abierto
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        function showSubTab(subId) {
+            const subContents = document.querySelectorAll('.sub-tab-content');
+            subContents.forEach(content => { content.classList.add('hidden'); content.classList.remove('block'); });
+            const subBtns = document.querySelectorAll('.subtab-btn');
+            subBtns.forEach(btn => btn.classList.remove('active'));
+            const activeSub = document.getElementById('sub-' + subId);
+            activeSub.classList.remove('hidden'); activeSub.classList.add('block');
+            document.getElementById('sbtn-' + subId).classList.add('active');
+        }
+
+        function showSubArq(subId) {
+            document.querySelectorAll('.arq-content').forEach(el => { el.classList.add('hidden'); el.classList.remove('block'); });
+            document.querySelectorAll('.arq-btn').forEach(btn => { btn.classList.remove('bg-slate-900', 'text-white'); btn.classList.add('bg-white', 'text-slate-600'); });
+            
+            const activeContent = document.getElementById(subId);
+            activeContent.classList.remove('hidden'); activeContent.classList.add('block');
+            
+            const activeBtn = event.currentTarget;
+            activeBtn.classList.remove('bg-white', 'text-slate-600');
+            activeBtn.classList.add('bg-slate-900', 'text-white');
+        }
+
+        // --- VIDEO VOLUMEN HERO ---
+        function toggleMute(videoId, iconId) {
+            const videoPlayer = document.getElementById(videoId);
+            const icon = document.getElementById(iconId);
+            videoPlayer.muted = !videoPlayer.muted;
+            icon.className = videoPlayer.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        }
+
+        // --- MODALES Y CONTACTO ---
         function openEnrollment(courseName) {
-            const subject = encodeURIComponent(`Inscripción: ${courseName}`);
-            const body = encodeURIComponent(`Hola SAIE,\nMe gustaría inscribirme en: ${courseName}`);
+            document.getElementById('hidden-course-name').value = courseName;
+            document.getElementById('modal-course-title').innerText = "Inscripción: " + courseName;
+            const modal = document.getElementById('enrollment-modal');
+            modal.classList.remove('hidden'); modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('enrollment-modal');
+            modal.classList.add('hidden'); modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleEnrollmentSubmit(e) {
+            e.preventDefault();
+            const course = document.getElementById('hidden-course-name').value;
+            const name = document.getElementById('user-fullname').value;
+            const email = document.getElementById('user-email-modal').value;
+            const phone = document.getElementById('user-phone-modal').value;
+            const subject = encodeURIComponent(`NUEVA INSCRIPCIÓN: ${course}`);
+            const body = encodeURIComponent(`CURSO: ${course}\nNombre: ${name}\nCorreo: ${email}\nTeléfono: ${phone}`);
             window.location.href = `mailto:arquival_al90@outlook.es?subject=${subject}&body=${body}`;
+            closeModal(); document.getElementById('modal-form').reset();
         }
 
         function shareSite() {
